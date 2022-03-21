@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <corners
+    android:radius="15dp" />
+
+  <gradient
+    android:angle="45"
+    android:startColor="@color/input_bg"
+    android:endColor="@color/input_bg"
+    android:type="linear" />
+
+  <padding
+    android:left="0dp"
+    android:top="0dp"
+    android:right="0dp"
+    android:bottom="0dp" />
+  <size
+    android:height="55dp" />
+
+</shape>

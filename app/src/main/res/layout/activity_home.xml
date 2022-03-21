@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/home_wrapper"
+  android:background="@color/bg"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ScrollView
+    android:id="@+id/home_scroll_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.home.Home"
+    tools:ignore="SpeakableTextPresentCheck">
+
+    <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/home_search_fragment"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      tools:layout="@layout/fragment_home_header"/>
+
+
+  </ScrollView>
+
+  <androidx.fragment.app.FragmentContainerView
+    android:id="@+id/home_navbar_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    tools:layout="@layout/fragment_navbar"
+    app:layout_constraintLeft_toLeftOf="@id/home_wrapper"
+    app:layout_constraintRight_toRightOf="@id/home_wrapper"
+    app:layout_constraintBottom_toBottomOf="@id/home_wrapper"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

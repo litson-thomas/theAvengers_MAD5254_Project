@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/filter_btn_style.xml" value="0.272" />
+        <entry key="app/src/main/res/drawable/home_header_style.xml" value="0.272" />
+        <entry key="app/src/main/res/drawable/home_search_style.xml" value="0.272" />
+        <entry key="app/src/main/res/drawable/ic_account.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_chat.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_weather.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/input_style.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/navbar_style.xml" value="0.272" />
+        <entry key="app/src/main/res/drawable/search_input_style.xml" value="0.272" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2272210604902626" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.3693735758463543" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/activity_reset.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/fragment_home_header.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/fragment_navbar.xml" value="0.3591485507246377" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.home.HomeHeader">
+
+  <LinearLayout
+    android:id="@+id/home_header_wrapper"
+    android:padding="25dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/home_header_style"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:id="@+id/home_header_title_wrapper"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/home_header_style"
+      android:weightSum="3"
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:id="@+id/home_header_title_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_header_style"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+
+        <TextView
+          android:id="@+id/home_title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/poppins_extrabold"
+          android:textSize="18dp"
+          android:lineHeight="35dp"
+          android:textColor="@color/text_white"
+          android:text="Hey, \nGood Morning!" />
+
+        <TextView
+          android:id="@+id/home_subtitle"
+          android:layout_marginTop="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/poppins"
+          android:textSize="12dp"
+          android:textColor="@color/text_grey"
+          android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit venenatis non urna, suspendisse." />
+
+      </LinearLayout>
+
+      <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.5"
+        android:background="@color/secondary"
+        android:textAlignment="textEnd"
+        android:src="@drawable/account" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/home_header_search_filter"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:gravity="center"
+      android:weightSum="3"
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:id="@+id/home_header_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:weightSum="3"
+        android:layout_weight="1"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/home_search_style"
+        android:orientation="horizontal">
+
+        <ImageView
+          android:id="@+id/home_search_icon"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="2.5"
+          android:src="@drawable/search" />
+
+        <EditText
+          android:id="@+id/home_search_text"
+          android:layout_weight=".5"
+          android:background="@drawable/search_input_style"
+          android:hint="Search..."
+          android:textColorHint="@color/text_grey"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+      </LinearLayout>
+
+      <ImageButton
+        android:id="@+id/home_filter_btn"
+        android:layout_weight="2"
+        android:src="@drawable/filter"
+        android:background="@drawable/filter_btn_style"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</FrameLayout>
