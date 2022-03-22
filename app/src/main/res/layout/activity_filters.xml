@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/filters_scroll_view"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fillViewport="true"
+  android:background="@color/bg"
+  tools:context=".views.home.Filters"
+  tools:ignore="MissingConstraints">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/filters_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+      android:id="@+id/filters_header"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingTop="25dp"
+      android:paddingBottom="25dp"
+      android:paddingLeft="15dp"
+      android:paddingRight="15dp"
+      android:background="@drawable/bottom_rounded_bg_style"
+      android:weightSum="3"
+      android:gravity="center"
+      android:orientation="horizontal">
+
+      <TextView
+        android:id="@+id/filters_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="20dp"
+        android:textColor="@color/text_white"
+        android:layout_weight="2"
+        android:text="Filters" />
+
+      <ImageButton
+        android:id="@+id/filters_close"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_weight="2"
+        android:background="@drawable/tertiary_button_style"
+        android:src="@drawable/ic_close"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+      app:layout_constraintTop_toBottomOf="@id/filters_header"
+      android:orientation="vertical"
+      android:paddingTop="20dp"
+      android:paddingLeft="20dp"
+      android:paddingRight="20dp"
+      android:id="@+id/filters_province_wrapper"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/filters_province_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="12dp"
+        android:textColor="@color/text_grey"
+        android:text="Province" />
+
+      <EditText
+        android:id="@+id/filters_province"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/input_style"
+        android:fontFamily="@font/poppins"
+        android:hint="Select Province"
+        android:paddingLeft="20dp"
+        android:textSize="12dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      app:layout_constraintTop_toBottomOf="@id/filters_province_wrapper"
+      android:orientation="vertical"
+      android:paddingTop="20dp"
+      android:paddingLeft="20dp"
+      android:paddingRight="20dp"
+      android:id="@+id/filters_city_wrapper"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/filters_city_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="12dp"
+        android:textColor="@color/text_grey"
+        android:text="City" />
+
+      <EditText
+        android:id="@+id/filters_city"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/input_style"
+        android:fontFamily="@font/poppins"
+        android:hint="Select City"
+        android:paddingLeft="20dp"
+        android:textSize="12dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      app:layout_constraintTop_toBottomOf="@id/filters_city_wrapper"
+      android:orientation="vertical"
+      android:paddingTop="20dp"
+      android:paddingLeft="20dp"
+      android:paddingRight="20dp"
+      android:id="@+id/filters_price_wrapper"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/filters_price_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="12dp"
+        android:textColor="@color/text_grey"
+        android:text="Price" />
+
+        <LinearLayout
+          android:orientation="horizontal"
+          android:id="@+id/filters_price_values"
+          android:layout_weight="4"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <EditText
+            android:id="@+id/filters_price_min"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/input_style"
+            android:fontFamily="@font/poppins"
+            android:hint="Price Min"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
+            android:paddingLeft="20dp"
+            android:textSize="12dp" />
+
+          <EditText
+            android:id="@+id/filters_price_max"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/input_style"
+            android:fontFamily="@font/poppins"
+            android:hint="Price Min"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="2"
+            android:paddingLeft="20dp"
+            android:textSize="12dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+      app:layout_constraintTop_toBottomOf="@id/filters_price_wrapper"
+      android:orientation="vertical"
+      android:paddingTop="20dp"
+      android:paddingLeft="20dp"
+      android:paddingRight="20dp"
+      android:id="@+id/filters_rating_wrapper"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/filters_rating_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="12dp"
+        android:textColor="@color/text_grey"
+        android:text="Rating" />
+
+      <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/filters_rating_values"
+        android:layout_weight="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+          android:id="@+id/filters_rating_min"
+          android:layout_marginTop="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:background="@drawable/input_style"
+          android:fontFamily="@font/poppins"
+          android:hint="Rating Min"
+          android:layout_marginRight="5dp"
+          android:layout_weight="2"
+          android:paddingLeft="20dp"
+          android:textSize="12dp" />
+
+        <EditText
+          android:id="@+id/filters_rating_max"
+          android:layout_marginTop="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:background="@drawable/input_style"
+          android:fontFamily="@font/poppins"
+          android:hint="Rating Min"
+          android:layout_marginLeft="5dp"
+          android:layout_weight="2"
+          android:paddingLeft="20dp"
+          android:textSize="12dp" />
+
+      </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+      app:layout_constraintBottom_toBottomOf="@id/filters_wrapper"
+      android:id="@+id/filters_buttons"
+      android:orientation="horizontal"
+      android:background="@drawable/filters_footer_style"
+      android:padding="20dp"
+      android:weightSum="4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <Button
+        android:id="@+id/filters_reset_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/secondary_button"
+        android:elevation="50dp"
+        android:text="Reset"
+        android:textSize="14dp"
+        android:layout_weight="2"
+        android:layout_marginRight="5dp"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/white" />
+
+      <Button
+        android:id="@+id/filters_apply_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/primary_button"
+        android:elevation="50dp"
+        android:text="Apply"
+        android:textSize="14dp"
+        android:layout_weight="2"
+        android:layout_marginLeft="5dp"
+        android:backgroundTint="@color/primary"
+        android:textColor="@color/white" />
+
+    </LinearLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

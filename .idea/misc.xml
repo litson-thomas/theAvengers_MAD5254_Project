@@ -3,20 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bottom_rounded_bg_style.xml" value="0.2865" />
         <entry key="app/src/main/res/drawable/filter_btn_style.xml" value="0.272" />
+        <entry key="app/src/main/res/drawable/filters_footer_style.xml" value="0.2865" />
         <entry key="app/src/main/res/drawable/home_header_style.xml" value="0.272" />
         <entry key="app/src/main/res/drawable/home_search_style.xml" value="0.272" />
         <entry key="app/src/main/res/drawable/ic_account.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_chat.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.2875" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_location.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_star.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_weather.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/input_style.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/navbar_style.xml" value="0.272" />
+        <entry key="app/src/main/res/drawable/primary_button.xml" value="0.2875" />
         <entry key="app/src/main/res/drawable/search_input_style.xml" value="0.272" />
+        <entry key="app/src/main/res/drawable/secondary_button.xml" value="0.2865" />
         <entry key="app/src/main/res/drawable/shovler_style.xml" value="0.272" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.32211151123046877" />
+        <entry key="app/src/main/res/drawable/tertiary_button_style.xml" value="0.2865" />
+        <entry key="app/src/main/res/layout/activity_filters.xml" value="0.2833333333333333" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.28686370849609377" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3693735758463543" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3591485507246377" />

@@ -13,6 +13,9 @@
     android:theme="@style/Theme.TheAvengers_MAD5254_Project"
     tools:targetApi="31">
     <activity
+      android:name=".Filters"
+      android:exported="false" />
+    <activity
       android:name=".views.home.Home"
       android:exported="true">
       <intent-filter>
@@ -32,8 +35,7 @@
       android:exported="false" />
     <activity
       android:name=".MainActivity"
-      android:exported="false">
-    </activity>
+      android:exported="false"></activity>
   </application>
 
 </manifest>
