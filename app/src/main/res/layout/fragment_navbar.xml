@@ -22,32 +22,36 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_weight="1"
-      android:background="transparent"
-      android:src="@drawable/ic_home" />
+      android:background="@color/secondary"
+      android:src="@drawable/ic_home"
+      tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
       android:id="@+id/navbar_chat"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_weight="1"
-      android:background="transparent"
-      android:src="@drawable/ic_chat" />
+      android:background="@color/secondary"
+      android:src="@drawable/ic_chat"
+      tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <ImageButton
       android:id="@+id/navbar_weather"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_weight="1"
-      android:background="transparent"
-      android:src="@drawable/ic_weather" />
+      android:background="@color/secondary"
+      android:src="@drawable/ic_weather"
+      tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
       android:id="@+id/navbar_account"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_weight="1"
-      android:background="transparent"
-      android:src="@drawable/ic_account" />
+      android:background="@color/secondary"
+      android:src="@drawable/ic_account"
+      tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
   </LinearLayout>
 

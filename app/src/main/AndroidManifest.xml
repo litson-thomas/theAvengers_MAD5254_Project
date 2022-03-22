@@ -13,25 +13,26 @@
     android:theme="@style/Theme.TheAvengers_MAD5254_Project"
     tools:targetApi="31">
     <activity
-      android:name=".Home"
-      android:exported="false" />
-    <activity
-      android:name=".Reset"
-      android:exported="false" />
-    <activity
-      android:name=".Register"
-      android:exported="false" />
-    <activity
-      android:name=".Login"
-      android:exported="false" />
-    <activity
-      android:name=".MainActivity"
+      android:name=".views.home.Home"
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
+    </activity>
+    <activity
+      android:name=".views.auth.Reset"
+      android:exported="false" />
+    <activity
+      android:name=".views.auth.Register"
+      android:exported="false" />
+    <activity
+      android:name=".views.auth.Login"
+      android:exported="false" />
+    <activity
+      android:name=".MainActivity"
+      android:exported="false">
     </activity>
   </application>
 

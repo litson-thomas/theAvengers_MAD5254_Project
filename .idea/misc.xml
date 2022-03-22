@@ -9,17 +9,21 @@
         <entry key="app/src/main/res/drawable/ic_account.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_chat.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_location.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_star.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_weather.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/input_style.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/navbar_style.xml" value="0.272" />
         <entry key="app/src/main/res/drawable/search_input_style.xml" value="0.272" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2272210604902626" />
+        <entry key="app/src/main/res/drawable/shovler_style.xml" value="0.272" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.32211151123046877" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3693735758463543" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_reset.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_home_header.xml" value="0.3591485507246377" />
-        <entry key="app/src/main/res/layout/fragment_navbar.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/fragment_navbar.xml" value="0.18104643890823144" />
+        <entry key="app/src/main/res/layout/shovler_item.xml" value="0.33754882812500003" />
       </map>
     </option>
   </component>
