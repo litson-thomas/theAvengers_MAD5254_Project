@@ -50,29 +50,31 @@
     </LinearLayout>
 
     <LinearLayout
-      app:layout_constraintTop_toBottomOf="@id/filters_header"
-      android:orientation="vertical"
-      android:paddingTop="20dp"
-      android:paddingLeft="20dp"
-      android:paddingRight="20dp"
       android:id="@+id/filters_province_wrapper"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:layout_marginTop="28dp"
+      android:orientation="vertical"
+      android:paddingLeft="20dp"
+      android:paddingTop="20dp"
+      android:paddingRight="20dp"
+      app:layout_constraintTop_toBottomOf="@id/filters_header"
+      tools:layout_editor_absoluteX="161dp">
 
       <TextView
         android:id="@+id/filters_province_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
-        android:textSize="12dp"
+        android:text="Province"
         android:textColor="@color/text_grey"
-        android:text="Province" />
+        android:textSize="12dp" />
 
       <EditText
         android:id="@+id/filters_province"
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/input_style"
         android:fontFamily="@font/poppins"
         android:hint="Select Province"
