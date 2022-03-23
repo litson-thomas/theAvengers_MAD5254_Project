@@ -175,12 +175,12 @@
       android:layout_height="wrap_content">
 
       <Button
-        android:id="@+id/filters_reset_btn"
+        android:id="@+id/details_message_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/secondary_button"
         android:elevation="50dp"
-        android:text="Reset"
+        android:text="Chat Now"
         android:textSize="14dp"
         android:layout_weight="2"
         android:layout_marginRight="5dp"
@@ -188,12 +188,12 @@
         android:textColor="@color/white" />
 
       <Button
-        android:id="@+id/filters_apply_btn"
+        android:id="@+id/details_book_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/primary_button"
         android:elevation="50dp"
-        android:text="Apply"
+        android:text="Book Now"
         android:textSize="14dp"
         android:layout_weight="2"
         android:layout_marginLeft="5dp"
