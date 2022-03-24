@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityLoginBinding
 import com.example.theavengers_mad5254_project.databinding.ActivityRegisterBinding
+import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
 import com.example.theavengers_mad5254_project.viewmodel.FireBaseViewModelFactory
@@ -28,7 +29,7 @@ class Login : AppCompatActivity() {
         viewModelFactory = FireBaseViewModelFactory()
         viewModel = ViewModelProvider(this,viewModelFactory)[FirebaseViewModel::class.java]
         binding.viewModel = viewModel
-
+        AppPreference.init(this)
         binding.loginButton.setOnClickListener {
             if(TextUtils.isEmpty(binding.loginEmail.text.toString()) || TextUtils.isEmpty(binding.loginPassword.text.toString())){
                 CommonMethods.toastMessage(applicationContext,"Login fields can't be empty")
@@ -37,7 +38,7 @@ class Login : AppCompatActivity() {
             }
         }
         binding.loginCreateAccount.setOnClickListener {
-            val intent =  Intent(this, Register::class.java)
+            val intent = Intent(this, Register::class.java)
             startActivity(intent)
             finish()
         }
@@ -53,16 +54,20 @@ class Login : AppCompatActivity() {
             result?.let{
                 when(it){
                     is ResultOf.Success ->{
-                        if(it.value.equals("Login Successful",ignoreCase = true)){
-                            CommonMethods.toastMessage(applicationContext,"Login Successful")
-                            val intent =  Intent(this, Home::class.java)
-                            startActivity(intent)
-                            finish()
-                        }else if(it.value.equals("Reset",ignoreCase = true)){
+                        when {
+                            it.value.equals("Login Successful",ignoreCase = true) -> {
+                                AppPreference.isLogin = true
+                                CommonMethods.toastMessage(applicationContext,"Login Successful")
+                                val intent = Intent(this, Home::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            it.value.equals("Reset",ignoreCase = true) -> {
 
-                        }
-                        else{
-                            CommonMethods.toastMessage(applicationContext,"Login failed with ${it.value}")
+                            }
+                            else -> {
+                                CommonMethods.toastMessage(applicationContext,"Login failed with ${it.value}")
+                            }
                         }
                     }
                     is ResultOf.Failure -> {
