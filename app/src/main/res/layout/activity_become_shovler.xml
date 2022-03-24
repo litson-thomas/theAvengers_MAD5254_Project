@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.becomeShovler.BecomeShovler">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/reviews_header"
+        android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+        tools:layout="@layout/fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:ignore="MissingConstraints" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/login_wrapper"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="100dp">
+
+
+        <LinearLayout
+            android:id="@+id/heading_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textSize="18dp"
+                android:lineHeight="35dp"
+                android:textColor="@color/text_black"
+                android:text="Become a Shovler" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_black"
+                android:text="Title" />
+
+            <EditText
+                android:id="@+id/become_shovler_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input_style"
+                android:fontFamily="@font/poppins"
+                android:hint="Enter Title"
+                android:paddingLeft="20dp"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_black"
+                android:text="Select Place" />
+
+            <EditText
+                android:id="@+id/become_shovler_place"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_style"
+                android:fontFamily="@font/poppins"
+                android:hint="Select your place"
+                android:paddingLeft="20dp"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_black"
+                android:lineHeight="20dp"
+                android:text="Select limit radius (25 km)" />
+
+
+            <SeekBar
+                android:id="@+id/become_shovler_radius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:padding="0dp"
+                android:progress="40" />
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_black"
+                android:lineHeight="20dp"
+                android:text="Description" />
+
+
+            <EditText
+                android:id="@+id/become_shovler_description"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input_style"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|top"
+                android:hint="Enter Description"
+                android:inputType="textMultiLine"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp" />
+
+
+            <Button
+                android:id="@+id/add_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/primary_button"
+                android:elevation="50dp"
+                android:text="Add Images"
+                android:textSize="12dp"
+                android:backgroundTint="@color/primary"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

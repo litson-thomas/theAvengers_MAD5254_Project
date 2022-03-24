@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.becomeShovler.AddPricing">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/reviews_header"
+        android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+        tools:layout="@layout/fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="100dp">
+
+        <LinearLayout
+            android:id="@+id/heading_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textSize="18dp"
+                android:lineHeight="35dp"
+                android:textColor="@color/text_black"
+                android:text="Add Prices" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_black"
+                android:text="Enter Base Price" />
+            <EditText
+                android:id="@+id/become_shovler_1To4hour"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_style"
+                android:fontFamily="@font/poppins"
+                android:hint="1 - 4 hours price"
+                android:paddingLeft="20dp"
+                android:textSize="12dp" />
+            <EditText
+                android:id="@+id/become_shovler_5To8hour"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_style"
+                android:fontFamily="@font/poppins"
+                android:hint="5 - 8 hours price"
+                android:paddingLeft="20dp"
+                android:textSize="12dp" />
+            <EditText
+                android:id="@+id/become_shovler_9To12hour"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_style"
+                android:fontFamily="@font/poppins"
+                android:hint="9 - 12 hours price"
+                android:paddingLeft="20dp"
+                android:textSize="12dp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_black"
+                android:text="Cityside Walk price" />
+            <EditText
+                android:id="@+id/become_shovler_cityside"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_style"
+                android:fontFamily="@font/poppins"
+                android:hint="Extra charge for cityside walk"
+                android:paddingLeft="20dp"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/add_pricing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/primary_button"
+                android:elevation="50dp"
+                android:text="Add Pricing"
+                android:textSize="12dp"
+                android:backgroundTint="@color/primary"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
