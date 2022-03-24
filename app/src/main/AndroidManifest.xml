@@ -13,6 +13,7 @@
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
 
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -46,6 +47,40 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+      <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewDirections"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MyEarnings"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewFeedBack"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewOrder"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MyJobs"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.ConfirmDetails"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddPayment"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddPricing"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddImage"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler"
+            android:exported="false" />
     </application>
+
 
 </manifest>
