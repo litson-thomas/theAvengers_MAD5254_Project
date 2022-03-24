@@ -1,6 +1,8 @@
 package com.example.theavengers_mad5254_project.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
+import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult

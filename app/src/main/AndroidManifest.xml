@@ -12,7 +12,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
+
+
         <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.auth.Login"
+            android:exported="false" />
+        <activity
+            android:name=".views.home.Details"
+            android:exported="false" />
+        <activity
+            android:name=".views.home.Filters"
+            android:exported="false" />
+        <activity
+            android:name=".views.home.Home"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.Reset"
+            android:exported="false" />
+        <activity
+            android:name=".views.Reviews"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.Register"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+      <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewDirections"
             android:exported="false" />
         <activity
@@ -45,36 +80,7 @@
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler"
             android:exported="false" />
-        <activity
-            android:name=".views.auth.Login"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".views.home.Details"
-            android:exported="false" />
-        <activity
-            android:name=".views.home.Filters"
-            android:exported="false" />
-        <activity
-            android:name=".views.home.Home"
-            android:exported="false" />
-        <activity
-            android:name=".views.auth.Reset"
-            android:exported="false" />
-        <activity
-            android:name=".views.Reviews"
-            android:exported="false" />
-        <activity
-            android:name=".views.auth.Register"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
     </application>
+
 
 </manifest>
