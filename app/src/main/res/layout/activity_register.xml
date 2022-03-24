@@ -52,6 +52,7 @@
       android:background="@drawable/input_style"
       android:fontFamily="@font/poppins"
       android:hint="Enter Name"
+        android:inputType="text"
       android:paddingLeft="20dp"
       android:textSize="12dp" />
 
@@ -63,6 +64,7 @@
       android:background="@drawable/input_style"
       android:fontFamily="@font/poppins"
       android:hint="Enter Email"
+        android:inputType="textEmailAddress"
       android:paddingLeft="20dp"
       android:textSize="12dp" />
 
@@ -74,6 +76,8 @@
       android:background="@drawable/input_style"
       android:fontFamily="@font/poppins"
       android:hint="Enter Phone Number"
+        android:maxLength="10"
+        android:inputType="phone"
       android:paddingLeft="20dp"
       android:textSize="12dp" />
 
@@ -85,6 +89,7 @@
       android:background="@drawable/input_style"
       android:fontFamily="@font/poppins"
       android:hint="Enter Place"
+        android:inputType="text"
       android:paddingLeft="20dp"
       android:textSize="12dp" />
 

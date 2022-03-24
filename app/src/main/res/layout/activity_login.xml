@@ -51,6 +51,7 @@
         android:background="@drawable/input_style"
         android:fontFamily="@font/poppins"
         android:hint="Enter Email"
+          android:inputType="textEmailAddress"
         android:paddingLeft="20dp"
         android:textSize="12dp" />
 
