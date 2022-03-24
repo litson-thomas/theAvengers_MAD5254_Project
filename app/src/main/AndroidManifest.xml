@@ -13,7 +13,7 @@
     android:theme="@style/Theme.TheAvengers_MAD5254_Project"
     tools:targetApi="31">
     <activity
-      android:name=".views.Reviews"
+      android:name=".views.auth.Login"
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -35,10 +35,10 @@
       android:name=".views.auth.Reset"
       android:exported="false" />
     <activity
-      android:name=".views.auth.Register"
+      android:name=".views.Reviews"
       android:exported="false" />
     <activity
-      android:name=".views.auth.Login"
+      android:name=".views.auth.Register"
       android:exported="false" />
     <activity
       android:name=".MainActivity"

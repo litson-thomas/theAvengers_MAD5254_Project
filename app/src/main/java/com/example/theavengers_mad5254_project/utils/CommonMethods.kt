@@ -9,7 +9,6 @@ import com.example.theavengers_mad5254_project.views.auth.Login
 
 class CommonMethods {
     companion object{
-
         fun toastMessage(context: Context, message: String) {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
