@@ -1,9 +1,12 @@
 package com.example.theavengers_mad5254_project.views.auth
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -29,7 +32,9 @@ class Login : AppCompatActivity() {
         viewModelFactory = FireBaseViewModelFactory()
         viewModel = ViewModelProvider(this,viewModelFactory)[FirebaseViewModel::class.java]
         binding.viewModel = viewModel
-        AppPreference.init(this)
+        //AppPreference.init(this)
+        observerLoadingProgress()
+
         binding.loginButton.setOnClickListener {
             if(TextUtils.isEmpty(binding.loginEmail.text.toString()) || TextUtils.isEmpty(binding.loginPassword.text.toString())){
                 CommonMethods.toastMessage(applicationContext,"Login fields can't be empty")
@@ -41,6 +46,10 @@ class Login : AppCompatActivity() {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
             finish()
+        }
+        binding.loginForgotPassword.setOnClickListener {
+            val intent = Intent(this, Reset::class.java)
+            startActivity(intent)
         }
     }
 
@@ -57,14 +66,13 @@ class Login : AppCompatActivity() {
                         when {
                             it.value.equals("Login Successful",ignoreCase = true) -> {
                                 AppPreference.isLogin = true
+                                Log.d(ContentValues.TAG, "signIn: ${AppPreference.userToken}")
                                 CommonMethods.toastMessage(applicationContext,"Login Successful")
                                 val intent = Intent(this, Home::class.java)
                                 startActivity(intent)
                                 finish()
                             }
-                            it.value.equals("Reset",ignoreCase = true) -> {
 
-                            }
                             else -> {
                                 CommonMethods.toastMessage(applicationContext,"Login failed with ${it.value}")
                             }
@@ -77,5 +85,25 @@ class Login : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    //method for progress bar
+    private fun observerLoadingProgress(){
+        viewModel.fetchLoading().observe(this, Observer {
+            if (!it) {
+                println(it)
+                binding.loginProgress.visibility = View.GONE
+            }else{
+                binding.loginProgress.visibility = View.VISIBLE
+            }
+
+        })
+
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }
