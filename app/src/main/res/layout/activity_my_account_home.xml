@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myAccount_wrapper"
+    android:background="#E5E5E5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.my_account.MyAccountHome">
+
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/myAccount_header"
+        android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+        tools:layout="@layout/fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/btnMyProfile"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+        android:text="My profile"
+        android:textAlignment="textEnd"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="138dp" />
+
+
+    <Button
+        android:id="@+id/btnMyDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+
+        android:text="Shoveler dashboard"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:Icon="@android:drawable/account.png"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="405dp" />
+
+    <Button
+        android:id="@+id/btnMyAddresses"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+
+        android:text="My Addresses"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:Icon="@android:drawable/account.png"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="203dp" />
+
+    <Button
+        android:id="@+id/btnMyBookings"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+
+        android:text="My Bookings"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:Icon="@android:drawable/account.png"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <Button
+        android:id="@+id/btnBecomeShoveler"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+
+        android:text="Become a shoveler"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:Icon="@android:drawable/account.png"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+
+        android:text="Logout"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:Icon="@android:drawable/account.png"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="472dp" />
+
+    <TextView
+        android:id="@+id/manageAccount_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Manage my account"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="104dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.fragment.app.FragmentContainerView
+    android:id="@+id/myAccount_navbar_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintLeft_toLeftOf="@id/myAccount_wrapper"
+    app:layout_constraintRight_toRightOf="@id/myAccount_wrapper"
+    android:name="com.example.theavengers_mad5254_project.fragments.home.Navbar"
+    tools:layout="@layout/fragment_navbar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
