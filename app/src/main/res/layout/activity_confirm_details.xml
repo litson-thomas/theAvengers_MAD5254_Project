@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<ScrollView
+    android:id="@+id/reviews_scroll_view"
+    android:background="@color/bg"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
     tools:context=".views.becomeShovler.ConfirmDetails">
 
 
@@ -135,7 +142,7 @@
                 android:textColor="@color/text_grey"
                 android:text="1 - 4 Hours" />
             <TextView
-                android:id="@+id/OneTo4Hours"
+                android:id="@+id/one_four"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
@@ -159,7 +166,7 @@
                 android:textColor="@color/text_grey"
                 android:text="5 - 8 Hours" />
             <TextView
-                android:id="@+id/FiveTo8Hours"
+                android:id="@+id/five_eight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
@@ -183,7 +190,7 @@
                     android:textColor="@color/text_grey"
                     android:text="9 - 12 Hours" />
                 <TextView
-                    android:id="@+id/NineTo12Hours"
+                    android:id="@+id/nine_twelve"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
@@ -192,6 +199,24 @@
                     android:text="$99" />
             </LinearLayout>
         </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="Cityside Walk" />
+            <TextView
+                android:id="@+id/city_side"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="$100" />
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -263,7 +288,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Images" />
             <Button
-                android:id="@+id/add_pricing"
+                android:id="@+id/confirm_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0dp"
@@ -278,3 +303,5 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+</layout>

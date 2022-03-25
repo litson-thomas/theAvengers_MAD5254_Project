@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.becomeShovler.AddImage">
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.becomeShovler.AddImage">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/reviews_header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
@@ -36,9 +38,12 @@
             android:lineHeight="35dp"
             android:textColor="@color/text_black"
             android:text="Add Images" />
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/become_shovler_place"
+        android:id="@+id/image"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -49,7 +54,7 @@
         android:textSize="12dp" />
 
         <Button
-            android:id="@+id/add_pricing"
+            android:id="@+id/add_pricing_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
@@ -64,3 +69,4 @@
     </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </layout>
