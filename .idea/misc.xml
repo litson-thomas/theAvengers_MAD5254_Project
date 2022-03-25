@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="..\:/MADT/2nd Sem/Capstone/CapstoneProject/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/MADT/2nd Sem/Capstone/CapstoneProject/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/MADT/2nd Sem/Capstone/CapstoneProject/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_reset.xml" value="0.33" />
@@ -11,14 +12,15 @@
         <entry key="..\:/Users/Sagar Saini/AndroidStudioProjects/projecttemp/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_my_account_home.xml" value="0.264" />
         <entry key="..\:/Users/Sagar Saini/AndroidStudioProjects/projecttemp/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_myaccount_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Sagar Saini/AndroidStudioProjects/projecttemp/theAvengers_MAD5254_Project/app/src/main/res/layout/fragment_navbar.xml" value="0.25416666666666665" />
+
         <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/drawable/details_price_style.xml" value="0.1665" />
         <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/drawable/job_status_style.xml" value="0.1665" />
         <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_add_image.xml" value="0.22" />
-        <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_add_payment.xml" value="0.3333333333333333" />
+        <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_add_payment.xml" value="0.315625" />
         <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_add_pricing.xml" value="0.3333333333333333" />
-        <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_become_shovler.xml" value="0.35822637106184363" />
+        <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_become_shovler.xml" value="0.29694323144104806" />
         <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_confirm_deails.xml" value="0.165625" />
-        <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_confirm_details.xml" value="0.3333333333333333" />
+        <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_confirm_details.xml" value="0.315625" />
         <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_details.xml" value="0.2734375" />
         <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_filters.xml" value="0.22" />
         <entry key="..\:/Vergel/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_home.xml" value="0.16666666666666666" />
