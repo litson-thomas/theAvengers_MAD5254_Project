@@ -130,6 +130,13 @@
       android:layout_marginTop="15dp"
       android:textColor="@color/white" />
 
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
   </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

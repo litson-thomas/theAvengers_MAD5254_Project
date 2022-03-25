@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.my_account.Update_Address">
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/addAddress_header"
+        android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+        tools:layout="@layout/fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:id="@+id/heading_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="30dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="92dp">
+
+
+        <TextView
+            android:id="@+id/txt_updateAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingLeft="20dp"
+            android:text="Update address"
+            android:textColor="@color/text_black"
+            android:textSize="16dp"
+            />
+
+        <EditText
+            android:id="@+id/txt_update_searchplace"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_style"
+            android:fontFamily="@font/poppins"
+            android:hint="Place"
+            android:paddingLeft="20dp"
+            android:textSize="12dp" />
+
+        <EditText
+            android:id="@+id/txt_update_addressLine2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_style"
+            android:fontFamily="@font/poppins"
+            android:hint="Addredd line 2 (Optionl)"
+            android:paddingLeft="20dp"
+            android:textSize="12dp" />
+        <EditText
+            android:id="@+id/txt_update_postalCode"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_style"
+            android:fontFamily="@font/poppins"
+            android:hint="Postal Code"
+            android:paddingLeft="20dp"
+            android:textSize="12dp" />
+        <EditText
+            android:id="@+id/txt_update_city"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_style"
+            android:fontFamily="@font/poppins"
+            android:hint="City"
+            android:paddingLeft="20dp"
+            android:textSize="12dp" />
+
+
+        <Button
+            android:id="@+id/btn_updateAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/primary_button"
+            android:backgroundTint="@color/primary"
+            android:elevation="50dp"
+            android:text="Update"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
