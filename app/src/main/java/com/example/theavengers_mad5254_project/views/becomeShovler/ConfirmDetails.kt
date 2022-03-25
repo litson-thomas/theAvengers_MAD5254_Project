@@ -7,6 +7,6 @@ import com.example.theavengers_mad5254_project.R
 class ConfirmDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_confirm_deails)
+        setContentView(R.layout.activity_confirm_details)
     }
 }
