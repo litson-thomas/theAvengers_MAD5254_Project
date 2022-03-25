@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.becomeShovler.ConfirmDetails">
+
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/reviews_header"
+        android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+        tools:layout="@layout/fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="100dp">
+
+        <LinearLayout
+            android:id="@+id/heading_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textSize="18dp"
+                android:lineHeight="35dp"
+                android:textColor="@color/text_black"
+                android:text="Base Details" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="Your Title" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="I will remove snow for you" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="Selected Place" />
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="51 Tillbrook CT, Scarborough, M1BN15, ON, CA" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="Selected Limit" />
+            <TextView
+                android:id="@+id/radius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="25 kms" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="Description" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="Lorem ipsium dolor sit omet, consecture adusiing edit, Curnatit amet" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textSize="18dp"
+                android:lineHeight="35dp"
+                android:textColor="@color/text_black"
+                android:layout_marginTop="20dp"
+                android:text="Pricing" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="1 - 4 Hours" />
+            <TextView
+                android:id="@+id/OneTo4Hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="$65" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                tools:ignore="MissingConstraints">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="5 - 8 Hours" />
+            <TextView
+                android:id="@+id/FiveTo8Hours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="$75" />
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                tools:ignore="MissingConstraints">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="12dp"
+                    android:textColor="@color/text_grey"
+                    android:text="9 - 12 Hours" />
+                <TextView
+                    android:id="@+id/NineTo12Hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="14dp"
+                    android:textColor="@color/text_black"
+                    android:text="$99" />
+            </LinearLayout>
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textSize="18dp"
+                android:lineHeight="35dp"
+                android:textColor="@color/text_black"
+                android:layout_marginTop="20dp"
+                android:text="Payment Details" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="Transit number" />
+            <TextView
+                android:id="@+id/transit_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="123456" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="Institution number" />
+            <TextView
+                android:id="@+id/institution_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="78901" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12dp"
+                android:textColor="@color/text_grey"
+                android:text="Account number" />
+            <TextView
+                android:id="@+id/account_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="14dp"
+                android:textColor="@color/text_black"
+                android:text="123 83938" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textSize="18dp"
+                android:lineHeight="35dp"
+                android:textColor="@color/text_black"
+                android:layout_marginTop="20dp"
+                android:text="Images" />
+            <Button
+                android:id="@+id/add_pricing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/primary_button"
+                android:elevation="50dp"
+                android:text="Confirm Details"
+                android:textSize="12dp"
+                android:backgroundTint="@color/primary"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
