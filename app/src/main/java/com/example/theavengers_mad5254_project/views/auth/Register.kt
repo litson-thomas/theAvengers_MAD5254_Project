@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -28,7 +29,9 @@ class Register : AppCompatActivity() {
         viewModelFactory = FireBaseViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory)[FirebaseViewModel::class.java]
         binding.viewModel = viewModel
-        AppPreference.init(this)
+       // AppPreference.init(this)
+        observerLoadingProgress()
+
         binding.registerButton.setOnClickListener {
             if (TextUtils.isEmpty(binding.registerEmail.text.toString())
                 || TextUtils.isEmpty(binding.registerName.text.toString())
@@ -59,6 +62,7 @@ class Register : AppCompatActivity() {
                         if(it.value.equals("UserCreated",ignoreCase = true)){
                             val intent = Intent(this, Login::class.java)
                             startActivity(intent)
+                            finish()
                             CommonMethods.toastMessage(applicationContext,"Registration Successful User created")
                         }else{
                             CommonMethods.toastMessage(applicationContext,"Registration failed with ${it.value}")
@@ -71,5 +75,20 @@ class Register : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    //method for progress bar
+    private fun observerLoadingProgress(){
+        viewModel.fetchLoading().observe(this, Observer {
+            if (!it) {
+                println(it)
+                binding.loginProgress.visibility = View.GONE
+            }else{
+                binding.loginProgress.visibility = View.VISIBLE
+            }
+
+        })
+
+
     }
 }
