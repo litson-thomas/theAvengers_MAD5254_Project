@@ -7,6 +7,6 @@ import com.example.theavengers_mad5254_project.R
 class MyAccountHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_account_home)
+        setContentView(R.layout.activity_myaccount_home)
     }
 }
