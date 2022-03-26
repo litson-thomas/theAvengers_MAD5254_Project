@@ -38,20 +38,31 @@
             android:lineHeight="35dp"
             android:textColor="@color/text_black"
             android:text="Add Images" />
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <EditText
-        android:id="@+id/image"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/input_style"
-        android:fontFamily="@font/poppins"
-        android:hint="Select Images"
-        android:paddingLeft="20dp"
-        android:textSize="12dp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:itemCount="10"
+            tools:listitem="@layout/layout_image_adapter"/>
+
+        <Button
+            android:hint="Select Images"
+            android:id="@+id/add_images_btn"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/input_style"
+            android:elevation="50dp"
+            android:layout_height="50dp"
+            android:text="Select Images"
+            android:textSize="12dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text_black" />
 
         <Button
             android:id="@+id/add_pricing_btn"
