@@ -37,6 +37,7 @@ class FirebaseViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel
                                 println("Registration Failed with ${task.exception}")
                                 _registrationStatus.postValue(ResultOf.Success("Registration Failed with ${task.exception}"))
                             }else{
+                                getUserToken(task)
                                 _registrationStatus.postValue(ResultOf.Success("UserCreated"))
 
                             }
@@ -157,7 +158,9 @@ class FirebaseViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel
         val firebaseUser: FirebaseUser? = task.result.user
         firebaseUser?.getIdToken(true)?.addOnSuccessListener{result ->
             AppPreference.userToken = result.token.toString()
+
             Log.d(TAG, "signIn: ${AppPreference.userToken}")
         }
+        AppPreference.userID = firebaseUser?.uid.toString()
     }
 }
