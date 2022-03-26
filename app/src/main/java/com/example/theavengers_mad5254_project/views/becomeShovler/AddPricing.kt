@@ -37,6 +37,7 @@ class AddPricing : AppCompatActivity() {
                 newIntent.putExtra("description", intent.getStringExtra("description"))
                 newIntent.putExtra("place", intent.getStringExtra("place"))
                 newIntent.putExtra("radius", intent.getStringExtra("radius").toString())
+                newIntent.putStringArrayListExtra("selectedPaths",intent.getStringArrayListExtra("selectedPaths"))
                 newIntent.putExtra("one_four", binding.oneFour.text.toString())
                 newIntent.putExtra("five_eight", binding.fiveEight.text.toString())
                 newIntent.putExtra("nine_twelve", binding.nineTwelve.text.toString())

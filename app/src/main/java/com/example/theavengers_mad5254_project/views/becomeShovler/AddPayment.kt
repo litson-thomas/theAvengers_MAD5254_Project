@@ -35,6 +35,7 @@ class AddPayment : AppCompatActivity() {
                 newIntent.putExtra("description", intent.getStringExtra("description").toString())
                 newIntent.putExtra("place", intent.getStringExtra("place").toString())
                 newIntent.putExtra("radius", intent.getStringExtra("radius").toString())
+                newIntent.putStringArrayListExtra("selectedPaths",intent.getStringArrayListExtra("selectedPaths"))
                 newIntent.putExtra("one_four", intent.getStringExtra("one_four"))
                 newIntent.putExtra("five_eight", intent.getStringExtra("five_eight"))
                 newIntent.putExtra("nine_twelve", intent.getStringExtra("nine_twelve"))
@@ -42,7 +43,8 @@ class AddPayment : AppCompatActivity() {
                 newIntent.putExtra("transit_number", binding.transitNumber.text.toString())
                 newIntent.putExtra("institution_number", binding.institutionNumber.text.toString())
                 newIntent.putExtra("account_number", binding.accountNumber.text.toString())
-                startActivity(newIntent)
+
+                 startActivity(newIntent)
             }
         }
     }

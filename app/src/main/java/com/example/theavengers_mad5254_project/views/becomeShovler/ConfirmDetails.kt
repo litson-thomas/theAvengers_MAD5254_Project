@@ -12,6 +12,7 @@ class ConfirmDetails : AppCompatActivity() {
 
     private lateinit var binding: ActivityConfirmDetailsBinding
     private lateinit var viewModel: BecomeShovlerViewModel
+    private lateinit var imageAdapter: ImageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,5 +29,12 @@ class ConfirmDetails : AppCompatActivity() {
         binding.transitNumber.setText(intent.getStringExtra("transit_number"))
         binding.institutionNumber.setText(intent.getStringExtra("institution_number"))
         binding.accountNumber.setText(intent.getStringExtra("account_number"))
+
+        imageAdapter = ImageAdapter()
+        binding.rvImages.adapter = imageAdapter
+
+        var selectedPaths = intent.getStringArrayListExtra("selectedPaths")
+        val list: List<String> = selectedPaths!!.toList()
+        imageAdapter.addSelectedImages(list)
     }
 }
