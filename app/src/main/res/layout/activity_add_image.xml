@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.becomeShovler.AddImage">
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.becomeShovler.AddImage">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/reviews_header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
@@ -37,19 +39,33 @@
             android:textColor="@color/text_black"
             android:text="Add Images" />
 
-    <EditText
-        android:id="@+id/become_shovler_place"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/input_style"
-        android:fontFamily="@font/poppins"
-        android:hint="Select Images"
-        android:paddingLeft="20dp"
-        android:textSize="12dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:itemCount="10"
+            tools:listitem="@layout/layout_image_adapter"/>
 
         <Button
-            android:id="@+id/add_pricing"
+            android:hint="Select Images"
+            android:id="@+id/add_images_btn"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/input_style"
+            android:elevation="50dp"
+            android:layout_height="50dp"
+            android:text="Select Images"
+            android:textSize="12dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text_black" />
+
+        <Button
+            android:id="@+id/add_pricing_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
@@ -64,3 +80,4 @@
     </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </layout>

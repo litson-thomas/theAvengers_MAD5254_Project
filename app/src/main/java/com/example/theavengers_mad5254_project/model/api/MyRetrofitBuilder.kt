@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object MyRetrofitBuilder {
 
-    const val BASE_URL: String = "https://open-api.xyz/"
+    const val BASE_URL: String = "https://snowapp.lcmaze.com/"
 
     val retrofitBuilder: Retrofit.Builder by lazy {
         Retrofit.Builder()

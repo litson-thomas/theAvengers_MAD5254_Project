@@ -6,8 +6,10 @@
 
   <data>
     <variable
-        name="viewModel"
-        type="com.example.theavengers_mad5254_project.viewmodel.FirebaseViewModel" />
+        name="viewModelRegister"
+        type="com.example.theavengers_mad5254_project.viewmodel.RegisterViewModel" />
+
+
   </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

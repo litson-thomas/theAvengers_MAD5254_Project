@@ -10,6 +10,7 @@ object AppPreference {
 
     private val IS_LOGIN = Pair("isLogin",false)
     private val USER_TOKEN = Pair("userToken","")
+    private val USER_UID = Pair("userID","")
 
     fun init(context: Context){
         preferences = context.getSharedPreferences(NAME, MODE)
@@ -35,5 +36,12 @@ object AppPreference {
 
         set(value) = preferences.edit {
             it.putString(USER_TOKEN.first, value)
+        }
+
+    var userID: String
+        get() = preferences.getString(USER_UID.first, USER_UID.second).toString()
+
+        set(value) = preferences.edit {
+            it.putString(USER_UID.first, value)
         }
 }
