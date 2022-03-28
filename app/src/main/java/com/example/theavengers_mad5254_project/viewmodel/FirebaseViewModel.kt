@@ -84,9 +84,9 @@ class FirebaseViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel
                 e.printStackTrace()
                 loading.postValue(false)
                 if(errorCode != -1){
-                    _registrationStatus.postValue(ResultOf.Failure("Failed with Error Code ${errorCode} ", e))
+                    _signInStatus.postValue(ResultOf.Failure("Failed with Error Code ${errorCode} ", e))
                 }else{
-                    _registrationStatus.postValue(ResultOf.Failure("Failed with Exception ${e.message} ", e))
+                    _signInStatus.postValue(ResultOf.Failure("Failed with Exception ${e.message} ", e))
                 }
             }
         }
