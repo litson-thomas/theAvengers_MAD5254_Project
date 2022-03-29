@@ -15,7 +15,6 @@ import com.example.theavengers_mad5254_project.views.auth.Login
 import com.example.theavengers_mad5254_project.views.auth.Register
 import com.example.theavengers_mad5254_project.views.my_account.MyAccountHome
 import com.example.theavengers_mad5254_project.views.my_account.MyProfile
-import androidx.appcompat.app.AppCompatActivity
 import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivityRegisterBinding
 import com.example.theavengers_mad5254_project.model.api.ApiService
