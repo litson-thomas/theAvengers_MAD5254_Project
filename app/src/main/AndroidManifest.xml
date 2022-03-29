@@ -17,8 +17,13 @@
 
 
         <activity
-            android:name=".SplashActivity">
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
 
+              <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".views.auth.Login"
@@ -76,12 +81,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:exported="false">
         </activity>
     </application>
 
