@@ -1,22 +1,17 @@
 package com.example.theavengers_mad5254_project.views.home
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.theavengers_mad5254_project.R
+import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivityRegisterBinding
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.repository.MainRepository
-import com.example.theavengers_mad5254_project.utils.AppPreference
-import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
-import com.example.theavengers_mad5254_project.viewmodel.RegisterViewModel
-import com.example.theavengers_mad5254_project.viewmodel.RegisterViewModelFactory
 
 
 class Home : AppCompatActivity() {
@@ -24,6 +19,8 @@ class Home : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var viewModel: HomeViewModel
     private lateinit var viewModelFactory: HomeViewModelFactory
+    private var shovlerAdaptor: HomeShovlersAdaptor? = null
+    private var shovlerRecyclerView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +29,18 @@ class Home : AppCompatActivity() {
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = HomeViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
+        shovlerRecyclerView = findViewById(R.id.shovler_list);
         loadShovlers()
     }
 
     private fun loadShovlers(){
       viewModel.loadShovlers()
       viewModel.shovlers.observe(this, Observer {
-        Log.e("Shovlers are", ""+it);
+        for (shovler in it.rows){
+          // Log.e("TITLE => ", ""+shovler.title);
+        }
+        shovlerAdaptor = HomeShovlersAdaptor(this, it.rows)
+        shovlerRecyclerView?.setAdapter(shovlerAdaptor)
       })
     }
 
