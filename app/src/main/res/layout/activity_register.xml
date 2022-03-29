@@ -6,8 +6,10 @@
 
   <data>
     <variable
-        name="viewModel"
-        type="com.example.theavengers_mad5254_project.viewmodel.FirebaseViewModel" />
+        name="viewModelRegister"
+        type="com.example.theavengers_mad5254_project.viewmodel.RegisterViewModel" />
+
+
   </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,6 +132,13 @@
       android:layout_marginTop="15dp"
       android:textColor="@color/white" />
 
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
   </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

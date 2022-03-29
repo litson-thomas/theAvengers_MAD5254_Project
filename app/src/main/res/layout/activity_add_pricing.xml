@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
     tools:context=".views.becomeShovler.AddPricing">
 
     <androidx.fragment.app.FragmentContainerView
@@ -45,33 +47,36 @@
                 android:textColor="@color/text_black"
                 android:text="Enter Base Price" />
             <EditText
-                android:id="@+id/become_shovler_1To4hour"
+                android:id="@+id/one_four"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/input_style"
                 android:fontFamily="@font/poppins"
                 android:hint="1 - 4 hours price"
+                android:inputType="number"
                 android:paddingLeft="20dp"
                 android:textSize="12dp" />
             <EditText
-                android:id="@+id/become_shovler_5To8hour"
+                android:id="@+id/five_eight"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/input_style"
                 android:fontFamily="@font/poppins"
+                android:inputType="number"
                 android:hint="5 - 8 hours price"
                 android:paddingLeft="20dp"
                 android:textSize="12dp" />
             <EditText
-                android:id="@+id/become_shovler_9To12hour"
+                android:id="@+id/nine_twelve"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/input_style"
                 android:fontFamily="@font/poppins"
                 android:hint="9 - 12 hours price"
+                android:inputType="number"
                 android:paddingLeft="20dp"
                 android:textSize="12dp" />
             <TextView
@@ -83,18 +88,19 @@
                 android:textColor="@color/text_black"
                 android:text="Cityside Walk price" />
             <EditText
-                android:id="@+id/become_shovler_cityside"
+                android:id="@+id/city_side"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/input_style"
                 android:fontFamily="@font/poppins"
+                android:inputType="number"
                 android:hint="Extra charge for cityside walk"
                 android:paddingLeft="20dp"
                 android:textSize="12dp" />
 
             <Button
-                android:id="@+id/add_pricing"
+                android:id="@+id/add_pricing_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0dp"
@@ -109,3 +115,4 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
