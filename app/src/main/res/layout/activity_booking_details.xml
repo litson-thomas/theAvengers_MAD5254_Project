@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.my_account.Bookings.bookingDetails">
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/bookingDetail_header"
+        android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+        tools:layout="@layout/fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+
+    <LinearLayout
+        android:id="@+id/BDheading_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:padding="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookingDetail_header"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/txt_bookingDtae"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingLeft="20dp"
+            android:text="24 March 2022"
+            android:textColor="@color/text_black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_addressl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:paddingLeft="20dp"
+            android:text="51 Tillbrook Ct, Scarborough
+M1BN15, Ontario, CA"
+            android:textColor="@color/text_grey"
+            android:textSize="16dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="20dp"
+                android:text="Hours Required"
+                android:textColor="@color/text_grey"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:text="1-4 hrs"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="20dp"
+                android:text="City Sidewalk"
+                android:textColor="@color/text_grey"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:text="Yes"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_breakline"
+            tools:layout_editor_absoluteY="491dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="20dp"
+                android:text="Total amount"
+                android:textColor="@color/text_grey"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:text="$51"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="20dp"
+                android:text="Tax and service fees"
+                android:textColor="@color/text_grey"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:text="$51"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:text="Grand Total"
+                android:textColor="@color/text_grey"
+                android:textSize="14dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="2"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:text="$51"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_giveRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/primary_button"
+            android:backgroundTint="@color/primary"
+            android:elevation="50dp"
+            android:onClick="btnGiveRating"
+            android:text="Give a rating"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

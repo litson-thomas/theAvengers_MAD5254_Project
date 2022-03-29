@@ -4,148 +4,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.my_account.MyProfile">
+    tools:context=".views.my_account.Bookings.giveFeedback">
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/myProfile_header"
+        android:id="@+id/givefeedback_header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
         tools:layout="@layout/fragment_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/txt_MyProfile"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
-        android:paddingLeft="20dp"
-        app:layout_constraintTop_toBottomOf="@id/myProfile_header"
-        android:textSize="16dp"
-        android:textColor="@color/text_black"
-        android:text="My profile" />
 
     <LinearLayout
-        android:id="@+id/myprofile_name_wrapper"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingRight="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingLeft="30dp"
+        android:paddingTop="30dp"
+        android:paddingRight="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_MyProfile">
+        app:layout_constraintTop_toBottomOf="@id/givefeedback_header">
 
         <TextView
-            android:id="@+id/myprofile_name_label"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Name"
-            android:textColor="@color/text_grey"
+            android:text="Title"
+            android:textColor="@color/black"
             android:textSize="12dp" />
 
         <EditText
-            android:id="@+id/myprofile_Editname"
+            android:id="@+id/feedback_title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/input_style"
             android:fontFamily="@font/poppins"
-            android:hint="Enter Name"
+            android:hint="Enter a title for the review"
             android:paddingLeft="20dp"
             android:textSize="12dp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/myprofile_phone_wrapper"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="1dp"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingRight="20dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="30dp"
+        android:paddingRight="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/myprofile_name_wrapper">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/myprofile_phone_label"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Phone Number"
-            android:textColor="@color/text_grey"
+            android:text="Feedback"
+            android:textColor="@color/black"
             android:textSize="12dp" />
 
         <EditText
-            android:id="@+id/myprofile_Editphone"
+            android:id="@+id/editTextTextMultiLine2"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="150dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/input_style"
+            android:ems="10"
             android:fontFamily="@font/poppins"
-            android:hint="Enter Phone Number"
+            android:gravity="start|top"
+            android:hint="Enter a title for the review"
+            android:inputType="textMultiLine"
             android:paddingLeft="20dp"
+            android:paddingTop="20dp"
             android:textSize="12dp" />
+
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/myprofile_place_wrapper"
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingRight="20dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="30dp"
+
+        android:paddingRight="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/myprofile_phone_wrapper">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/myprofile_place_label"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Place"
-            android:textColor="@color/text_grey"
+            android:text="Select a rating"
+            android:textColor="@color/black"
             android:textSize="12dp" />
 
-        <EditText
-            android:id="@+id/myprofile_Editplace"
+        <SeekBar
+            android:id="@+id/seekBar_feedback"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/input_style"
-            android:fontFamily="@font/poppins"
-            android:hint="Select Place"
-            android:paddingLeft="20dp"
-            android:textSize="12dp" />
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="529dp" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnUpdateProfile"
+        android:id="@+id/btn_submit_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="32dp"
+        android:layout_margin="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/primary"
         android:elevation="50dp"
-        android:text="Update ptofile"
+        android:onClick="submitFeedback"
+        android:text="Submit"
         android:textColor="@color/white"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myprofile_place_wrapper"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

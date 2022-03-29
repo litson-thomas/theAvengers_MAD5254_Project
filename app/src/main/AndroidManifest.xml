@@ -15,11 +15,6 @@
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
 
-
-    <!--    <activity
-            android:name=".SplashActivity">
-
-        </activity>-->
         <activity
             android:name=".views.auth.Login"
             android:exported="false" />
@@ -44,7 +39,28 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-      <activity
+        <activity
+        android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.giveFeedback"
+        android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.bookingDetails"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.MyBookings"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.MyAccountHome"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.MyProfile"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Update_Address"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Add_New_Address"
+            android:exported="false" />
+        <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewDirections"
             android:exported="false" />
         <activity
@@ -84,6 +100,5 @@
         </intent-filter>
         </activity>
     </application>
-
 
 </manifest>
