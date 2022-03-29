@@ -45,13 +45,14 @@
       tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
-      android:id="@+id/navbar_account"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:background="@color/secondary"
-      android:src="@drawable/ic_account"
-      tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        android:id="@+id/navbar_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/secondary"
+        android:onClick="nav_myAccount"
+        android:src="@drawable/ic_account"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
   </LinearLayout>
 
