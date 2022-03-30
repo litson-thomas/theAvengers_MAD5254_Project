@@ -8,6 +8,7 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.views.auth.Login
 import com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler
 import com.example.theavengers_mad5254_project.views.my_account.Bookings.MyBookings
+import com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard
 
 class MyAccountHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,4 +36,15 @@ class MyAccountHome : AppCompatActivity() {
         val intent = Intent(this, MyBookings::class.java)
         startActivity(intent)
     }
+    fun btn_dashboard(view:View)
+    {
+        val intent = Intent(this,ShovlerDashboard::class.java)
+        startActivity(intent)
+    }
+    fun btn_myaddresses(view:View)
+    {
+        val intent = Intent(this,MyAddresses::class.java)
+        startActivity(intent)
+    }
+
 }
