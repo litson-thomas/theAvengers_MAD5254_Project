@@ -111,11 +111,7 @@
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddImage"
             android:exported="false" />
-        <activity
-            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler"
-            android:exported="false"></activity>
 
-        </activity>
     </application>
 
 </manifest>
