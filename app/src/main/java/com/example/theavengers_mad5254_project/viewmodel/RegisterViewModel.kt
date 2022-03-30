@@ -2,14 +2,10 @@ package com.example.theavengers_mad5254_project.viewmodel
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import androidx.databinding.ObservableField
 import androidx.lifecycle.*
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
 import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import com.example.theavengers_mad5254_project.repository.MainRepository
-import com.example.theavengers_mad5254_project.repository.Repository
-import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.*
 
 class RegisterViewModel(private val repository: MainRepository)

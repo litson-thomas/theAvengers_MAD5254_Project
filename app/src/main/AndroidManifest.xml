@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".utils.MyApplication"
         android:allowBackup="true"
@@ -15,10 +19,33 @@
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
 
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".SplashActivity">
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".views.auth.Login"
@@ -44,7 +71,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-      <activity
+        <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewDirections"
             android:exported="false" />
         <activity
@@ -61,7 +88,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard"
-            android:exported="false" />
+            android:exported="false"></activity>
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.ConfirmDetails"
             android:exported="false" />
@@ -76,14 +103,10 @@
             android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+            android:exported="false"/>
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.EditListing"
+            android:exported="false" />
     </application>
-
 
 </manifest>
