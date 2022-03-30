@@ -5,16 +5,12 @@ import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUse
 import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.Header
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 
 interface ApiService {
@@ -46,5 +42,11 @@ interface ApiService {
 
     @GET("api/shovler?q=&order=id&order_type=ASC")
     suspend fun getShovlers(@Header("token") token: String): Response<ShovlersResponse>
+
+    @GET("api/shovler")
+    suspend fun getShovlerById(@Header("token") token: String, @Query("id") id: Int): Response<ShovlersResponse>
+
+    @GET("api/user")
+    suspend fun getUser(@Header("token") token: String, @Query("uid") uid: String): Response<UserResponse>
 
 }

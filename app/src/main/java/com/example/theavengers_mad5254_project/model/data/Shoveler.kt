@@ -2,7 +2,7 @@ package com.example.theavengers_mad5254_project.model.data;
 
 import com.google.gson.annotations.SerializedName
 
-data class Shovler (
+data class Shoveler (
 
   @SerializedName("id"                 ) var id                : Int?                     = null,
   @SerializedName("title"              ) var title             : String?                  = null,
@@ -19,7 +19,7 @@ data class Shovler (
   @SerializedName("updatedAt"          ) var updatedAt         : String?                  = null,
   @SerializedName("userUid"            ) var userUid           : String?                  = null,
   @SerializedName("addressId"          ) var addressId         : String?                  = null,
-  @SerializedName("user"               ) var user              : User?                    = User(),
+  @SerializedName("user"               ) var user              : ShovlerUser?             = ShovlerUser(),
   @SerializedName("shovler_images"     ) var shovlerImages     : ArrayList<ShovlerImages> = arrayListOf()
 
 )
@@ -31,5 +31,19 @@ data class ShovlerImages (
   @SerializedName("createdAt" ) var createdAt : String? = null,
   @SerializedName("updatedAt" ) var updatedAt : String? = null,
   @SerializedName("shovlerId" ) var shovlerId : Int?    = null
+
+)
+
+data class ShovlerUser(
+
+  @SerializedName("uid"        ) var uid       : String?  = null,
+  @SerializedName("email"      ) var email     : String?  = null,
+  @SerializedName("name"       ) var name      : String?  = null,
+  @SerializedName("phone"      ) var phone     : String?  = null,
+  @SerializedName("password"   ) var password  : String?  = null,
+  @SerializedName("is_shovler" ) var isShovler : Boolean? = null,
+  @SerializedName("createdAt"  ) var createdAt : String?  = null,
+  @SerializedName("updatedAt"  ) var updatedAt : String?  = null,
+  @SerializedName("CityId"     ) var CityId    : String?  = null
 
 )

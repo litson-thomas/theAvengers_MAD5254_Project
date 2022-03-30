@@ -7,7 +7,6 @@
         <entry key="..\:/MADT/2nd Sem/Capstone/CapstoneProject/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/MADT/2nd Sem/Capstone/CapstoneProject/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_reset.xml" value="0.33" />
         <entry key="..\:/MADT/2nd Sem/Capstone/CapstoneProject/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_splash.xml" value="0.13179347826086957" />
-
         <entry key="..\:/MADT/2nd Sem/Capstone/New folder/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_login.xml" value="0.161231884057971" />
         <entry key="..\:/Users/Sagar Saini/AndroidStudioProjects/projecttemp/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_add_new_address.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Sagar Saini/AndroidStudioProjects/projecttemp/theAvengers_MAD5254_Project/app/src/main/res/layout/activity_become_shovler.xml" value="0.25416666666666665" />
@@ -77,9 +76,10 @@
         <entry key="app/src/main/res/layout/activity_add_image.xml" value="0.2586805555555556" />
         <entry key="app/src/main/res/layout/activity_add_payment.xml" value="0.18888888888888888" />
         <entry key="app/src/main/res/layout/activity_add_pricing.xml" value="0.18888888888888888" />
+        <entry key="app/src/main/res/layout/activity_confirm_details.xml" value="0.171875" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.31837606837606836" />
         <entry key="app/src/main/res/layout/activity_filters.xml" value="0.2833333333333333" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.28686370849609377" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.234210205078125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3693735758463543" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_my_earnings.xml" value="0.2586805555555556" />
@@ -88,6 +88,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_reset.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_reviews.xml" value="0.24795081967213115" />
+        <entry key="app/src/main/res/layout/activity_slot_booking.xml" value="0.21690351698133684" />
         <entry key="app/src/main/res/layout/details_image.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_header.xml" value="0.31837606837606836" />
         <entry key="app/src/main/res/layout/fragment_home_header.xml" value="0.3591485507246377" />
@@ -104,4 +105,3 @@
     <option name="id" value="Android" />
   </component>
 </project>
-

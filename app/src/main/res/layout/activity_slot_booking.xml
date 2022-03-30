@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/slot_booking_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.slot_booking.SlotBooking">
+
+    <ScrollView
+      android:id="@+id/slot_booking_scroll_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:ignore="MissingConstraints">
+
+      <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/slot_booking_header"
+        android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+        tools:layout="@layout/fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    </ScrollView>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

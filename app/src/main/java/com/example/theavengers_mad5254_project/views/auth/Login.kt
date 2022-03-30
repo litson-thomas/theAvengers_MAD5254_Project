@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityLoginBinding
-import com.example.theavengers_mad5254_project.databinding.ActivityRegisterBinding
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
