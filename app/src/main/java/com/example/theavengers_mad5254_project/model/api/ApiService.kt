@@ -2,9 +2,16 @@ package com.example.theavengers_mad5254_project.model.api
 
 import com.example.theavengers_mad5254_project.model.data.*
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
+import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
+import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
+import com.example.theavengers_mad5254_project.utils.AppPreference
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 
@@ -12,6 +19,7 @@ interface ApiService {
     /*
     companion object{
         const val BASE_URL: String = "https://snowapp.lcmaze.com/"
+        val TOKEN: String = AppPreference.userToken;
 
         var apiService: ApiService? = null
         fun getInstance(): ApiService {
@@ -37,6 +45,7 @@ interface ApiService {
 
     @POST("api/shovler")
     suspend fun addShovler(@Body requestBody: Shovler): Response<APIResponse>
+
 
     @PUT("api/shovler/{id}")
     suspend fun updateShovler(@Path(value = "id") id: Int?,@Body requestBody: Shovler): Response<APIResponse>
@@ -69,4 +78,14 @@ interface ApiService {
     @DELETE("api/shovler/images/{id}")
     suspend fun deleteShovlerImage(@Path(value = "id") id: Int?): Response<APIResponse>
 
+    @GET("api/shovler?q=&order=id&order_type=ASC")
+    suspend fun getShovlers(@Header("token") token: String): Response<ShovlersResponse>
+
+    @GET("api/shovler")
+    suspend fun getShovlerById(@Header("token") token: String, @Query("id") id: Int): Response<ShovlersResponse>
+
+    @GET("api/user")
+    suspend fun getUser(@Header("token") token: String, @Query("uid") uid: String): Response<UserResponse>
+
 }
+

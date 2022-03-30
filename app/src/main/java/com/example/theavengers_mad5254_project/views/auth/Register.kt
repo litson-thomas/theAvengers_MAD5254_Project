@@ -1,5 +1,8 @@
 package com.example.theavengers_mad5254_project.views.auth
 
+
+import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -52,7 +55,6 @@ class Register : AppCompatActivity() {
                 CommonMethods.toastMessage(applicationContext, "Enter a valid phone number")
 
             } else{
-                //doRegistration()
                 doRegisterUser()
 
             }
@@ -78,8 +80,7 @@ class Register : AppCompatActivity() {
 
     private fun doRegisterUser(){
         val id: String = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
-        AppPreference.userID = id
-        registerViewModel.createUser(binding.registerEmail.text.toString(),false,binding.registerName.text.toString(),binding.registerPassword.text.toString(),binding.registerPhone.text.toString(), AppPreference.userID )
+        registerViewModel.createUser(binding.registerEmail.text.toString(),false,binding.registerName.text.toString(),binding.registerPassword.text.toString(),binding.registerPhone.text.toString(), id )
         createUser()
     }
 
@@ -87,15 +88,45 @@ class Register : AppCompatActivity() {
     private fun createUser(){
        registerViewModel.createUserStatus.observe(this, Observer {
            if (it.status) {
-               AppPreference.isLogin = true
-               val intent = Intent(this, Home::class.java)
-               startActivity(intent)
-               finish()
-               CommonMethods.toastMessage(applicationContext,"Registration Successful User created")
+               signIn(binding.registerEmail.text.toString(),binding.registerPassword.text.toString())
            } else {
                CommonMethods.toastMessage(applicationContext, "FAILURE ${it.err.message}")
            }
        })
+    }
+
+    private fun signIn(loginEmail: String, loginPassword: String) {
+        registerViewModel.signIn(loginEmail,loginPassword)
+        observeSignIn()
+    }
+
+    private fun observeSignIn() {
+        registerViewModel.signInStatus.observe(this, Observer { result->
+            result?.let{
+                when(it){
+                    is ResultOf.Success ->{
+                        when {
+                            it.value.equals("Login Successful",ignoreCase = true) -> {
+                                AppPreference.isLogin = true
+                                val intent = Intent(this, Home::class.java)
+                                startActivity(intent)
+                                finish()
+                                Log.d(TAG, "signIn: ${AppPreference.userToken}")
+                                CommonMethods.toastMessage(applicationContext,"Registration Successful User created")
+                            }
+
+                            else -> {
+                                CommonMethods.toastMessage(applicationContext,"Registration failed with ${it.value}")
+                            }
+                        }
+                    }
+                    is ResultOf.Failure -> {
+                        val failedMessage =  it.message ?: "Unknown Error"
+                        CommonMethods.toastMessage(applicationContext,"Registration failed with $failedMessage")
+                    }
+                }
+            }
+        })
     }
 
     //    private fun doRegistration(){

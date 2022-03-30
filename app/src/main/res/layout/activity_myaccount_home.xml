@@ -3,18 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/myAccount_wrapper"
-    android:background="#E5E5E5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E5E5E5"
+    android:onClick="myProfile"
     tools:context=".views.my_account.MyAccountHome">
+
+    <Button
+        android:id="@+id/btnShovlerDash"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="12dp"
+
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+        android:onClick="btn_dashboard"
+
+        android:text="Shovler Dashboard"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBecomeShoveler"
+        tools:ignore="MissingConstraints" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/myAccount_header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
-        tools:layout="@layout/fragment_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout="@layout/fragment_header" />
+
     <Button
         android:id="@+id/btnMyProfile"
         android:layout_width="match_parent"
@@ -24,8 +46,9 @@
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
         android:elevation="50dp"
+        android:onClick="myProfile"
         android:text="My profile"
-        android:textAlignment="textEnd"
+        android:textAlignment="center"
         android:textColor="@color/text_black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/manageAccount_title"
         tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/btnMyAddresses"
         android:layout_width="match_parent"
@@ -43,95 +67,101 @@
         android:backgroundTint="@color/white"
 
         android:elevation="50dp"
+        android:onClick="btn_myaddresses"
         android:text="My Addresses"
         android:textColor="@color/text_black"
-        android:textSize="14sp"
 
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMyProfile"
         tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/btnMyBookings"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="7dp"
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
 
         android:elevation="50dp"
+        android:onClick="mybookings"
         android:text="My Bookings"
         android:textColor="@color/text_black"
-        android:textSize="14sp"
 
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMyAddresses"
         tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/btnBecomeShoveler"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="12dp"
+
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
         android:elevation="50dp"
 
+        android:onClick="becomeShov"
         android:text="Become a shoveler"
         android:textColor="@color/text_black"
         android:textSize="14sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintTop_toBottomOf="@+id/btnMyBookings"
         tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="12dp"
+
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
-
         android:elevation="50dp"
+        android:onClick="logoutBtn"
+
         android:text="Logout"
         android:textColor="@color/text_black"
         android:textSize="14sp"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBecomeShoveler"
+        app:layout_constraintTop_toBottomOf="@+id/btnShovlerDash"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/manageAccount_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Manage my account"
         android:textColor="@color/black"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="104dp"
+        app:layout_constraintTop_toBottomOf="@+id/myAccount_header"
         tools:ignore="MissingConstraints" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/myAccount_navbar_fragment"
+        android:name="com.example.theavengers_mad5254_project.fragments.home.Navbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@id/myAccount_wrapper"
         app:layout_constraintRight_toRightOf="@id/myAccount_wrapper"
-        android:name="com.example.theavengers_mad5254_project.fragments.home.Navbar"
         tools:layout="@layout/fragment_navbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

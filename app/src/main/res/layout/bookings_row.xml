@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="7dp">
+
+
+
+        <LinearLayout
+            android:id="@+id/bookings_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:background="@drawable/shovler_style"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:id="@+id/rowHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/text_black"
+                android:text="I will remove snow"/>
+            <TextView
+                android:id="@+id/bookings_job_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:layout_marginTop="0dp"
+                android:textSize="12dp"
+                android:textColor="@color/primary"
+                android:text="ORDER #221"/>
+
+            <TextView
+                android:id="@+id/job_status"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="8dp"
+                android:padding="4dp"
+                android:background="@drawable/job_status_style"
+                android:textAlignment="viewStart"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:text="Completed" />
+
+        </LinearLayout>
+
+
+</LinearLayout>

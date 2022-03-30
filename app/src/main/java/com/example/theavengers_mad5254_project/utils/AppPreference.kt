@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 
 object AppPreference {
     private const val NAME = "SnowApp"
+    public const val CDN_URL = "https://lcmaze.s3.ap-south-1.amazonaws.com/snowapp/"
+    public const val NO_IMAGE = "https://lcmaze.s3.ap-south-1.amazonaws.com/seraph-tuts-django-cdn/assets/no+image.png"
     private const val MODE = Context.MODE_PRIVATE
     private lateinit var preferences: SharedPreferences
 
