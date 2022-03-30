@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivitySlotBookingBinding
+import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
@@ -24,7 +25,7 @@ class SlotBooking : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_slot_booking)
         // setting up view model
-        val retrofitService = ApiService.getInstance()
+        val retrofitService = ApiClient().getApiService(this)
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = SlotBookingViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[SlotBookingViewModel::class.java]

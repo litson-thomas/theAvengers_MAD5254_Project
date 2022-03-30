@@ -6,7 +6,7 @@ import androidx.lifecycle.*
 import com.example.theavengers_mad5254_project.model.data.Shoveler
 import com.example.theavengers_mad5254_project.model.data.ShovlerImages
 import com.example.theavengers_mad5254_project.model.data.ShovlerUser
-import com.example.theavengers_mad5254_project.model.data.User
+//import com.example.theavengers_mad5254_project.model.data.User
 import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
