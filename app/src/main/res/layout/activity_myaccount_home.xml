@@ -20,8 +20,9 @@
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
         android:elevation="50dp"
-        android:text="Shovler Dashboard"
+        android:onClick="btn_dashboard"
 
+        android:text="Shovler Dashboard"
         android:textColor="@color/text_black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,10 +67,11 @@
         android:backgroundTint="@color/white"
 
         android:elevation="50dp"
+        android:onClick="btn_myaddresses"
         android:text="My Addresses"
         android:textColor="@color/text_black"
-        android:textSize="14sp"
 
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"

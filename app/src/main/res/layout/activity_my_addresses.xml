@@ -2,14 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Rvbookings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E5E5E5"
-    tools:context=".views.my_account.Bookings.MyBookings">
-
+    tools:context=".views.my_account.MyAddresses">
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/myAccount_header"
+        android:id="@+id/myAddresses_header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +15,7 @@
         tools:layout="@layout/fragment_header" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RVbookings"
+        android:id="@+id/RVaddresses"
         android:layout_width="match_parent"
         android:layout_height="632dp"
         android:layout_marginLeft="20dp"
@@ -28,5 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/bookings_row"/>
+        tools:listitem="@layout/addresses_row"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

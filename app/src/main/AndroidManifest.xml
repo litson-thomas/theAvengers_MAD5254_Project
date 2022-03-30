@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".utils.MyApplication"
         android:allowBackup="true"
@@ -15,6 +16,11 @@
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
 
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.MyAddresses"
+            android:exported="false" />
+
+
 
         <activity
             android:name=".SplashActivity"
@@ -25,6 +31,7 @@
               <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".views.auth.Login"
             android:exported="false" />
@@ -50,8 +57,8 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-        android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.giveFeedback"
-        android:exported="false" />
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.giveFeedback"
+            android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.bookingDetails"
             android:exported="false" />
@@ -92,6 +99,9 @@
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.ConfirmDetails"
             android:exported="false" />
         <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler"
+            android:exported="false" />
+        <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddPayment"
             android:exported="false" />
         <activity
@@ -100,9 +110,7 @@
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddImage"
             android:exported="false" />
-        <activity
-            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler"
-            android:exported="false">
+
         </activity>
     </application>
 
