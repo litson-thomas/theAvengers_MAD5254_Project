@@ -7,8 +7,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiClient {
     private lateinit var apiService: ApiService
+    private lateinit var weatherApiService: ApiService
     val BASE_URL: String = "https://snowapp.lcmaze.com/"
     // val BASE_URL: String = "http://192.168.2.15:8100/"
+    val OPEN_WEATHER_MAP_URL: String = "https://api.openweathermap.org/"
 
     fun getApiService(context: Context): ApiService {
 
@@ -24,6 +26,22 @@ class ApiClient {
         }
 
         return apiService
+    }
+
+    fun getWeatherApiService(context: Context): ApiService {
+
+        // Initialize ApiService if not initialized yet
+        if (!::weatherApiService.isInitialized) {
+            val retrofit = Retrofit.Builder()
+                .baseUrl(OPEN_WEATHER_MAP_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okhttpClient(context))
+                .build()
+
+            weatherApiService = retrofit.create(ApiService::class.java)
+        }
+
+        return weatherApiService
     }
 
     /**

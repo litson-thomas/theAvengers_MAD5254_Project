@@ -12,6 +12,7 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.adaptors.WeatherForecastAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivityWeatherForecastBinding
+import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppConstants
@@ -32,7 +33,7 @@ class WeatherForecastActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_weather_forecast)
 
-        val retrofitService = ApiService.getWeatherInstance()
+        val retrofitService =  ApiClient().getWeatherApiService(this)
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = WeatherForecastViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[WeatherForecastViewModel::class.java]

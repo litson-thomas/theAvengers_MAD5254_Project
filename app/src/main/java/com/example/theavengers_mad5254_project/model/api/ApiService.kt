@@ -2,18 +2,15 @@ package com.example.theavengers_mad5254_project.model.api
 
 import com.example.theavengers_mad5254_project.model.data.*
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
-<<<<<<< HEAD
 import com.example.theavengers_mad5254_project.model.data.responseModel.*
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ForecastResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.WeatherForecastResponse
-=======
 import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
->>>>>>> 61cd10684e6a763c266c0c36d37548239cc4eb0d
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

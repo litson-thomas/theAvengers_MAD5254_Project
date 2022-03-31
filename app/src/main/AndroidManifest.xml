@@ -49,7 +49,6 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
 
->>>>>>> 61cd10684e6a763c266c0c36d37548239cc4eb0d
         <activity
             android:name="com.example.theavengers_mad5254_project.views.my_account.MyAddresses"
             android:exported="false" />
@@ -125,7 +124,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.ConfirmDetails"
             android:exported="false" />
