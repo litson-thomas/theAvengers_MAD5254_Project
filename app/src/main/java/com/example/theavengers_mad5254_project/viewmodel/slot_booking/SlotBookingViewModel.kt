@@ -6,7 +6,10 @@ import androidx.lifecycle.*
 import com.example.theavengers_mad5254_project.model.data.Shoveler
 import com.example.theavengers_mad5254_project.model.data.ShovlerImages
 import com.example.theavengers_mad5254_project.model.data.ShovlerUser
+import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
+import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
 import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.PrepareBookingResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
 import com.example.theavengers_mad5254_project.repository.MainRepository
@@ -19,6 +22,8 @@ class SlotBookingViewModel(private val repository: MainRepository) : ViewModel()
 
   private val _user = MutableLiveData<UserResponse>()
   val user: LiveData<UserResponse> = _user
+  private val _prepareBooking = MutableLiveData<PrepareBookingResponse>()
+  val prepareBooking: LiveData<PrepareBookingResponse> = _prepareBooking
   var job: Job? = null
 
   fun getUser(){
@@ -28,6 +33,22 @@ class SlotBookingViewModel(private val repository: MainRepository) : ViewModel()
       withContext((Dispatchers.Main)) {
         if (response.isSuccessful) {
           _user.postValue(response.body())
+          loading.postValue(false)
+        } else {
+          onError("Error : ${response.message()}")
+          Log.e(TAG, "load user:  ${response.message()}")
+        }
+      }
+    }
+  }
+
+  fun prepareBooking(prepareBookingRequest: PrepareBookingRequest){
+    loading.postValue(true)
+    job = CoroutineScope(Dispatchers.IO).launch {
+      val response = repository.prepareBooking(prepareBookingRequest)
+      withContext((Dispatchers.Main)) {
+        if (response.isSuccessful) {
+          _prepareBooking.postValue(response.body())
           loading.postValue(false)
         } else {
           onError("Error : ${response.message()}")

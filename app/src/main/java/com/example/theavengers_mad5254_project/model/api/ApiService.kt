@@ -2,6 +2,7 @@ package com.example.theavengers_mad5254_project.model.api
 
 import com.example.theavengers_mad5254_project.model.data.*
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
+import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
 import com.example.theavengers_mad5254_project.model.data.responseModel.*
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ForecastResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.WeatherForecastResponse
@@ -117,6 +118,10 @@ interface ApiService {
 
     @GET("api/user?q=&order=uid&order_type=ASC")
     suspend fun getUser(@Header("token") token: String, @Query("uid") uid: String): Response<UserResponse>
+
+    // booking
+    @POST("api/user/prepare-booking")
+    suspend fun prepareBooking(@Body requestBody: PrepareBookingRequest): Response<PrepareBookingResponse>
 
 }
 

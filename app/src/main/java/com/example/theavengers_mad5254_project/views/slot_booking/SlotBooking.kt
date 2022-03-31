@@ -3,11 +3,9 @@ package com.example.theavengers_mad5254_project.views.slot_booking
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +13,6 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.adaptors.SlotBookingAddressAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivitySlotBookingBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
-import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.model.data.Shoveler
 import com.example.theavengers_mad5254_project.model.data.ShovelerAddress
 import com.example.theavengers_mad5254_project.model.data.ShovlerUser
@@ -26,7 +23,8 @@ import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
 import com.example.theavengers_mad5254_project.viewmodel.slot_booking.SlotBookingViewModel
 import com.example.theavengers_mad5254_project.viewmodel.slot_booking.SlotBookingViewModelFactory
-import com.example.theavengers_mad5254_project.views.becomeShovler.AddImage
+import okhttp3.internal.format
+import java.text.SimpleDateFormat
 import java.util.*
 
 class SlotBooking : AppCompatActivity() {
@@ -42,8 +40,10 @@ class SlotBooking : AppCompatActivity() {
     private var shovelerDetails: Shoveler? = null
     var hoursItems = arrayOf("1 - 4 Hours", "5 - 8 Hours", "9 - 12 Hours")
     private var hoursRate: Double? = null
+    private var hoursPosition: Int = 1
     private var selectedAddress: ShovelerAddress? = null
     private var selectedDate: String? = null
+    private var selectedDateValue: Date? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -124,6 +124,9 @@ class SlotBooking : AppCompatActivity() {
       val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
         binding.slotBookingDate.setText("" + dayOfMonth + " " + AppPreference.MONTHS[monthOfYear] + ", " + year)
         selectedDate = "" + dayOfMonth + " " + AppPreference.MONTHS[monthOfYear] + ", " + year
+        val format = SimpleDateFormat("yyyy-MM-dd")
+        val date: String = "" + year + "-" + (month+1) + "-" + day
+        selectedDateValue = format.parse(date)
       }, year, month, day)
       datePicker.datePicker.minDate = System.currentTimeMillis() - 1000
       // datepicker select button click
@@ -170,11 +173,15 @@ class SlotBooking : AppCompatActivity() {
       intent.putExtra("addressId", selectedAddress!!.id)
       intent.putExtra("side_walk",  citySideWalk)
       intent.putExtra("hours_required",  hoursRate.toString())
+      intent.putExtra("hours_position", hoursPosition)
+      intent.putExtra("shovelerId", shovelerId)
+      intent.putExtra("date_value", selectedDateValue.toString())
       startActivity(intent)
     }
 
     private fun getHourPriceFromUser(position: Int): Double {
       var price = 0.0
+      hoursPosition = position + 1
       if(position == 0) price = shovelerDetails?.oneFourPrice!!
       if(position == 1) price = shovelerDetails?.fiveEightPrice!!
       if(position == 2) price = shovelerDetails?.nineTwelvePrice!!

@@ -17,6 +17,7 @@
         android:label="GoSnow"
         android:roundIcon="@drawable/gosnow"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
         <activity
