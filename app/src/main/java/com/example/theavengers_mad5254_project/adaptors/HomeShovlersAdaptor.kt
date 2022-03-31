@@ -2,22 +2,24 @@ package com.example.theavengers_mad5254_project.adaptors
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
-import android.util.Log
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.theavengers_mad5254_project.R
-import com.example.theavengers_mad5254_project.model.data.Shovler
+import com.example.theavengers_mad5254_project.model.data.Shoveler
+import com.example.theavengers_mad5254_project.model.data.ShovlerImages
+import com.example.theavengers_mad5254_project.utils.AppPreference
+import com.example.theavengers_mad5254_project.views.home.Details
 
-class HomeShovlersAdaptor(context: Context, shovlersList: List<Shovler>) : RecyclerView.Adapter<HomeShovlersAdaptor.ViewHolder>() {
+class HomeShovlersAdaptor(context: Context, shovlersList: List<Shoveler>) : RecyclerView.Adapter<HomeShovlersAdaptor.ViewHolder>() {
   private val layoutInflater: LayoutInflater
-  private val shovlersList: List<Shovler>
+  private val shovlersList: List<Shoveler>
   private val context: Context
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,15 +29,23 @@ class HomeShovlersAdaptor(context: Context, shovlersList: List<Shovler>) : Recyc
 
   @SuppressLint("ResourceAsColor")
   override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
-    val shovler: Shovler = shovlersList[position]
+    val shovler: Shoveler = shovlersList[position]
     holder.shovlerTitle.setText(shovler.title)
-    holder.shovlerUser.setText("by " + shovler.user?.username);
+    holder.shovlerUser.setText("by " + shovler.user?.name);
     // setting up the shovler image
-    var shovlerImage = "https://lcmaze.s3.ap-south-1.amazonaws.com/seraph-tuts-django-cdn/assets/no+image.png"
+    var shovlerImage = AppPreference.NO_IMAGE
     if(shovler.shovlerImages.size > 0){
-      shovlerImage = "https://lcmaze.s3.ap-south-1.amazonaws.com/snowapp/assets/listing-images/" + shovler.shovlerImages.get(0).image.toString()
+      shovlerImage = AppPreference.CDN_URL + "assets/listing-images/" + shovler.shovlerImages.get(0).image.toString()
     }
     Glide.with(context).load(shovlerImage).into(holder.shovlerImage);
+
+    // click event
+    holder.shovlerWrapper.setOnClickListener {
+      val intent = Intent(context, Details::class.java)
+      intent.putExtra("id", shovler.id)
+      intent.putExtra("position", position)
+      context.startActivity(intent)
+    }
   }
 
   override fun getItemCount(): Int {
@@ -48,6 +58,7 @@ class HomeShovlersAdaptor(context: Context, shovlersList: List<Shovler>) : Recyc
     val shovlerImage: ImageView
     val shovlerTitle: TextView
     val shovlerUser: TextView
+    val shovlerWrapper: ConstraintLayout
 
     override fun onClick(v: View) {}
 
@@ -56,6 +67,7 @@ class HomeShovlersAdaptor(context: Context, shovlersList: List<Shovler>) : Recyc
       shovlerImage = itemView.findViewById(R.id.shovler_image)
       shovlerTitle = itemView.findViewById(R.id.shovler_title)
       shovlerUser = itemView.findViewById(R.id.shovler_subtitle)
+      shovlerWrapper = itemView.findViewById(R.id.shovler_item_wrapper)
     }
   }
 

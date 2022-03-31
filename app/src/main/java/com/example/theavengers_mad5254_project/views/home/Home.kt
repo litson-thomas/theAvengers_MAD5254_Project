@@ -16,7 +16,7 @@ import com.example.theavengers_mad5254_project.views.auth.Register
 import com.example.theavengers_mad5254_project.views.my_account.MyAccountHome
 import com.example.theavengers_mad5254_project.views.my_account.MyProfile
 import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
-import com.example.theavengers_mad5254_project.databinding.ActivityRegisterBinding
+import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
@@ -25,20 +25,21 @@ import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
 
 class Home : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegisterBinding
     private lateinit var viewModel: HomeViewModel
     private lateinit var viewModelFactory: HomeViewModelFactory
     private var shovlerAdaptor: HomeShovlersAdaptor? = null
     private var shovlerRecyclerView: RecyclerView? = null
+    private var shovlerRatingRecyvlerView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        val retrofitService = ApiService.getInstance()
+        val retrofitService = ApiClient().getApiService(this)
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = HomeViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
         shovlerRecyclerView = findViewById(R.id.shovler_list);
+        shovlerRatingRecyvlerView = findViewById(R.id.shovler_rated_list)
         loadShovlers()
     }
 
@@ -51,11 +52,9 @@ class Home : AppCompatActivity() {
     private fun loadShovlers(){
       viewModel.loadShovlers()
       viewModel.shovlers.observe(this, Observer {
-        for (shovler in it.rows){
-          // Log.e("TITLE => ", ""+shovler.title);
-        }
         shovlerAdaptor = HomeShovlersAdaptor(this, it.rows)
-        shovlerRecyclerView?.setAdapter(shovlerAdaptor)
+        shovlerRecyclerView?.adapter = shovlerAdaptor
+        shovlerRatingRecyvlerView?.adapter = shovlerAdaptor
       })
     }
 

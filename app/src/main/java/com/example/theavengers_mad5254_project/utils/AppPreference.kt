@@ -5,10 +5,13 @@ import android.content.SharedPreferences
 
 object AppPreference {
     private const val NAME = "SnowApp"
+    public const val CDN_URL = "https://lcmaze.s3.ap-south-1.amazonaws.com/snowapp/"
+    public const val NO_IMAGE = "https://lcmaze.s3.ap-south-1.amazonaws.com/seraph-tuts-django-cdn/assets/no+image.png"
     private const val MODE = Context.MODE_PRIVATE
     private lateinit var preferences: SharedPreferences
+    val MONTHS = arrayOf("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 
-    private val IS_LOGIN = Pair("isLogin",false)
+  private val IS_LOGIN = Pair("isLogin",false)
     private val USER_TOKEN = Pair("userToken","")
     private val USER_UID = Pair("userID","")
 

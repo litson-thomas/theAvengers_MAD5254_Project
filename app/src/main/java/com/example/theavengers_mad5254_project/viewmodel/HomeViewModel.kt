@@ -1,19 +1,13 @@
 package com.example.theavengers_mad5254_project.viewmodel
 
-import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.util.Log
-import android.widget.ProgressBar
-import androidx.databinding.ObservableField
 import androidx.lifecycle.*
-import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
+import com.example.theavengers_mad5254_project.model.data.Shoveler
+import com.example.theavengers_mad5254_project.model.data.ShovlerImages
 import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
-import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
 import com.example.theavengers_mad5254_project.repository.MainRepository
-import com.example.theavengers_mad5254_project.repository.Repository
-import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.*
 
 class HomeViewModel(private val repository: MainRepository) : ViewModel(), LifecycleObserver {
@@ -24,6 +18,7 @@ class HomeViewModel(private val repository: MainRepository) : ViewModel(), Lifec
   private val _shovlers = MutableLiveData<ShovlersResponse>()
   var loadShovlerStatus: LiveData<ApiResponse> = _loadShovlerStatus
   val shovlers: LiveData<ShovlersResponse> = _shovlers
+  val selectedShovler = MutableLiveData<Shoveler>()
   var job: Job? = null
 
   fun loadShovlers(){
@@ -40,6 +35,27 @@ class HomeViewModel(private val repository: MainRepository) : ViewModel(), Lifec
         }
       }
     }
+  }
+
+  fun loadShovlerById(id: Int){
+    loading.postValue(true)
+    job = CoroutineScope(Dispatchers.IO).launch {
+      val response = repository.loadShovlerById(id)
+      withContext((Dispatchers.Main)) {
+        if (response.isSuccessful) {
+          _shovlers.postValue(response.body())
+          selectedShovler.postValue(response.body()?.rows?.get(0))
+          loading.postValue(false)
+        } else {
+          onError("Error : ${response.message()}")
+          Log.e(TAG, "load Shovlers by id:  ${response.message()}")
+        }
+      }
+    }
+  }
+
+  fun getSelectedShoveler(): Shoveler? {
+    return selectedShovler.value
   }
 
   private fun onError(message: String) {
