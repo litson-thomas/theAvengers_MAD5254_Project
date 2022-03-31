@@ -44,6 +44,7 @@ class Home : AppCompatActivity() {
     }
 
   fun nav_myAccount(view: View){
+
     val intent = Intent(this, MyAccountHome::class.java)
     startActivity(intent)
   }
