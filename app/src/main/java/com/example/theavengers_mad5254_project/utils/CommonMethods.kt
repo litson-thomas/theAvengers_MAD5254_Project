@@ -1,15 +1,20 @@
 package com.example.theavengers_mad5254_project.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Handler
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
 import com.example.theavengers_mad5254_project.views.auth.Login
 import com.example.theavengers_mad5254_project.views.home.Home
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.regex.Pattern
 
 class CommonMethods {
@@ -19,6 +24,18 @@ class CommonMethods {
         fun toastMessage(context: Context, message: String) {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
+
+        fun setGlideImage(image: ImageView, url: String) {
+
+            Glide.with(image).load(url)
+                .thumbnail(0.5f)
+                .into(image)
+
+        }
+        @SuppressLint("SimpleDateFormat")
+        fun getCurrentDateTime(dateFormat: String): String =
+            SimpleDateFormat(dateFormat).format(Date())
+
 
         fun showAlertDialogLogout(
             context: Context,

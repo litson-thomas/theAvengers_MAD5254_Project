@@ -16,13 +16,14 @@
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
         <activity
+            android:name="com.example.theavengers_mad5254_project.views.weather.WeatherForecastActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.slot_booking.SlotBooking"
             android:exported="false" />
-
         <activity
             android:name="com.example.theavengers_mad5254_project.views.my_account.MyAddresses"
             android:exported="false" />
-
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -32,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".views.auth.Login"
             android:exported="false" />
@@ -111,7 +111,6 @@
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddImage"
             android:exported="false" />
-
     </application>
 
 </manifest>

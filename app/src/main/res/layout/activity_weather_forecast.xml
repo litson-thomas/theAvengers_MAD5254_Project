@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<ScrollView
+    android:id="@+id/filters_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/bg"
+    tools:context=".views.home.Filters"
+    tools:ignore="MissingConstraints">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/filters_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:id="@+id/fragment_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/home_header_style"
+            android:padding="25dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:id="@+id/common_header_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/home_header_style"
+                android:gravity="center"
+                android:weightSum="4"
+                tools:ignore="MissingConstraints">
+
+                <ImageButton
+                    android:id="@+id/details_back_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0"
+                    android:background="@drawable/back_button_style"
+                    android:src="@drawable/ic_back"
+                    tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                <LinearLayout
+                    android:id="@+id/common_header_title_wrapper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/home_header_style"
+                    android:gravity="start"
+                    android:layout_weight="3.5"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/common_header_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weather Forecast"
+                        android:textColor="@color/text_white"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/poppins_semibold"/>
+
+                    <TextView
+                        android:id="@+id/common_header_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Simple weather forecast "
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/text_grey"
+                        android:textSize="12dp"
+                        android:fontFamily="@font/poppins"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filters_province_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_header"
+            tools:layout_editor_absoluteX="161dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/shovler_style"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/imageViewWeatherIcon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_city_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewWeatherIcon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Ajmer, IN" />
+
+                <TextView
+                    android:id="@+id/text_date_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="@+id/text_city_name"
+                    app:layout_constraintStart_toStartOf="@+id/text_city_name"
+                    app:layout_constraintTop_toBottomOf="@+id/text_city_name"
+                    tools:ignore="SmallSp"
+                    tools:text="Fri, 7 Sep" />
+
+
+                <TextView
+                    android:id="@+id/textViewTemperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textSize="24sp"
+                    android:textColor="@color/primary"
+                    android:fontFamily="@font/poppins_extrabold"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_date_time"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_city_name"
+                    tools:text="28" />
+
+                <TextView
+                    android:id="@+id/text_label_degree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u2103"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/textViewTemperature"
+                    app:layout_constraintTop_toTopOf="@+id/textViewTemperature" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@id/filters_province_wrapper"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:id="@+id/filters_city_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/filters_city_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="14dp"
+                android:textColor="@color/text_grey"
+                android:text="WEEK FORECAST" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHourOfDay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_weather_forcast" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+</layout>
