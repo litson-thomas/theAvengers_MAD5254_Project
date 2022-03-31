@@ -9,7 +9,6 @@ import retrofit2.Response
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
 import com.example.theavengers_mad5254_project.utils.AppPreference
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*

@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -19,6 +20,7 @@ import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
+import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
 import com.example.theavengers_mad5254_project.viewmodel.RegisterViewModel
 import com.example.theavengers_mad5254_project.viewmodel.RegisterViewModelFactory
 import com.example.theavengers_mad5254_project.views.home.Home

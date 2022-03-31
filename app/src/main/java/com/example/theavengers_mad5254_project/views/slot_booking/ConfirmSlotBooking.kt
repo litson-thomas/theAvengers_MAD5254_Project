@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityConfirmSlotBookingBinding
+import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.model.data.ShovelerAddress
 import com.example.theavengers_mad5254_project.repository.MainRepository
@@ -33,7 +34,7 @@ class ConfirmSlotBooking : AppCompatActivity() {
           addressId = bundle.getInt("addressId")
         }
         // set up the view model
-        val retrofitService = ApiService.getInstance()
+        val retrofitService = ApiClient().getApiService(this)
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = SlotBookingViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[SlotBookingViewModel::class.java]

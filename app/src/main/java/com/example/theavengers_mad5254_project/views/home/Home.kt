@@ -16,6 +16,7 @@ import com.example.theavengers_mad5254_project.views.auth.Register
 import com.example.theavengers_mad5254_project.views.my_account.MyAccountHome
 import com.example.theavengers_mad5254_project.views.my_account.MyProfile
 import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
+import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
@@ -33,7 +34,7 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        val retrofitService = ApiService.getInstance()
+        val retrofitService = ApiClient().getApiService(this)
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = HomeViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]

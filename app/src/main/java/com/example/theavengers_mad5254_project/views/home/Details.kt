@@ -12,6 +12,7 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.adaptors.DetailsImagesAdaptor
 import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivityDetailsBinding
+import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.model.data.Shoveler
 import com.example.theavengers_mad5254_project.model.data.ShovlerImages
@@ -39,7 +40,7 @@ class Details : AppCompatActivity() {
           shovelerId = bundle.getInt("id")
           shovelerPosition = bundle.getInt("position")
         }
-        val retrofitService = ApiService.getInstance()
+        val retrofitService = ApiClient().getApiService(this)
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = HomeViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]

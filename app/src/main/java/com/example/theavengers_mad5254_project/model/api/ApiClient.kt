@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiClient {
     private lateinit var apiService: ApiService
     val BASE_URL: String = "https://snowapp.lcmaze.com/"
+    // val BASE_URL: String = "http://192.168.2.15:8100/"
 
     fun getApiService(context: Context): ApiService {
 
