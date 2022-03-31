@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/slot_confirm_wrapper"
+    android:background="@color/bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.slot_booking.ConfirmSlotBooking">
+
+    <ScrollView
+      android:id="@+id/slot_confirm_scroll_view"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="@id/slot_confirm_wrapper"
+      app:layout_constraintLeft_toLeftOf="@id/slot_confirm_wrapper"
+      app:layout_constraintRight_toRightOf="@id/slot_confirm_wrapper"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/slot_booking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.fragment.app.FragmentContainerView
+          android:id="@+id/slot_confirm_header"
+          android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:ignore="MissingConstraints"
+          tools:layout="@layout/fragment_header" />
+
+        <LinearLayout
+          app:layout_constraintTop_toBottomOf="@id/slot_confirm_header"
+          android:id="@+id/slot_confirm_details"
+          android:padding="20dp"
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <TextView
+            android:id="@+id/slot_confirm_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_extrabold"
+            android:text="BOOKING SCHEDULED ON"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/primary"
+            android:textSize="12dp" />
+
+          <TextView
+            android:id="@+id/slot_confirm_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="30 March, 2022"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+          <TextView
+            android:id="@+id/slot_confirm_address_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="51 Tillbrook Ct"
+            android:layout_weight="1"
+            android:layout_marginTop="25dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_grey"
+            android:textSize="16dp" />
+
+          <TextView
+            android:id="@+id/slot_confirm_address_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="Scarborough M1BN15, Ontario, CA"
+            android:layout_weight="1"
+            android:layout_marginBottom="25dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_grey"
+            android:textSize="16dp" />
+
+          <LinearLayout
+            android:id="@+id/slot_confirm_hours_wrapper"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+              android:id="@+id/slot_confirm_hours_label"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/poppins"
+              android:text="Hours Required $"
+              android:layout_weight="1"
+              android:gravity="center_vertical"
+              android:textColor="@color/text_grey"
+              android:textSize="13dp" />
+
+            <TextView
+              android:id="@+id/slot_confirm_hours_value"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:fontFamily="@font/poppins_semibold"
+              android:text="1 - 4 Hours"
+              android:textAlignment="textEnd"
+              android:textColor="@color/text_black"
+              android:textSize="16dp" />
+
+          </LinearLayout>
+
+          <LinearLayout
+            android:id="@+id/slot_confirm_sidewalk_wrapper"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+              android:id="@+id/slot_confirm_sidewalk_label"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/poppins"
+              android:text="City Side Walk"
+              android:layout_weight="1"
+              android:gravity="center_vertical"
+              android:textColor="@color/text_grey"
+              android:textSize="13dp" />
+
+            <TextView
+              android:id="@+id/slot_confirm_sidewalk_value"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:fontFamily="@font/poppins_semibold"
+              android:text="Yes"
+              android:textAlignment="textEnd"
+              android:textColor="@color/text_black"
+              android:textSize="16dp" />
+
+          </LinearLayout>
+
+          <com.google.android.material.divider.MaterialDivider
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+          <LinearLayout
+            android:id="@+id/slot_confirm_amount_wrapper"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+              android:id="@+id/slot_confirm_amount_label"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/poppins"
+              android:text="Total Amount"
+              android:layout_weight="1"
+              android:gravity="center_vertical"
+              android:textColor="@color/text_grey"
+              android:textSize="13dp" />
+
+            <TextView
+              android:id="@+id/slot_confirm_amount_value"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:fontFamily="@font/poppins_semibold"
+              android:text="$120"
+              android:textAlignment="textEnd"
+              android:textColor="@color/text_black"
+              android:textSize="16dp" />
+
+          </LinearLayout>
+
+          <LinearLayout
+            android:id="@+id/slot_confirm_tax_wrapper"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+              android:id="@+id/slot_confirm_tax_label"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/poppins"
+              android:text="Total Tax"
+              android:layout_weight="1"
+              android:gravity="center_vertical"
+              android:textColor="@color/text_grey"
+              android:textSize="13dp" />
+
+            <TextView
+              android:id="@+id/slot_confirm_tax_value"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:fontFamily="@font/poppins_semibold"
+              android:text="$24"
+              android:textAlignment="textEnd"
+              android:textColor="@color/text_black"
+              android:textSize="16dp" />
+
+          </LinearLayout>
+
+          <LinearLayout
+            android:id="@+id/slot_confirm_grandtotal_wrapper"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+              android:id="@+id/slot_confirm_grandtotal_label"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/poppins_semibold"
+              android:text="Grand Total"
+              android:layout_weight="1"
+              android:gravity="center_vertical"
+              android:textColor="@color/text_grey"
+              android:textSize="15dp" />
+
+            <TextView
+              android:id="@+id/slot_confirm_grandtotal_value"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:fontFamily="@font/poppins_extrabold"
+              android:text="$144"
+              android:textAlignment="textEnd"
+              android:textColor="@color/text_black"
+              android:textSize="20dp" />
+
+          </LinearLayout>
+
+          <Button
+            android:id="@+id/slot_confirm_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_button"
+            android:elevation="50dp"
+            android:layout_marginTop="15dp"
+            android:text="Confirm"
+            android:textSize="14dp"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <Space
+          app:layout_constraintTop_toBottomOf="@id/slot_confirm_details"
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="150dp"/>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -15,7 +15,8 @@ import retrofit2.http.*
 
 interface ApiService {
     companion object{
-        const val BASE_URL: String = "https://snowapp.lcmaze.com/"
+        // const val BASE_URL: String = "https://snowapp.lcmaze.com/"
+        const val BASE_URL: String = "http://192.168.2.15:8100/"
         val TOKEN: String = AppPreference.userToken;
 
         var apiService: ApiService? = null
@@ -46,7 +47,7 @@ interface ApiService {
     @GET("api/shovler")
     suspend fun getShovlerById(@Header("token") token: String, @Query("id") id: Int): Response<ShovlersResponse>
 
-    @GET("api/user")
+    @GET("api/user?q=&order=uid&order_type=ASC")
     suspend fun getUser(@Header("token") token: String, @Query("uid") uid: String): Response<UserResponse>
 
 }
