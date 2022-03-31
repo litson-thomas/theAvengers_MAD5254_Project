@@ -54,6 +54,7 @@
                 android:background="@drawable/input_style"
                 android:fontFamily="@font/poppins"
                 android:hint="Enter your bank transit number"
+                android:inputType="number"
                 android:paddingLeft="20dp"
                 android:textSize="12dp" />
 
@@ -72,6 +73,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/input_style"
                 android:fontFamily="@font/poppins"
+                android:inputType="number"
                 android:hint="Enter your bank institution number"
                 android:paddingLeft="20dp"
                 android:textSize="12dp" />
@@ -90,6 +92,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/input_style"
                 android:fontFamily="@font/poppins"
+                android:inputType="number"
                 android:hint="Enter your bank account number"
                 android:paddingLeft="20dp"
                 android:textSize="12dp" />

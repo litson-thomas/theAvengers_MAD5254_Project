@@ -4,24 +4,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityAddPricingBinding
+import com.example.theavengers_mad5254_project.model.data.Shovler
 import com.example.theavengers_mad5254_project.utils.CommonMethods
-import com.example.theavengers_mad5254_project.viewmodel.BecomeShovlerViewModel
+import java.io.Serializable
 
 class AddPricing : AppCompatActivity() {
     private lateinit var binding: ActivityAddPricingBinding
-    private lateinit var viewModel: BecomeShovlerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_add_pricing)
-        viewModel = ViewModelProvider(this).get(BecomeShovlerViewModel::class.java)
-        //var title = intent.getIntExtra("radius",0)
-        //binding.becomeShovler1To4hour.setText(title.toString())
+
+        var shovlerListItem = intent.getSerializableExtra("shovlerListItem")
+        if (shovlerListItem != null) {
+            var shovler = shovlerListItem as Shovler
+            binding.oneFour.setText(shovlerListItem.one_four_price.toString())
+            binding.fiveEight.setText(shovlerListItem.five_eight_price.toString())
+            binding.nineTwelve.setText(shovlerListItem.nine_twelve_price.toString())
+            binding.citySide.setText(shovlerListItem.city_side_price.toString())
+        }
         binding.addPricingBtn.setOnClickListener {
             if(TextUtils.isEmpty(binding.oneFour.text.toString())) {
                 CommonMethods.toastMessage(applicationContext, "1-4 Hour price can't be empty")
@@ -42,6 +46,12 @@ class AddPricing : AppCompatActivity() {
                 newIntent.putExtra("five_eight", binding.fiveEight.text.toString())
                 newIntent.putExtra("nine_twelve", binding.nineTwelve.text.toString())
                 newIntent.putExtra("city_side", binding.citySide.text.toString())
+                newIntent.putExtra("addressId",intent.getStringExtra("addressId").toString())
+                var shovlerListItem = intent.getSerializableExtra("shovlerListItem")
+                if (shovlerListItem != null) {
+                    var shovler = shovlerListItem as Shovler
+                    newIntent.putExtra("shovlerListItem", shovler as Serializable)
+                }
                 startActivity(newIntent)
             }
         }

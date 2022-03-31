@@ -1,5 +1,6 @@
 package com.example.theavengers_mad5254_project.views.auth
 
+
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -7,29 +8,22 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
 import android.util.Log
-import android.util.Patterns
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityRegisterBinding
+import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
-import com.example.theavengers_mad5254_project.model.api.MyRetrofitBuilder
 import com.example.theavengers_mad5254_project.repository.MainRepository
-import com.example.theavengers_mad5254_project.repository.Repository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
-import com.example.theavengers_mad5254_project.viewmodel.FireBaseViewModelFactory
-import com.example.theavengers_mad5254_project.viewmodel.FirebaseViewModel
 import com.example.theavengers_mad5254_project.viewmodel.RegisterViewModel
 import com.example.theavengers_mad5254_project.viewmodel.RegisterViewModelFactory
 import com.example.theavengers_mad5254_project.views.home.Home
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 class Register : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -44,7 +38,7 @@ class Register : AppCompatActivity() {
 //        viewModelFactory = FireBaseViewModelFactory()
 //        viewModel = ViewModelProvider(this, viewModelFactory)[FirebaseViewModel::class.java]
 //        binding.viewModel = viewModel
-        val retrofitService = ApiService.getInstance()
+        val retrofitService =  ApiClient().getApiService(this) //ApiService.getInstance()
         val mainRepository = MainRepository(retrofitService)
         registerViewModelFactory = RegisterViewModelFactory(mainRepository)
         registerViewModel = ViewModelProvider(this, registerViewModelFactory)[RegisterViewModel::class.java]

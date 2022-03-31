@@ -5,23 +5,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityAddPaymentBinding
+import com.example.theavengers_mad5254_project.model.data.Shovler
 import com.example.theavengers_mad5254_project.utils.CommonMethods
-import com.example.theavengers_mad5254_project.viewmodel.BecomeShovlerViewModel
+import java.io.Serializable
 
 
 class AddPayment : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddPaymentBinding
-    private lateinit var viewModel: BecomeShovlerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_add_payment)
-        viewModel = ViewModelProvider(this).get(BecomeShovlerViewModel::class.java)
 
+        var shovlerListItem = intent.getSerializableExtra("shovlerListItem")
+        if (shovlerListItem != null) {
+            var shovler = shovlerListItem as Shovler
+            binding.transitNumber.setText(shovler.transit_number.toString())
+            binding.institutionNumber.setText(shovler.institution_number.toString())
+            binding.accountNumber.setText(shovler.account_number.toString())
+        }
         binding.addPricingBtn.setOnClickListener {
              if(TextUtils.isEmpty(binding.transitNumber.text.toString())) {
                 CommonMethods.toastMessage(applicationContext, "Transit number can't be empty")
@@ -43,8 +48,13 @@ class AddPayment : AppCompatActivity() {
                 newIntent.putExtra("transit_number", binding.transitNumber.text.toString())
                 newIntent.putExtra("institution_number", binding.institutionNumber.text.toString())
                 newIntent.putExtra("account_number", binding.accountNumber.text.toString())
-
-                 startActivity(newIntent)
+                newIntent.putExtra("addressId",intent.getStringExtra("addressId").toString())
+                var shovlerListItem = intent.getSerializableExtra("shovlerListItem")
+                if (shovlerListItem != null) {
+                    var shovler = shovlerListItem as Shovler
+                    newIntent.putExtra("shovlerListItem", shovler as Serializable)
+                }
+                startActivity(newIntent)
             }
         }
     }

@@ -2,13 +2,13 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    android:background="#E5E5E5"
+    xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E5E5E5"
-    tools:context=".views.shovlerDashboard.MyJobs">
+        tools:context=".views.shovlerDashboard.MyJobs">
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/reviews_header"
@@ -16,11 +16,16 @@
         tools:layout="@layout/fragment_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         tools:ignore="MissingConstraints" />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginTop="90dp"
+            tools:ignore="MissingConstraints">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/job_list"
+        android:id="@+id/job_list_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:nestedScrollingEnabled="false"
@@ -30,5 +35,14 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/job_item" />
+
+        <ProgressBar
+            android:id="@+id/my_jobs_progress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+        </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

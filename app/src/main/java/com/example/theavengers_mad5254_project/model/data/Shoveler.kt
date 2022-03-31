@@ -8,10 +8,10 @@ data class Shoveler (
   @SerializedName("title"              ) var title             : String?                  = null,
   @SerializedName("description"        ) var description       : String?                  = null,
   @SerializedName("radius_limit"       ) var radiusLimit       : Int?                     = null,
-  @SerializedName("one_four_price"     ) var oneFourPrice      : Int?                     = null,
-  @SerializedName("five_eight_price"   ) var fiveEightPrice    : Int?                     = null,
-  @SerializedName("nine_twelve_price"  ) var nineTwelvePrice   : Int?                     = null,
-  @SerializedName("city_side_price"    ) var citySidePrice     : Int?                     = null,
+  @SerializedName("one_four_price"     ) var oneFourPrice      : Double?                     = null,
+  @SerializedName("five_eight_price"   ) var fiveEightPrice    : Double?                     = null,
+  @SerializedName("nine_twelve_price"  ) var nineTwelvePrice   : Double?                     = null,
+  @SerializedName("city_side_price"    ) var citySidePrice     : Double?                     = null,
   @SerializedName("transit_number"     ) var transitNumber     : String?                  = null,
   @SerializedName("institution_number" ) var institutionNumber : String?                  = null,
   @SerializedName("account_number"     ) var accountNumber     : String?                  = null,
@@ -44,6 +44,20 @@ data class ShovlerUser(
   @SerializedName("is_shovler" ) var isShovler : Boolean? = null,
   @SerializedName("createdAt"  ) var createdAt : String?  = null,
   @SerializedName("updatedAt"  ) var updatedAt : String?  = null,
-  @SerializedName("CityId"     ) var CityId    : String?  = null
+  @SerializedName("CityId"     ) var CityId    : String?  = null,
+  @SerializedName("addresses" ) var addresses : ArrayList<ShovelerAddress> = arrayListOf()
+
+)
+
+data class ShovelerAddress (
+
+  @SerializedName("id"          ) var id         : Int?    = null,
+  @SerializedName("address_one" ) var addressOne : String? = null,
+  @SerializedName("address_two" ) var addressTwo : String? = null,
+  @SerializedName("latitude"    ) var latitude   : Int?    = null,
+  @SerializedName("longitude"   ) var longitude  : Int?    = null,
+  @SerializedName("createdAt"   ) var createdAt  : String? = null,
+  @SerializedName("updatedAt"   ) var updatedAt  : String? = null,
+  @SerializedName("userUid"     ) var userUid    : String? = null
 
 )

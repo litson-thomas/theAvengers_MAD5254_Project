@@ -15,6 +15,7 @@ import com.example.theavengers_mad5254_project.views.auth.Login
 import com.example.theavengers_mad5254_project.views.home.Home
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.android.material.snackbar.Snackbar
 import java.util.regex.Pattern
 
 class CommonMethods {
@@ -22,7 +23,7 @@ class CommonMethods {
     companion object{
 
         fun toastMessage(context: Context, message: String) {
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+          Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
 
         fun setGlideImage(image: ImageView, url: String) {
