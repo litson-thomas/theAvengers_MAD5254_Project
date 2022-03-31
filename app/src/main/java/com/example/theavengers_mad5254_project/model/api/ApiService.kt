@@ -15,8 +15,8 @@ import retrofit2.http.*
 
 interface ApiService {
     companion object{
-        // const val BASE_URL: String = "https://snowapp.lcmaze.com/"
-        const val BASE_URL: String = "http://192.168.2.15:8100/"
+         const val BASE_URL: String = "https://snowapp.lcmaze.com/"
+        // const val BASE_URL: String = "http://192.168.2.15:8100/"
         val TOKEN: String = AppPreference.userToken;
 
         var apiService: ApiService? = null
