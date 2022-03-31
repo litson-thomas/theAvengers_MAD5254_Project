@@ -68,6 +68,7 @@ interface ApiService {
         }
     }
     */
+   // lat=43.7764&lon=79.2318
 
     @POST("api/shovler")
     suspend fun addShovler(@Body requestBody: Shovler): Response<APIResponse>
@@ -77,10 +78,10 @@ interface ApiService {
     suspend fun updateShovler(@Path(value = "id") id: Int?,@Body requestBody: Shovler): Response<APIResponse>
 
     @GET("data/2.5/weather?")
-    suspend fun getWeatherDetails( @Query("q") address: String,@Query("APPID") apiKey: String): Response<WeatherForecastResponse>
+    suspend fun getWeatherDetails( @Query("lat") lat: Double,@Query("lon") lon: Double,@Query("APPID") apiKey: String): Response<WeatherForecastResponse>
 
     @GET("data/2.5/forecast?")
-    suspend fun getWeatherForecastDetails( @Query("q") address: String,@Query("APPID") apiKey: String): Response<ForecastResponse>
+    suspend fun getWeatherForecastDetails(@Query("lat") lat: Double,@Query("lon") lon: Double,@Query("APPID") apiKey: String): Response<ForecastResponse>
 
     @POST("api/user")
     suspend fun registerUser(@Body requestBody: CreateUserRequest): Response<CreateUserResponse>

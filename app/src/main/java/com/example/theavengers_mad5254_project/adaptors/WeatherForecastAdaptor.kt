@@ -2,6 +2,7 @@ package com.example.theavengers_mad5254_project.adaptors
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.icu.util.Output
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -21,10 +22,11 @@ import java.time.format.TextStyle
 import java.util.*
 import kotlin.collections.ArrayList
 
-class WeatherForecastAdaptor(context: Context, forecastList: List<ListItem>) : RecyclerView.Adapter<WeatherForecastAdaptor.ViewHolder>() {
-  private val layoutInflater: LayoutInflater
-  private val forecastList: List<ListItem>
-  private val context: Context
+
+class WeatherForecastAdaptor(context: Context, private val forecastList: ArrayList<ListItem>) : RecyclerView.Adapter<WeatherForecastAdaptor.ViewHolder>() {
+  private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
+  private val context: Context = context
+
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val view: View = layoutInflater.inflate(R.layout.item_weather_forcast, parent, false)
@@ -37,54 +39,44 @@ class WeatherForecastAdaptor(context: Context, forecastList: List<ListItem>) : R
     val forecastResponse: ListItem = forecastList[position]
 
 
-    getDateTime(forecastResponse.dt)
-    var tempKelvin: Float = forecastResponse.main.temp.toFloat()
-    tempKelvin = (tempKelvin - 273.15F)
-    val iconCode = forecastResponse.weather.first().icon
+        getDateTime(forecastResponse.dt)
+        var tempKelvin: Float = forecastResponse.main.temp.toFloat()
+        tempKelvin = (tempKelvin - 273.15F)
+        val iconCode = forecastResponse.weather.first().icon
 
-    val displayName =
-      getDateTime(forecastResponse.dt)?.getDisplayName(TextStyle.FULL, Locale.getDefault())
+        val displayName =
+          getDateTime(forecastResponse.dt)?.getDisplayName(TextStyle.FULL, Locale.getDefault())
 
-    val arrayList = ArrayList<String>()
-    arrayList.add(displayName.toString())
-    arrayList.add(tempKelvin.toString())
-    arrayList.add(iconCode)
+        holder.weatherDay.text = displayName
+        holder.weatherDegree.text = (tempKelvin).toString().substringBefore(".") + "°"
 
-    holder.weatherDay.text = displayName
-    holder.weatherDegree.text = (tempKelvin).toString().substringBefore(".") + "°"
+        CommonMethods.setGlideImage(
+          holder.weatherImage,
+          AppConstants.WEATHER_API_IMAGE_ENDPOINT + "${iconCode}@4x.png"
+        )
+      }
 
-    CommonMethods.setGlideImage(
-      holder.weatherImage,
-      AppConstants.WEATHER_API_IMAGE_ENDPOINT + "${iconCode}@4x.png"
-    )
 
+  override fun getItemId(position: Int): Long {
+    return position.toLong()
+  }
+
+  override fun getItemViewType(position: Int): Int {
+    return position
   }
 
   override fun getItemCount(): Int {
     return forecastList.size
   }
 
-  inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+  inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-    val weatherImage: ImageView
-    val weatherDay: TextView
-    val weatherDegree: TextView
+    val weatherImage: ImageView = itemView.findViewById(R.id.imageViewForecastIcon)
+    val weatherDay: TextView = itemView.findViewById(R.id.txtDay)
+    val weatherDegree: TextView = itemView.findViewById(R.id.textViewTemp)
 
-    override fun onClick(v: View) {}
-
-    init {
-      itemView.setOnClickListener(this)
-      weatherImage = itemView.findViewById(R.id.imageViewForecastIcon)
-      weatherDay = itemView.findViewById(R.id.txtDay)
-      weatherDegree = itemView.findViewById(R.id.textViewTemp)
-    }
   }
 
-  init {
-    layoutInflater = LayoutInflater.from(context)
-    this.forecastList = forecastList
-    this.context = context
-  }
 }
 
 private fun getDateTime(s: Long): DayOfWeek? {

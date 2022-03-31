@@ -38,10 +38,10 @@ class WeatherForecastViewModel(private val repository: MainRepository)
         loading.postValue(false)
     }
 
-    fun getWeatherDetails(location: String,apiKey:String){
+    fun getWeatherDetails(lat: Double,lng:Double,apiKey:String){
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getWeatherDetails(location,apiKey)
+            val response = repository.getWeatherDetails(lat,lng,apiKey)
            withContext((Dispatchers.Main)) {
             if (response.isSuccessful) {
                 _weatherStatus.postValue(response.body())
@@ -54,10 +54,10 @@ class WeatherForecastViewModel(private val repository: MainRepository)
         }
     }
 
-    fun getWeatherForecastDetails(location: String,apiKey:String){
+    fun getWeatherForecastDetails(lat: Double,lng:Double,apiKey:String){
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getWeatherForecastDetails(location,apiKey)
+            val response = repository.getWeatherForecastDetails(lat,lng,apiKey)
             withContext((Dispatchers.Main)) {
                 if (response.isSuccessful) {
                     _weatherForecastStatus.postValue(response.body())
