@@ -41,6 +41,7 @@
       android:layout_height="wrap_content"
       android:layout_weight="1"
       android:background="@color/secondary"
+        android:onClick="nav_weatherForecast"
       android:src="@drawable/ic_weather"
       tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 

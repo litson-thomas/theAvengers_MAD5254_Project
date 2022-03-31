@@ -21,13 +21,14 @@
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
         <activity
-            android:name=".views.slot_booking.ConfirmSlotBooking"
+            android:name="com.example.theavengers_mad5254_project.views.weather.WeatherForecastActivity"
             android:exported="false" />
         <activity
             android:name=".views.slot_booking.SlotBooking"
             android:exported="false" />
-
-
+        <activity
+            android:name=".views.slot_booking.ConfirmSlotBooking"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -123,7 +124,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.ConfirmDetails"
             android:exported="false" />
@@ -139,8 +140,6 @@
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddImage"
             android:exported="false" />
-
     </application>
 
 </manifest>
-

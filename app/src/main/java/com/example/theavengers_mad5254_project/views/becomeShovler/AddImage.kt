@@ -7,6 +7,8 @@ import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
 import android.net.Uri
 import android.os.Bundle
+//import org.apache.commons.io.FileUtils
+import android.provider.MediaStore
 import org.apache.commons.io.FileUtils
 import android.util.Log
 import android.webkit.MimeTypeMap
@@ -136,7 +138,7 @@ class AddImage : AppCompatActivity() {
         return try {
             val stream = context.contentResolver.openInputStream(uri)
             val file = File.createTempFile(fileName, mimeType,cacheDir)
-            FileUtils.copyInputStreamToFile(stream,file)
+           FileUtils.copyInputStreamToFile(stream,file)
             file
         } catch (e: Exception) {
             e.printStackTrace()
