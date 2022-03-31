@@ -3,6 +3,7 @@ package com.example.theavengers_mad5254_project.views.my_account
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.theavengers_mad5254_project.R
@@ -25,6 +26,10 @@ class MyAddresses : AppCompatActivity(),addressesRVadapter.OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         var intent = Intent(this, Update_Address::class.java)
+        startActivity(intent)
+    }
+    fun btn_AddNewAddress(view: View){
+        var intent = Intent(this, Add_New_Address::class.java)
         startActivity(intent)
     }
 }
