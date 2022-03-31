@@ -14,6 +14,7 @@ import com.example.theavengers_mad5254_project.adaptors.WeatherForecastAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivityWeatherForecastBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
+import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ListItem
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppConstants
 import com.example.theavengers_mad5254_project.utils.AppPreference
@@ -22,6 +23,7 @@ import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
 import com.example.theavengers_mad5254_project.viewmodel.WeatherForecastViewModel
 import com.example.theavengers_mad5254_project.viewmodel.WeatherForecastViewModelFactory
 import com.example.theavengers_mad5254_project.views.home.Home
+import kotlin.math.ln
 
 class WeatherForecastActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWeatherForecastBinding
@@ -38,14 +40,14 @@ class WeatherForecastActivity : AppCompatActivity() {
         viewModelFactory = WeatherForecastViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[WeatherForecastViewModel::class.java]
 
-        getLocationAndApiKey("Scarborough,Canada",AppConstants.WEATHER_API_KEY)
+        getLocationAndApiKey(43.7764,43.7764,AppConstants.WEATHER_API_KEY)
     }
 
-    private fun getLocationAndApiKey(address: String, apiKey: String) {
-        viewModel.getWeatherDetails(address,apiKey)
-        viewModel.getWeatherForecastDetails(address,apiKey)
+    private fun getLocationAndApiKey(lat: Double,lng:Double, apiKey: String) {
+        viewModel.getWeatherDetails(lat, lng,apiKey)
+        viewModel.getWeatherForecastDetails(lat, lng,apiKey)
         observeWeatherDetails()
-        //observeWeatherForecastDetails()
+        observeWeatherForecastDetails()
     }
 
     private fun observeWeatherDetails(){
@@ -71,8 +73,22 @@ class WeatherForecastActivity : AppCompatActivity() {
     private fun observeWeatherForecastDetails(){
         viewModel.weatherForecastStatus.observe(this, Observer {
             if(it.cod == "200"){
-                weatherForecastAdaptor = WeatherForecastAdaptor(this, it.list)
-                binding.recyclerViewHourOfDay.adapter = weatherForecastAdaptor
+                val list: ArrayList<ListItem> = ArrayList<ListItem>()
+                for (i in it.list){
+                    val date = i.dt_txt
+                    val parts = date.split(" ").toTypedArray()
+                    println("Date: " + parts[0])
+                    println("Date: " + parts[1])
+                    if (parts[1] == "12:00:00"){
+                        list.add(i)
+                        println("PRINT  ${list.size}")
+                        weatherForecastAdaptor = WeatherForecastAdaptor(this,
+                            list
+                        )
+                        binding.recyclerViewHourOfDay.adapter = weatherForecastAdaptor
+                    }
+                }
+
             }else{
                 CommonMethods.toastMessage(applicationContext,"Something went wrong")
             }
