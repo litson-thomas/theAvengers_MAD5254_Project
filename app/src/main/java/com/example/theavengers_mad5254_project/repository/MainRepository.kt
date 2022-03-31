@@ -10,6 +10,10 @@ import com.example.theavengers_mad5254_project.utils.AppPreference
 
 class MainRepository constructor(private val apiService: ApiService) {
 
+    suspend fun getWeatherDetails( address: String, apiKey: String) = apiService.getWeatherDetails(address = address, apiKey = apiKey)
+
+    suspend fun getWeatherForecastDetails( address: String, apiKey: String) = apiService.getWeatherForecastDetails(address = address, apiKey = apiKey)
+
     suspend fun createUser( createUserRequest: CreateUserRequest) = apiService.registerUser(createUserRequest)
 
     suspend fun addShovler( shovler: Shovler) = apiService.addShovler(shovler)

@@ -17,16 +17,17 @@
         android:label="GoSnow"
         android:roundIcon="@drawable/gosnow"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
         <activity
-            android:name=".views.slot_booking.ConfirmSlotBooking"
+            android:name="com.example.theavengers_mad5254_project.views.weather.WeatherForecastActivity"
             android:exported="false" />
         <activity
             android:name=".views.slot_booking.SlotBooking"
             android:exported="false" />
-
+        <activity
+            android:name=".views.slot_booking.ConfirmSlotBooking"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -137,8 +138,6 @@
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddImage"
             android:exported="false" />
-
     </application>
 
 </manifest>
-
