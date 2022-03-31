@@ -7,8 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.shovlerDashboard.MyJobs">
-
+        tools:context=".views.shovlerDashboard.EditListing">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/reviews_header"
@@ -25,7 +24,7 @@
             android:layout_marginTop="90dp"
             tools:ignore="MissingConstraints">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/job_list_rv"
+        android:id="@+id/edit_listing_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:nestedScrollingEnabled="false"
@@ -34,10 +33,10 @@
         app:layout_constraintTop_toBottomOf="@id/reviews_header"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:listitem="@layout/job_item" />
+        tools:listitem="@layout/shovler_list_item" />
 
         <ProgressBar
-            android:id="@+id/my_jobs_progress"
+            android:id="@+id/edit_listing_progress"
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
             android:layout_height="50dp"

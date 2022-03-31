@@ -5,40 +5,31 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import org.apache.commons.io.FileUtils
-import android.provider.MediaStore
 import android.util.Log
 import android.webkit.MimeTypeMap
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityAddImageBinding
-import com.example.theavengers_mad5254_project.viewmodel.BecomeShovlerViewModel
-import java.io.ByteArrayOutputStream
+import com.example.theavengers_mad5254_project.model.data.Shovler
+import com.example.theavengers_mad5254_project.model.data.ShovlerImage
+import org.apache.commons.io.FilenameUtils
 import java.io.File
+import java.io.Serializable
 
 
 class AddImage : AppCompatActivity() {
     private lateinit var binding: ActivityAddImageBinding
-    private lateinit var viewModel: BecomeShovlerViewModel
     private lateinit var imageAdapter: ImageAdapter
-    //private var selectedPaths = mutableListOf<String>()
     private var selectedPaths = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_add_image)
-        viewModel = ViewModelProvider(this).get(BecomeShovlerViewModel::class.java)
 
         imageAdapter = ImageAdapter()
         binding.rvImages.adapter = imageAdapter
@@ -71,6 +62,18 @@ class AddImage : AppCompatActivity() {
                 }
             }
 
+        var shovlerListItem = intent.getSerializableExtra("shovlerListItem")
+        if (shovlerListItem != null) {
+            var shovler = shovlerListItem as Shovler
+            var list = listOf<String>()
+            if (shovler.shovler_images != null) {
+                for (image in shovler.shovler_images!!) {
+                    list = list +
+                            ("https://lcmaze.s3.ap-south-1.amazonaws.com/snowapp/assets/listing-images/" + image.image.toString())
+                }
+            }
+            imageAdapter.addSelectedImages(list)
+        }
         binding.addImagesBtn.setOnClickListener {
             selectedPaths.clear()
             val intent = Intent(ACTION_GET_CONTENT)
@@ -79,15 +82,19 @@ class AddImage : AppCompatActivity() {
             selectImagesActivityResult.launch(intent)
         }
 
-
         binding.addPricingBtn.setOnClickListener {
             val newIntent = Intent(this, AddPricing::class.java)
             newIntent.putExtra("title",intent.getStringExtra("title").toString())
             newIntent.putExtra("description",intent.getStringExtra("description").toString())
             newIntent.putExtra("place",intent.getStringExtra("place").toString())
             newIntent.putExtra("radius",intent.getStringExtra("radius").toString())
+            newIntent.putExtra("addressId",intent.getStringExtra("addressId").toString())
             newIntent.putStringArrayListExtra("selectedPaths",selectedPaths)
-
+            var shovlerListItem = intent.getSerializableExtra("shovlerListItem")
+            if (shovlerListItem != null) {
+                var shovler = shovlerListItem as Shovler
+                newIntent.putExtra("shovlerListItem", shovlerListItem as Serializable)
+            }
             startActivity(newIntent)
         }
         try {
