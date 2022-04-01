@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
     tools:context=".views.shovlerDashboard.ViewDirections">
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/reviews_header"
+        android:id="@+id/header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
         tools:layout="@layout/fragment_header"
         android:layout_width="match_parent"
@@ -29,17 +29,45 @@
             tools:context=".views.shovlerDashboard.MapsActivity" />
     <LinearLayout
         app:layout_constraintBottom_toBottomOf="@id/details_wrapper"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:background="@drawable/filters_footer_style"
         android:padding="20dp"
         android:weightSum="1"
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_extrabold"
+            android:textSize="18dp"
+            android:lineHeight="35dp"
+            android:textColor="@color/text_black"
+            android:text="Direction Details" />
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="18dp"
+            android:lineHeight="35dp"
+            android:textColor="@color/primary"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textSize="12dp"
+            android:textColor="@color/text_black"
+            android:text="The distance between your location to 360 McLevin Ave, Scarborough, ON is 0.5 km." />
 
         <Button
-
+            android:layout_marginTop="10dp"
             android:id="@+id/get_navigation_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
     tools:context=".views.shovlerDashboard.ViewFeedBack">
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/reviews_header"
+        android:id="@+id/header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
         tools:layout="@layout/fragment_header"
         android:layout_width="match_parent"

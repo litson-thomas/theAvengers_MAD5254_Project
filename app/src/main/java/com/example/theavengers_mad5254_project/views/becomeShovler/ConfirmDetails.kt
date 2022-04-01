@@ -15,6 +15,7 @@ import com.example.theavengers_mad5254_project.model.data.ShovlerImage
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.viewmodel.ShovlerViewModel
 import com.example.theavengers_mad5254_project.viewmodel.ShovlerViewModelFactory
 import com.example.theavengers_mad5254_project.views.home.Home
@@ -32,6 +33,7 @@ class ConfirmDetails : AppCompatActivity() {
     private lateinit var imageAdapter: ImageAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FragmentUtil.setHeader("Become a Shovler","Confirm Details", false,supportFragmentManager)
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_confirm_details)
         binding.title.setText(intent.getStringExtra("title"))

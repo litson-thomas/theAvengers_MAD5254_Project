@@ -1,6 +1,7 @@
 package com.example.theavengers_mad5254_project.model.data;
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Shoveler (
 
@@ -60,4 +61,4 @@ data class ShovelerAddress (
   @SerializedName("updatedAt"   ) var updatedAt  : String? = null,
   @SerializedName("userUid"     ) var userUid    : String? = null
 
-)
+) : Serializable
