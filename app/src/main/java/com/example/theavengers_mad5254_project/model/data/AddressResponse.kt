@@ -11,8 +11,8 @@ data class Address (
     val id: Int? =null,
     val address_one: String? =null,
     val address_two: String? = null,
-    val latitude: Number? = null,
-    val longitude: Number? = null,
+    val latitude: Double? = null,
+    val longitude: Double? = null,
     val createdAt: String? = null,
     val updatedAt: String? = null,
     val userUid: String? = null
