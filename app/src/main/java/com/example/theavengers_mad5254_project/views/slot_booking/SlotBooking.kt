@@ -182,9 +182,9 @@ class SlotBooking : AppCompatActivity() {
     private fun getHourPriceFromUser(position: Int): Double {
       var price = 0.0
       hoursPosition = position + 1
-      if(position == 0) price = shovelerDetails?.oneFourPrice!!
-      if(position == 1) price = shovelerDetails?.fiveEightPrice!!
-      if(position == 2) price = shovelerDetails?.nineTwelvePrice!!
+      if(position == 0 && shovelerDetails?.oneFourPrice != null) price = shovelerDetails?.oneFourPrice!!
+      if(position == 1 && shovelerDetails?.fiveEightPrice != null) price = shovelerDetails?.fiveEightPrice!!
+      if(position == 2 && shovelerDetails?.nineTwelvePrice != null) price = shovelerDetails?.nineTwelvePrice!!
       return price
     }
 
