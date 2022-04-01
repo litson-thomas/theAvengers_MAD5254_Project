@@ -35,7 +35,7 @@ class ApiClient {
         // Initialize ApiService if not initialized yet
         if (!::weatherApiService.isInitialized) {
             val retrofit = Retrofit.Builder()
-                .baseUrl(AppConstants.WEATHER_API_IMAGE_ENDPOINT)
+                .baseUrl(AppConstants.WEATHER_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okhttpClient(context))
                 .build()
