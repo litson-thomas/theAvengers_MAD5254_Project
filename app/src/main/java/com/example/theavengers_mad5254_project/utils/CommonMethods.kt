@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Handler
+import android.provider.Settings
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -50,6 +51,7 @@ class CommonMethods {
                 .setPositiveButton(
                     mYes
                 ) { _: DialogInterface?, _: Int ->
+                    AppPreference.isLogin = false
                     val intent = Intent(context, Login::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -70,5 +72,28 @@ class CommonMethods {
             }
             return check
         }
+
+        fun showAlertDialogGPSEnable(
+            context: Context,
+            mMessage: String?,
+            mYes: String?,
+            mNo: String?
+        ) {
+            android.app.AlertDialog.Builder(context)
+                .setTitle("GPS Enable")
+                .setMessage(mMessage)
+                .setPositiveButton(
+                    mYes
+                ) { dialog: DialogInterface?, _: Int ->
+                    context.startActivity(Intent(Settings. ACTION_LOCATION_SOURCE_SETTINGS ))
+                    dialog?.cancel()
+                }
+                .setNegativeButton(
+                    mNo
+                ) { dialog: DialogInterface, _: Int -> dialog.cancel() }
+                .show()
+        }
     }
+
+
 }

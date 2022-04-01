@@ -15,6 +15,8 @@ class MainRepository constructor(private val apiService: ApiService) {
 
     suspend fun getWeatherForecastDetails(lat: Double,lng:Double, apiKey: String) = apiService.getWeatherForecastDetails(lat = lat, lon = lng, apiKey = apiKey)
 
+    suspend fun getGeocodeDetails(lat: Double,lng:Double, apiKey: String) = apiService.getGeocoderDetails(lat = lat, lon = lng, apiKey = apiKey)
+
     suspend fun createUser( createUserRequest: CreateUserRequest) = apiService.registerUser(createUserRequest)
 
     suspend fun addShovler( shovler: Shovler) = apiService.addShovler(shovler)

@@ -12,6 +12,7 @@ import okhttp3.MultipartBody
 import retrofit2.Response
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.GeocodeResponseItem
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -82,6 +83,9 @@ interface ApiService {
 
     @GET("data/2.5/forecast?")
     suspend fun getWeatherForecastDetails(@Query("lat") lat: Double,@Query("lon") lon: Double,@Query("APPID") apiKey: String): Response<ForecastResponse>
+
+    @GET("geo/1.0/reverse?")
+    suspend fun getGeocoderDetails(@Query("lat") lat: Double,@Query("lon") lon: Double,@Query("APPID") apiKey: String): Response<GeocodeResponseItem>
 
     @POST("api/user")
     suspend fun registerUser(@Body requestBody: CreateUserRequest): Response<CreateUserResponse>
