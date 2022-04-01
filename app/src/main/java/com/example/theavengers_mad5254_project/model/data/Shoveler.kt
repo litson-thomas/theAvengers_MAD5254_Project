@@ -48,7 +48,7 @@ data class ShovlerUser(
   @SerializedName("CityId"     ) var CityId    : String?  = null,
   @SerializedName("addresses" ) var addresses : ArrayList<ShovelerAddress> = arrayListOf()
 
-)
+) :Serializable
 
 data class ShovelerAddress (
 
