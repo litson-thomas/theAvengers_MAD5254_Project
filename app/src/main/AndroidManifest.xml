@@ -53,7 +53,7 @@
             android:exported="false" />
         <activity
 
-            android:name=".SplashActivity"
+            android:name=".views.home.Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -71,7 +71,7 @@
             android:name=".views.home.Filters"
             android:exported="false" />
         <activity
-            android:name=".views.home.Home"
+            android:name=".SplashActivity"
             android:exported="false" />
         <activity
             android:name=".views.auth.Reset"
@@ -123,7 +123,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.ConfirmDetails"
             android:exported="false" />
