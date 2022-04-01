@@ -1,51 +1,118 @@
 package com.example.theavengers_mad5254_project.views.weather
 
-import android.content.ContentValues
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.DialogInterface
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
-import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.adaptors.WeatherForecastAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivityWeatherForecastBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
-import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ListItem
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppConstants
-import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
-import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
 import com.example.theavengers_mad5254_project.viewmodel.WeatherForecastViewModel
 import com.example.theavengers_mad5254_project.viewmodel.WeatherForecastViewModelFactory
-import com.example.theavengers_mad5254_project.views.home.Home
-import kotlin.math.ln
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import java.io.IOException
+import java.util.*
 
 class WeatherForecastActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWeatherForecastBinding
     private lateinit var viewModel: WeatherForecastViewModel
     private lateinit var viewModelFactory: WeatherForecastViewModelFactory
-    private var weatherForecastAdaptor:WeatherForecastAdaptor? = null
+    private var weatherForecastAdaptor: WeatherForecastAdaptor? = null
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_weather_forecast)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_weather_forecast)
 
-        val retrofitService =  ApiClient().getWeatherApiService(this)
+        val retrofitService = ApiClient().getWeatherApiService(this)
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = WeatherForecastViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[WeatherForecastViewModel::class.java]
 
-        getLocationAndApiKey(43.7764,43.7764,AppConstants.WEATHER_API_KEY)
+        //instantiation
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        findLocation()
+
+    }
+
+
+    private fun findLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null) {
+                getLocationAndApiKey(
+                    location.latitude,
+                    location.longitude,
+                    AppConstants.WEATHER_API_KEY
+                )
+
+
+                Log.d(
+                    "LOCATIONNNNN ",
+                    "onSucsess: " + location.latitude + " " + location.longitude
+                )
+
+            }
+        }
+
+    }
+
+    private fun findUserAddress(latitude: Double, longitude: Double) {
+        val addresses: List<Address>
+        val geocoder: Geocoder = Geocoder(this, Locale.getDefault())
+        try {
+            addresses = geocoder.getFromLocation(
+                latitude,
+                longitude,
+                1
+            ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            val address =
+                addresses[0].getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            val city = addresses[0].locality
+            val state = addresses[0].adminArea
+            val country = addresses[0].countryName
+            val postalCode = addresses[0].postalCode
+            val knownName = addresses[0].featureName
+            binding.textCityName.text= "$city, $country"
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 
     private fun getLocationAndApiKey(lat: Double,lng:Double, apiKey: String) {
         viewModel.getWeatherDetails(lat, lng,apiKey)
         viewModel.getWeatherForecastDetails(lat, lng,apiKey)
+        findUserAddress(lat,lng)
         observeWeatherDetails()
         observeWeatherForecastDetails()
     }
@@ -56,7 +123,6 @@ class WeatherForecastActivity : AppCompatActivity() {
               var tempKelvin: Float = it.main.temp.toFloat()
               tempKelvin = (tempKelvin - 273.15F)
               binding.textViewTemperature.text = (tempKelvin).toString().substringBefore(".") + "°"
-              binding.textCityName.text = it.name
               binding.textDateTime.text =  CommonMethods.getCurrentDateTime(AppConstants.DATE_FORMAT)
               val iconCode = it.weather.first().icon
               CommonMethods.setGlideImage(
@@ -95,4 +161,5 @@ class WeatherForecastActivity : AppCompatActivity() {
 
         })
     }
+
 }
