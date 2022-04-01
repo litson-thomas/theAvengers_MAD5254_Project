@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.model.data.Booking
 
-
 class BookingAdapter(private val onItemClicked: (position: Int) -> Unit) : RecyclerView.Adapter<JobViewHolder>() {
 
     var bookings = listOf<Booking>()
