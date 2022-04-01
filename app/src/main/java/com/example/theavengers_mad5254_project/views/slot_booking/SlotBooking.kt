@@ -13,9 +13,12 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.adaptors.SlotBookingAddressAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivitySlotBookingBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
+import com.example.theavengers_mad5254_project.model.api.ApiService
+
 import com.example.theavengers_mad5254_project.model.data.Shoveler
 import com.example.theavengers_mad5254_project.model.data.ShovelerAddress
 import com.example.theavengers_mad5254_project.model.data.ShovlerUser
+
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods

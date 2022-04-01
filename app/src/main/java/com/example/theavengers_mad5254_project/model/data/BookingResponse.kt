@@ -14,7 +14,7 @@ data class Booking (
     val addressId: String? = null,
     val instructions: String? = null,
     val date: String? = null,
-    val price: Int? = null,
+    val price: Number? = null,
     val hours_required: Int? = null,
     val is_completed: Boolean? = null,
     val address: Address? = null,

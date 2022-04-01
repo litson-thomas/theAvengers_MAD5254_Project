@@ -30,7 +30,7 @@ class BookingViewModel(private val repository: MainRepository)
         loading.postValue(false)
     }
     fun updateBooking(id: Int?, shovlerId:Int?, addressId:String?, instructions:String?,
-                      date:String?, price:Int?, hours_required:Int?, is_completed:Boolean?
+                      date:String?, price:Number?, hours_required:Int?, is_completed:Boolean?
                       ){
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
@@ -57,7 +57,7 @@ class BookingViewModel(private val repository: MainRepository)
                     val bookings: List<Booking> = response.body()?.rows!!
                     var shovlerBookings = listOf<Booking>()
                     for(booking in bookings) {
-                        if (booking.shovler!!.userUid == userUid) {
+                        if (booking.shovler != null && booking.shovler!!.userUid == userUid) {
                             shovlerBookings += booking
                         }
                     }

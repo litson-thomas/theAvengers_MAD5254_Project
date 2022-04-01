@@ -18,6 +18,8 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityViewDirectionsBinding
+import com.example.theavengers_mad5254_project.model.data.Booking
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.*
@@ -26,7 +28,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-//import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.Places
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -41,45 +43,66 @@ class ViewDirections : AppCompatActivity(), OnMapReadyCallback,
     private var originLongitude: Double = -79.34617
     private var destinationLatitude: Double = 43.77358
     private var destinationLongitude: Double = -79.33595
-    private val TAG = "ViewDirections"
+    private lateinit var apiKey: String
+    private lateinit var mapFragment: SupportMapFragment
+    private lateinit var distance: String
+    private lateinit var duration: String
+    private lateinit var address: String
+    private lateinit var booking: Booking
+
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_view_directions)
+        booking = intent.getSerializableExtra("booking") as Booking
+        destinationLatitude = booking.address!!.latitude!!.toDouble()
+        destinationLongitude = booking.address!!.longitude!!.toDouble()
+        address = booking.address!!.address_one.toString()
+        if (booking.address!!.address_two != null) {
+            address += booking.address!!.address_two.toString()
+        }
+        FragmentUtil.setHeader("Order #${booking.id} - Directions","Directions for the job", false,supportFragmentManager)
 
         // Fetching API_KEY which we wrapped
         val ai: ApplicationInfo = applicationContext.packageManager
             .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
         val value = ai.metaData["com.google.android.geo.API_KEY"] //MAPS_API_KEY
-        val apiKey = value.toString()
+        apiKey = value.toString()
 
         // Initializing the Places API with the help of our API_KEY
-        //if (!Places.isInitialized()) {
-       //     Places.initialize(applicationContext, apiKey)
-       // }
-
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
-        binding.getNavigationBtn.setOnClickListener{
-            mapFragment.getMapAsync {
-                mMap = it
-                val originLocation = LatLng(originLatitude, originLongitude)
-                mMap.addMarker(MarkerOptions().position(originLocation))
-                val destinationLocation = LatLng(destinationLatitude, destinationLongitude)
-                mMap.addMarker(MarkerOptions().position(destinationLocation))
-                val urll = getDirectionURL(originLocation, destinationLocation, apiKey)
-                GetDirection(urll).execute()
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(originLocation, 14F))
-            }
+        if (!Places.isInitialized()) {
+            Places.initialize(applicationContext, apiKey)
         }
 
+        mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+        getNavigation()
+        binding.getNavigationBtn.setOnClickListener{
+            if (lastLocation != null) {
+                originLatitude = lastLocation.latitude
+                originLongitude = lastLocation.longitude
+            }
+            getNavigation()
+        }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
+    private fun getNavigation() {
+        mapFragment.getMapAsync {
+            mMap = it
+            val originLocation = LatLng(originLatitude, originLongitude)
+            mMap.addMarker(MarkerOptions().position(originLocation))
+            val destinationLocation = LatLng(destinationLatitude, destinationLongitude)
+            mMap.addMarker(MarkerOptions().position(destinationLocation))
+            val urll = getDirectionURL(originLocation, destinationLocation, apiKey)
+            GetDirection(urll).execute()
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(originLocation, 14F))
 
+        }
+
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -91,17 +114,8 @@ class ViewDirections : AppCompatActivity(), OnMapReadyCallback,
      */
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
-
-
         mMap = googleMap
-        // Add a marker in Sydney and move the camera
-        /*
-        val sydney = LatLng(43.77358, -79.33595)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Target"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        */
-
-        mMap.getUiSettings().setZoomControlsEnabled(true)
+        mMap.uiSettings.isZoomControlsEnabled = true
         mMap.setOnMarkerClickListener(this)
         setUpMap()
     }
@@ -145,6 +159,8 @@ class ViewDirections : AppCompatActivity(), OnMapReadyCallback,
             val result = ArrayList<List<LatLng>>()
             try{
                 val respObj = Gson().fromJson(data,MapData::class.java)
+                distance = respObj.routes[0].legs[0].distance.text
+                duration = respObj.routes[0].legs[0].duration.text
                 val path = ArrayList<LatLng>()
                 for (i in 0 until respObj.routes[0].legs[0].steps.size){
                     path.addAll(decodePolyline(respObj.routes[0].legs[0].steps[i].polyline.points))
@@ -165,6 +181,8 @@ class ViewDirections : AppCompatActivity(), OnMapReadyCallback,
                 lineoption.geodesic(true)
             }
             mMap.addPolyline(lineoption)
+            binding.distance.text = "${distance} (${duration})"
+            binding.description.text = "The distance between your location to ${address}} is ${distance}."
         }
     }
 

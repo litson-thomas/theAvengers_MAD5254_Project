@@ -11,6 +11,7 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityViewFeedBackBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.repository.MainRepository
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.viewmodel.*
 
 class ViewFeedBack : AppCompatActivity() {
@@ -46,6 +47,9 @@ class ViewFeedBack : AppCompatActivity() {
             }
         })
         val bookingId = intent.getIntExtra("bookingId",0)
+
+        FragmentUtil.setHeader("Order #${bookingId}","Feedback", false,supportFragmentManager)
+
         val shovlerId = intent.getIntExtra("shovlerId",0)
         reviewViewModel.getReviews(shovlerId,bookingId)
     }
