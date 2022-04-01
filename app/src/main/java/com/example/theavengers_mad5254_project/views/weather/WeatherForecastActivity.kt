@@ -2,20 +2,32 @@ package com.example.theavengers_mad5254_project.views.weather
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Address
-import android.location.Geocoder
+import android.location.*
+import android.location.LocationRequest
+import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
+import android.os.Looper
+import android.provider.Settings
+import android.telecom.TelecomManager.EXTRA_LOCATION
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.adaptors.WeatherForecastAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivityWeatherForecastBinding
@@ -24,20 +36,29 @@ import com.example.theavengers_mad5254_project.model.data.responseModel.weatherR
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppConstants
 import com.example.theavengers_mad5254_project.utils.CommonMethods
+import com.example.theavengers_mad5254_project.utils.dialogs.CustomAlertDialog
+import com.example.theavengers_mad5254_project.utils.dialogs.DialogModel
 import com.example.theavengers_mad5254_project.viewmodel.WeatherForecastViewModel
 import com.example.theavengers_mad5254_project.viewmodel.WeatherForecastViewModelFactory
+import com.example.theavengers_mad5254_project.views.auth.Login
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
+import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import java.io.IOException
+import java.net.URI.create
 import java.util.*
 
-class WeatherForecastActivity : AppCompatActivity() {
+class WeatherForecastActivity : AppCompatActivity(){
     private lateinit var binding: ActivityWeatherForecastBinding
     private lateinit var viewModel: WeatherForecastViewModel
     private lateinit var viewModelFactory: WeatherForecastViewModelFactory
     private var weatherForecastAdaptor: WeatherForecastAdaptor? = null
+
+    //Location Access
+    private lateinit var locationManager: LocationManager
+    private var mLastLocation: Location? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -50,71 +71,53 @@ class WeatherForecastActivity : AppCompatActivity() {
         viewModelFactory = WeatherForecastViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[WeatherForecastViewModel::class.java]
 
+        observerLoadingProgress()
         //instantiation
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        findLocation()
+       getCurrentLocation()
 
+        binding.detailsBackBtn.setOnClickListener {
+            onBackPressed()
+        }
     }
 
 
-    private fun findLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
-        fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-            if (location != null) {
+
+    private fun getLastLocation() {
+
+        fusedLocationProviderClient.lastLocation.addOnCompleteListener { location ->
+            if (location.isSuccessful && location.result != null) {
+
+                mLastLocation = location.result
                 getLocationAndApiKey(
-                    location.latitude,
-                    location.longitude,
+                    mLastLocation!!.latitude,
+                    mLastLocation!!.longitude,
                     AppConstants.WEATHER_API_KEY
                 )
 
-
-                Log.d(
-                    "LOCATIONNNNN ",
-                    "onSucsess: " + location.latitude + " " + location.longitude
-                )
-
+            }else{
+                Log.w(TAG, "getLastLocation:exception", location.exception)
             }
         }
-
     }
+    private fun getCurrentLocation() {
 
-    private fun findUserAddress(latitude: Double, longitude: Double) {
-        val addresses: List<Address>
-        val geocoder: Geocoder = Geocoder(this, Locale.getDefault())
-        try {
-            addresses = geocoder.getFromLocation(
-                latitude,
-                longitude,
-                1
-            ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-            val address =
-                addresses[0].getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-            val city = addresses[0].locality
-            val state = addresses[0].adminArea
-            val country = addresses[0].countryName
-            val postalCode = addresses[0].postalCode
-            val knownName = addresses[0].featureName
-            binding.textCityName.text= "$city, $country"
-        } catch (e: IOException) {
-            e.printStackTrace()
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            CommonMethods.showAlertDialogGPSEnable(this,"GPS is disabled in your device. Would you like to enable it?",
+                "Settings","No")
+        }else{
+            getLastLocation()
         }
-    }
-
+}
     private fun getLocationAndApiKey(lat: Double,lng:Double, apiKey: String) {
         viewModel.getWeatherDetails(lat, lng,apiKey)
         viewModel.getWeatherForecastDetails(lat, lng,apiKey)
-        findUserAddress(lat,lng)
+        viewModel.getGeocodeDetails(lat, lng,apiKey)
         observeWeatherDetails()
         observeWeatherForecastDetails()
+        observeGeocodeDetails()
     }
 
     private fun observeWeatherDetails(){
@@ -162,4 +165,37 @@ class WeatherForecastActivity : AppCompatActivity() {
         })
     }
 
+    private fun observeGeocodeDetails(){
+        viewModel.geocodeStatus.observe(this, Observer {
+            if(!it.isEmpty()){
+               binding.textCityName.text = it.first().name +", " +it.first().country
+
+            }else{
+                CommonMethods.toastMessage(applicationContext,"Location Permission Denied")
+            }
+
+        })
+    }
+
+
+    //method for progress bar
+    private fun observerLoadingProgress(){
+        viewModel.fetchLoading().observe(this, Observer {
+            if (!it) {
+                println(it)
+                binding.loginProgress.visibility = View.GONE
+            }else{
+                binding.loginProgress.visibility = View.VISIBLE
+            }
+
+        })
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getLastLocation()
+    }
 }
+

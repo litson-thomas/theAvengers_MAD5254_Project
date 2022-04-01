@@ -33,8 +33,7 @@ class WeatherForecastAdaptor(context: Context, private val forecastList: ArrayLi
     return ViewHolder(view)
   }
 
-  @RequiresApi(Build.VERSION_CODES.O)
-  @SuppressLint("ResourceAsColor")
+
   override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
     val forecastResponse: ListItem = forecastList[position]
 
@@ -44,10 +43,16 @@ class WeatherForecastAdaptor(context: Context, private val forecastList: ArrayLi
         tempKelvin = (tempKelvin - 273.15F)
         val iconCode = forecastResponse.weather.first().icon
 
-        val displayName =
-          getDateTime(forecastResponse.dt)?.getDisplayName(TextStyle.FULL, Locale.getDefault())
 
-        holder.weatherDay.text = displayName
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val displayName =
+            getDateTime(forecastResponse.dt)?.getDisplayName(TextStyle.FULL, Locale.getDefault())
+            holder.weatherDay.text = displayName
+          } else {
+            holder.weatherDay.text = forecastResponse.dt.toString()
+          }
+
+
         holder.weatherDegree.text = (tempKelvin).toString().substringBefore(".") + "°"
 
         CommonMethods.setGlideImage(
