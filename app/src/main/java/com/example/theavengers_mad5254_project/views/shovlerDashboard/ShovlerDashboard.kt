@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.findFragment
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityShovlerDashboardBinding
+import com.example.theavengers_mad5254_project.fragments.common.DirectionHeader
 import com.example.theavengers_mad5254_project.fragments.common.Header
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 
 class ShovlerDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityShovlerDashboardBinding
@@ -16,8 +19,9 @@ class ShovlerDashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_shovler_dashboard)
+        FragmentUtil.setHeader("Shovler Dashboard","Manage Shovler Details", false,supportFragmentManager)
 
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_shovler_dashboard)
         binding.editMyListingBtn.setOnClickListener {
             val intent = Intent(this, EditListing::class.java)
             startActivity(intent)

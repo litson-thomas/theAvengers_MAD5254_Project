@@ -21,8 +21,9 @@ data class Shovler  (
     val institution_number: Int? = null,
     val account_number: Int? = null,
     val addressId: Int? = null,
-    var shovler_images: List<ShovlerImage>? = null
-
+    var shovler_images: List<ShovlerImage>? = null,
+    var user: ShovlerUser? = null,
+    var address: Address? = null
 ) : Serializable{
 
     override fun toString(): String {

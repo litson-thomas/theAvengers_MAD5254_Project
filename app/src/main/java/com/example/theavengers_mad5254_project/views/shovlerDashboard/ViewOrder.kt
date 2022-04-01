@@ -5,19 +5,22 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityViewOrderBinding
+import com.example.theavengers_mad5254_project.fragments.common.DirectionHeader
 import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.data.Booking
-import com.example.theavengers_mad5254_project.model.data.BookingResponse
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.CommonMethods
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.viewmodel.BookingViewModel
 import com.example.theavengers_mad5254_project.viewmodel.BookingViewModelFactory
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+
 
 class ViewOrder : AppCompatActivity() {
     private lateinit var binding: ActivityViewOrderBinding
@@ -26,6 +29,9 @@ class ViewOrder : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_view_order)
+
+
+
         var booking = intent.getSerializableExtra("booking") as Booking
         binding.orderAddress.text = booking.addressId
         binding.orderHours.text = "${booking.hours_required} hrs"
@@ -36,6 +42,13 @@ class ViewOrder : AppCompatActivity() {
         if (booking.address?.address_two != null) {
             binding.orderAddress.text ="${booking.address?.address_one} ${booking.address?.address_two}"
         }
+
+        val mFragment = DirectionHeader()
+        val mBundle = Bundle()
+        mBundle.putSerializable("booking", booking)
+        mFragment.arguments = mBundle
+        supportFragmentManager.beginTransaction().replace(R.id.header, mFragment).commit()
+
 
         val dateFormat = SimpleDateFormat("yyyy-MM-dd")
         val date = dateFormat.parse(booking.date)

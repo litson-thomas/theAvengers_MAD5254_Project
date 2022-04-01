@@ -22,9 +22,14 @@ class ShovlerAdapter(private val onItemClicked: (position: Int) -> Unit) : Recyc
     override fun onBindViewHolder(holder: ShovlerViewHolder, position: Int) {
         val shovlerListItem = shoverListings[position]
         holder.shovler_title.text = shovlerListItem.title
-        holder.shovler_subtitle.text = shovlerListItem.description
-        holder.shovler_location.text = shovlerListItem.addressId.toString()
-
+        holder.shovler_subtitle.text = "by " + shovlerListItem.user!!.name
+        if (shovlerListItem.address==null) {
+            holder.shovler_location.text = ""
+            holder.shovler_price.text = ""
+        } else {
+            holder.shovler_location.text = shovlerListItem.address!!.address_one
+            holder.shovler_price.text = "$${shovlerListItem.one_four_price.toString()}"
+        }
     }
 
     override fun getItemCount(): Int {
@@ -42,6 +47,8 @@ class ShovlerViewHolder(view: View,private val onItemClicked: (position: Int) ->
     val shovler_subtitle: TextView = view.findViewById(R.id.shovler_subtitle)
     val shovler_rating: TextView = view.findViewById(R.id.shovler_rating)
     val shovler_location: TextView = view.findViewById(R.id.shovler_location)
+    val shovler_price: TextView = view.findViewById(R.id.shovler_price)
+
 
     init {
         itemView.setOnClickListener(this)
