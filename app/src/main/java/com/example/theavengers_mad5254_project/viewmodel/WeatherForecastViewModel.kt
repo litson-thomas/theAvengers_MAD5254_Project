@@ -9,6 +9,7 @@ import androidx.lifecycle.*
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
 import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ForecastResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.GeocodeResponseItem
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.WeatherForecastResponse
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
@@ -32,6 +33,9 @@ class WeatherForecastViewModel(private val repository: MainRepository)
     private val _weatherForecastStatus = MutableLiveData<ForecastResponse>()
     var weatherForecastStatus: LiveData<ForecastResponse> = _weatherForecastStatus
 
+    private val _geocodeStatus = MutableLiveData<GeocodeResponseItem>()
+    var geocodeStatus: LiveData<GeocodeResponseItem> = _geocodeStatus
+
     var job: Job? = null
 
     init {
@@ -50,6 +54,7 @@ class WeatherForecastViewModel(private val repository: MainRepository)
                 onError("Error : ${response.message()}")
                 Log.d(TAG, "createUser:  ${response.raw().message}")
             }
+               loading.postValue(false)
               }
         }
     }
@@ -66,9 +71,27 @@ class WeatherForecastViewModel(private val repository: MainRepository)
                     onError("Error : ${response.message()}")
                     Log.d(TAG, "createUser:  ${response.raw().message}")
                 }
+                loading.postValue(false)
             }
         }
     }
+    fun getGeocodeDetails(lat: Double,lng:Double,apiKey:String){
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getGeocodeDetails(lat,lng,apiKey)
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                    _geocodeStatus.postValue(response.body())
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(TAG, "createUser:  ${response.raw().message}")
+                }
+                loading.postValue(false)
+            }
+        }
+    }
+
     private fun onError(message: String) {
         errorMessage.value = message
         loading.postValue(false)
