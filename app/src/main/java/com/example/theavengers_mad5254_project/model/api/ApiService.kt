@@ -2,6 +2,10 @@ package com.example.theavengers_mad5254_project.model.api
 
 import com.example.theavengers_mad5254_project.model.data.*
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
+import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
+import com.example.theavengers_mad5254_project.model.data.responseModel.*
+import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ForecastResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.WeatherForecastResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import okhttp3.MultipartBody
@@ -17,10 +21,16 @@ import retrofit2.http.*
 interface ApiService {
     /*
     companion object{
+<<<<<<< HEAD
         const val BASE_URL: String = "https://snowapp.lcmaze.com/"
+        const val OPEN_WEATHER_MAP_URL: String = "https://api.openweathermap.org/"
+=======
+         const val BASE_URL: String = "https://snowapp.lcmaze.com/"
+        // const val BASE_URL: String = "http://192.168.2.15:8100/"
+>>>>>>> 61cd10684e6a763c266c0c36d37548239cc4eb0d
         val TOKEN: String = AppPreference.userToken;
 
-        var apiService: ApiService? = null
+        private var apiService: ApiService? = null
         fun getInstance(): ApiService {
             if (apiService == null) {
                 val retrofit = Retrofit.Builder()
@@ -33,6 +43,23 @@ interface ApiService {
             return apiService!!
 
         }
+<<<<<<< HEAD
+
+        private var apiWeatherService: ApiService? = null
+        fun getWeatherInstance(): ApiService {
+            if (apiWeatherService == null) {
+                val retrofit = Retrofit.Builder()
+                    .baseUrl(OPEN_WEATHER_MAP_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                apiWeatherService = retrofit.create(ApiService::class.java)
+            }
+            return apiWeatherService!!
+
+        }
+    }
+=======
+>>>>>>> 61cd10684e6a763c266c0c36d37548239cc4eb0d
 
         private fun okhttpClient(context: Any): OkHttpClient {
             return OkHttpClient.Builder()
@@ -41,6 +68,7 @@ interface ApiService {
         }
     }
     */
+   // lat=43.7764&lon=79.2318
 
     @POST("api/shovler")
     suspend fun addShovler(@Body requestBody: Shovler): Response<APIResponse>
@@ -48,6 +76,12 @@ interface ApiService {
 
     @PUT("api/shovler/{id}")
     suspend fun updateShovler(@Path(value = "id") id: Int?,@Body requestBody: Shovler): Response<APIResponse>
+
+    @GET("data/2.5/weather?")
+    suspend fun getWeatherDetails( @Query("lat") lat: Double,@Query("lon") lon: Double,@Query("APPID") apiKey: String): Response<WeatherForecastResponse>
+
+    @GET("data/2.5/forecast?")
+    suspend fun getWeatherForecastDetails(@Query("lat") lat: Double,@Query("lon") lon: Double,@Query("APPID") apiKey: String): Response<ForecastResponse>
 
     @POST("api/user")
     suspend fun registerUser(@Body requestBody: CreateUserRequest): Response<CreateUserResponse>
@@ -83,8 +117,12 @@ interface ApiService {
     @GET("api/shovler")
     suspend fun getShovlerById(@Header("token") token: String, @Query("id") id: Int): Response<ShovlersResponse>
 
-    @GET("api/user")
+    @GET("api/user?q=&order=uid&order_type=ASC")
     suspend fun getUser(@Header("token") token: String, @Query("uid") uid: String): Response<UserResponse>
+
+    // booking
+    @POST("api/user/prepare-booking")
+    suspend fun prepareBooking(@Body requestBody: PrepareBookingRequest): Response<PrepareBookingResponse>
 
 }
 

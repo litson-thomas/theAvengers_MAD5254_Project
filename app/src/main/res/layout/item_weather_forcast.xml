@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewForecastIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="0.1"
+                tools:src="@drawable/a10d_svg" />
+
+            <TextView
+                android:id="@+id/txtDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:text="Today"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/textViewTemp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="19sp"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:text="23°" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,13 +1,17 @@
 package com.example.theavengers_mad5254_project.views.auth
 
+import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -31,9 +35,16 @@ class Login : AppCompatActivity() {
         viewModelFactory = FireBaseViewModelFactory()
         viewModel = ViewModelProvider(this,viewModelFactory)[FirebaseViewModel::class.java]
         binding.viewModel = viewModel
-        //AppPreference.init(this)
-        observerLoadingProgress()
 
+        observerLoadingProgress()
+        selfLocationPermissionGranted()
+        onClickEvents()
+
+
+
+    }
+
+    private fun onClickEvents() {
         binding.loginButton.setOnClickListener {
             if(TextUtils.isEmpty(binding.loginEmail.text.toString()) || TextUtils.isEmpty(binding.loginPassword.text.toString())){
                 CommonMethods.toastMessage(applicationContext,"Login fields can't be empty")
@@ -49,6 +60,23 @@ class Login : AppCompatActivity() {
         binding.loginForgotPassword.setOnClickListener {
             val intent = Intent(this, Reset::class.java)
             startActivity(intent)
+        }
+
+    }
+
+    private fun selfLocationPermissionGranted() {
+
+        if (ContextCompat.checkSelfPermission(this@Login,
+                Manifest.permission.ACCESS_FINE_LOCATION) !==
+            PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this@Login,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(this@Login,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+            } else {
+                ActivityCompat.requestPermissions(this@Login,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+            }
         }
     }
 
@@ -105,4 +133,33 @@ class Login : AppCompatActivity() {
         super.onBackPressed()
         finish()
     }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            1 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED
+                ) {
+                    if ((ContextCompat.checkSelfPermission(
+                            this@Login,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                        ) ===
+                                PackageManager.PERMISSION_GRANTED)
+                    ) {
+                        Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
+                }
+                return
+            }
+        }
+    }
+
+
 }

@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -14,17 +13,22 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/gosnow"
+        android:label="GoSnow"
+        android:roundIcon="@drawable/gosnow"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.TheAvengers_MAD5254_Project"
         tools:targetApi="31">
         <activity
+            android:name="com.example.theavengers_mad5254_project.views.weather.WeatherForecastActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.slot_booking.SlotBooking"
             android:exported="false" />
-
-
+        <activity
+            android:name=".views.slot_booking.ConfirmSlotBooking"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -36,9 +40,9 @@
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
+<!--        <meta-data-->
+<!--            android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="${MAPS_API_KEY}" />-->
 
         <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MapsActivity"
@@ -49,9 +53,7 @@
         <activity
             android:name="com.example.theavengers_mad5254_project.views.my_account.MyAddresses"
             android:exported="false" />
-
         <activity
-
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -60,7 +62,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".views.auth.Login"
             android:exported="false" />
@@ -139,10 +140,11 @@
         <activity
             android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddImage"
             android:exported="false" />
+
         <activity
             android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.EditListing"
             android:exported="false" />
+
     </application>
 
 </manifest>
-

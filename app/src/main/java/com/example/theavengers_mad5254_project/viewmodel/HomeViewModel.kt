@@ -54,6 +54,10 @@ class HomeViewModel(private val repository: MainRepository) : ViewModel(), Lifec
     }
   }
 
+  fun getSelectedShoveler(): Shoveler? {
+    return selectedShovler.value
+  }
+
   private fun onError(message: String) {
     errorMessage.value = message
     loading.postValue(false)

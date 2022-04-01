@@ -39,8 +39,6 @@ class SplashActivity : AppCompatActivity() {
     private fun continueHomePage() {
         if (AppPreference.isLogin) {
             val intent = Intent(this, Home::class.java)
-            //val intent = Intent(this, ViewDirections::class.java)
-            //val intent = Intent(this, ShovlerDashboard::class.java)
             startActivity(intent)
         } else {
             val intent = Intent(this, Login::class.java)
