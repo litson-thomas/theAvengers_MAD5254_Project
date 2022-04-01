@@ -9,6 +9,7 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityAddPricingBinding
 import com.example.theavengers_mad5254_project.model.data.Shovler
 import com.example.theavengers_mad5254_project.utils.CommonMethods
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import java.io.Serializable
 
 class AddPricing : AppCompatActivity() {
@@ -17,6 +18,7 @@ class AddPricing : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_add_pricing)
+        FragmentUtil.setHeader("Become a Shovler","Add Pricing", false,supportFragmentManager)
 
         var shovlerListItem = intent.getSerializableExtra("shovlerListItem")
         if (shovlerListItem != null) {

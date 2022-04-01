@@ -11,7 +11,7 @@ object AppPreference {
     private lateinit var preferences: SharedPreferences
     val MONTHS = arrayOf("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 
-  private val IS_LOGIN = Pair("isLogin",false)
+    private val IS_LOGIN = Pair("isLogin",false)
     private val USER_TOKEN = Pair("userToken","")
     private val USER_UID = Pair("userID","")
 

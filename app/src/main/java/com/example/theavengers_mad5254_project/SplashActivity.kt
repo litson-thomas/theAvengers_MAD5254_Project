@@ -16,6 +16,7 @@ import com.example.theavengers_mad5254_project.views.home.Home
 import com.example.theavengers_mad5254_project.views.shovlerDashboard.MapsActivity
 import com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard
 import com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewDirections
+import com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewOrder
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var viewModel: SplashViewModel
@@ -37,11 +38,7 @@ class SplashActivity : AppCompatActivity() {
     }
     private fun continueHomePage() {
         if (AppPreference.isLogin) {
-            //val intent = Intent(this, Home::class.java)
-            val intent = Intent(this, ShovlerDashboard::class.java)
-            //val intent = Intent(this, BecomeShovler::class.java)
-            //val intent = Intent(this, ViewDirections::class.java)
-
+            val intent = Intent(this, Home::class.java)
             startActivity(intent)
         } else {
             val intent = Intent(this, Login::class.java)

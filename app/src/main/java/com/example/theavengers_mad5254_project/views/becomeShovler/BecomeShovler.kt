@@ -20,6 +20,7 @@ import com.example.theavengers_mad5254_project.model.data.Shovler
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.viewmodel.ShovlerViewModel
 import com.example.theavengers_mad5254_project.viewmodel.ShovlerViewModelFactory
 import java.io.Serializable
@@ -29,10 +30,10 @@ class BecomeShovler : AppCompatActivity() {
     private lateinit var binding: ActivityBecomeShovlerBinding
     private lateinit var shovlerViewModel: ShovlerViewModel
     private lateinit var shovlerViewModelFactory: ShovlerViewModelFactory
-    //private lateinit var addressAdapter: AddressAdapter
-    //var addressId :Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FragmentUtil.setHeader("Become a Shovler","Base Details",false, supportFragmentManager)
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_become_shovler)
         binding.radius.setOnSeekBarChangeListener(object:
             SeekBar.OnSeekBarChangeListener {

@@ -84,6 +84,7 @@
             android:orientation="horizontal"
             android:layout_weight=".5"
             android:gravity="end"
+            android:visibility="gone"
             tools:ignore="MissingConstraints">
 
             <ImageView

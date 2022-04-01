@@ -13,6 +13,7 @@ import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.data.Booking
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.viewmodel.BookingViewModel
 import com.example.theavengers_mad5254_project.viewmodel.BookingViewModelFactory
 
@@ -24,6 +25,8 @@ class MyEarnings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_my_earnings)
+        FragmentUtil.setHeader("My Earnings","All my earnings so far",
+            false,supportFragmentManager)
 
         val retrofitService = ApiClient().getApiService(this)
         val mainRepository = MainRepository(retrofitService)
@@ -36,9 +39,9 @@ class MyEarnings : AppCompatActivity() {
 
         bookingViewModel.bookingList.observe(this) {
             earninngAdapter.addBookings(it)
-            var total = 0
+            var total :Double = 0.00
             for (book: Booking in it) {
-                total += book.price!!
+                total = total + book.price!!.toDouble()
             }
             binding.totalEarnings.text = "$${total}"
         }

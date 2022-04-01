@@ -4,11 +4,18 @@ import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.model.data.Booking
 import com.example.theavengers_mad5254_project.model.data.Shovler
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
+import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
 import okhttp3.MultipartBody
 import com.example.theavengers_mad5254_project.utils.AppPreference
 
 
 class MainRepository constructor(private val apiService: ApiService) {
+
+    suspend fun getWeatherDetails( lat: Double,lng:Double, apiKey: String) = apiService.getWeatherDetails(lat = lat, lon = lng, apiKey = apiKey)
+
+    suspend fun getWeatherForecastDetails(lat: Double,lng:Double, apiKey: String) = apiService.getWeatherForecastDetails(lat = lat, lon = lng, apiKey = apiKey)
+
+    suspend fun getGeocodeDetails(lat: Double,lng:Double, apiKey: String) = apiService.getGeocoderDetails(lat = lat, lon = lng, apiKey = apiKey)
 
     suspend fun createUser( createUserRequest: CreateUserRequest) = apiService.registerUser(createUserRequest)
 
@@ -23,11 +30,12 @@ class MainRepository constructor(private val apiService: ApiService) {
     suspend fun deleteShovlerImage(id: Int) = apiService.deleteShovlerImage(id)
     suspend fun getAddress(userUid: String) = apiService.getAddress(userUid)
 
-
     suspend fun loadShovlers() = apiService.getShovlers(token = AppPreference.userToken)
 
     suspend fun loadShovlerById( id: Int) = apiService.getShovlerById(token = AppPreference.userToken, id = id)
 
     suspend fun getUser( uid: String) = apiService.getUser(token = AppPreference.userToken, uid = uid)
+
+    suspend fun prepareBooking( prepareBookingRequest: PrepareBookingRequest) = apiService.prepareBooking(prepareBookingRequest)
 }
 
