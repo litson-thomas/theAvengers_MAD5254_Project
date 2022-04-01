@@ -10,95 +10,129 @@
         tools:context=".views.shovlerDashboard.ShovlerDashboard">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/header"
+        android:tag="header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
         tools:layout="@layout/fragment_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         tools:ignore="MissingConstraints" />
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="100dp">
 
-        <LinearLayout
-
-            android:id="@+id/heading_wrapper"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingTop="100dp"
+            android:paddingRight="20dp"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="155dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+
+                android:id="@+id/heading_wrapper"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Manage Shovler Detais"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="104dp"
-                tools:ignore="MissingConstraints" />
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
 
-            <Button
-                android:id="@+id/edit_my_listing_btn"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/primary_button"
-                android:backgroundTint="@color/white"
-                android:textAllCaps="false"
-                android:elevation="50dp"
-                android:text="Edit My Listing"
-                android:textColor="@color/text_black"
-                android:textSize="14sp"
-                tools:ignore="MissingConstraints" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Manage Shovler Detais"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="104dp" />
 
-            <Button
-                android:id="@+id/my_jobs_btn"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/primary_button"
-                android:backgroundTint="@color/white"
-                android:textAllCaps="false"
-                android:elevation="50dp"
-                android:text="My Jobs"
-                android:textColor="@color/text_black"
-                android:textSize="14sp"
-                tools:ignore="MissingConstraints" />
+                <Button
+                    android:id="@+id/edit_my_listing_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/primary_button"
+                    android:backgroundTint="@color/white"
+                    android:elevation="50dp"
+                    android:text="Edit My Listing"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_black"
+                    android:textSize="14sp"
+                    android:drawableLeft="@drawable/ic_edit_my_listing"
+                    android:drawableRight="@drawable/ic_right_arrow"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center|right"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="20dp"
+                    tools:ignore="MissingConstraints" />
 
-            <Button
-                android:id="@+id/my_earnings_btn"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/primary_button"
-                android:backgroundTint="@color/white"
-                android:textAllCaps="false"
-                android:elevation="50dp"
-                android:text="My Earnings"
-                android:textColor="@color/text_black"
-                android:textSize="14sp"
-                tools:ignore="MissingConstraints" />
-            <Button
-                android:id="@+id/my_messages"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/primary_button"
-                android:backgroundTint="@color/white"
-                android:textAllCaps="false"
-                android:elevation="50dp"
-                android:text="My Messages"
-                android:textColor="@color/text_black"
-                android:textSize="14sp"
-                tools:ignore="MissingConstraints" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/my_jobs_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/primary_button"
+                    android:backgroundTint="@color/white"
+                    android:elevation="50dp"
+                    android:text="My Jobs"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_black"
+                    android:textSize="14sp"
+                    android:drawableLeft="@drawable/ic_my_jobs"
+                    android:drawableRight="@drawable/ic_right_arrow"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center|right"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/my_earnings_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/primary_button"
+                    android:backgroundTint="@color/white"
+                    android:elevation="50dp"
+                    android:text="My Earnings"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_black"
+                    android:textSize="14sp"
+                    android:drawableLeft="@drawable/ic_my_earnings"
+                    android:drawableRight="@drawable/ic_right_arrow"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center|right"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="20dp"
+
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/my_messages"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/primary_button"
+                    android:backgroundTint="@color/white"
+                    android:elevation="50dp"
+                    android:text="My Messages"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_black"
+                    android:textSize="14sp"
+                    android:drawableLeft="@drawable/ic_my_messages"
+                    android:drawableRight="@drawable/ic_right_arrow"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center|right"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="20dp"
+                    tools:ignore="MissingConstraints" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

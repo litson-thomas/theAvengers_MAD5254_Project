@@ -19,6 +19,7 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityAddImageBinding
 import com.example.theavengers_mad5254_project.model.data.Shovler
 import com.example.theavengers_mad5254_project.model.data.ShovlerImage
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import org.apache.commons.io.FilenameUtils
 import java.io.File
 import java.io.Serializable
@@ -32,6 +33,7 @@ class AddImage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_add_image)
+        FragmentUtil.setHeader("Become a Shovler","Add Images", false,supportFragmentManager)
 
         imageAdapter = ImageAdapter()
         binding.rvImages.adapter = imageAdapter

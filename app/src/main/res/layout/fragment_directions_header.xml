@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools">
-
-  <FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.common.Header">
@@ -36,7 +33,7 @@
           tools:ignore="MissingConstraints">
 
           <ImageButton
-            android:id="@+id/fragment_header_back_btn"
+            android:id="@+id/details_back_btn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_weight="0"
@@ -60,7 +57,7 @@
               android:id="@+id/common_header_title"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Litson Thomas"
+              android:text="Order #"
               android:textColor="@color/text_white"
               android:textSize="15dp"
               android:fontFamily="@font/poppins_semibold"/>
@@ -69,7 +66,7 @@
               android:id="@+id/common_header_subtitle"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Reviews"
+              android:text="Job Details"
               android:layout_marginTop="-5dp"
               android:textColor="@color/text_grey"
               android:textSize="12dp"
@@ -84,24 +81,16 @@
             android:orientation="horizontal"
             android:layout_weight=".5"
             android:gravity="end"
-            android:visibility="gone"
             tools:ignore="MissingConstraints">
 
-            <ImageView
-              android:id="@+id/header_rating_icon"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:src="@drawable/ic_star"/>
+            <ImageButton
+              android:id="@+id/header_location_img_button"
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:background="@drawable/home_header_style"
+              android:src="@drawable/ic_directions"/>
 
-            <TextView
-              android:id="@+id/header_rating"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:fontFamily="@font/poppins_semibold"
-              android:textSize="16dp"
-              android:textAlignment="textEnd"
-              android:textColor="@color/primary"
-              android:text="4.3" />
+
 
           </LinearLayout>
 
@@ -111,6 +100,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-  </FrameLayout>
-
-</layout>
+</FrameLayout>
