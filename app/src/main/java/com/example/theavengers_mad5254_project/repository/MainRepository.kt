@@ -40,5 +40,7 @@ class MainRepository constructor(private val apiService: ApiService) {
 
     suspend fun getChats( room: String) = apiService.getChats(room)
 
+    suspend fun searchShovlers(shovlers: String) = apiService.getShovlerBySearch(token = AppPreference.userToken, shovlers)
+
 }
 

@@ -94,6 +94,7 @@
           android:layout_weight=".5"
           android:background="@drawable/search_input_style"
           android:hint="Search..."
+            android:textColor="@color/white"
           android:textColorHint="@color/text_grey"
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
