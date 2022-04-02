@@ -5,4 +5,6 @@ object AppConstants {
     const val WEATHER_URL = "https://api.openweathermap.org/"
     const val WEATHER_API_IMAGE_ENDPOINT = "https://openweathermap.org/img/wn/"
     const val WEATHER_API_KEY = "582ea8be4ce4a695e5ebcb6a2167212a"
+    const val BASE_URL = "https://snowapp.lcmaze.com/"
+    // const val BASE_URL = "http://192.168.2.15:8100/"
 }

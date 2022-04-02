@@ -11,8 +11,7 @@ class ApiClient {
     private lateinit var apiService: ApiService
     private lateinit var weatherApiService: ApiService
 
-    // val BASE_URL: String = "https://snowapp.lcmaze.com/"
-     val BASE_URL: String = "http://192.168.2.15:8100/"
+    val BASE_URL: String = AppConstants.BASE_URL
 
     fun getApiService(context: Context): ApiService {
 

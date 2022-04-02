@@ -12,7 +12,7 @@ object SocketHandler {
   @Synchronized
   fun setSocket() {
     try {
-      mSocket = IO.socket("http://192.168.2.15:8100")
+      mSocket = IO.socket(AppConstants.BASE_URL)
     } catch (e: URISyntaxException) {
       Log.e("SOCKER ERROR => ", ""+e.message)
     }
