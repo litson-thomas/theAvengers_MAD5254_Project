@@ -72,6 +72,7 @@ class ChatMessaging : AppCompatActivity() {
             message = binding.chatMessage.text.toString(),
             userUid = AppPreference.userID,
             room = "" + AppPreference.userID + shovelerId,
+            shovlerId = shovelerId,
             user = ChatUser(
               uid = AppPreference.userID,
               name = AppPreference.userName
@@ -83,7 +84,6 @@ class ChatMessaging : AppCompatActivity() {
       }
 
       // message text listener
-      val TIMEOUT = 2500
       binding.chatMessage.addTextChangedListener {
         val typingRequest = ChatMessage(
           userUid = AppPreference.userID,

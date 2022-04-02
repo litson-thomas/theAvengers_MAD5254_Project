@@ -2,6 +2,7 @@ package com.example.theavengers_mad5254_project.views.shovlerDashboard
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -51,15 +52,19 @@ class MyChatRoomUsers : AppCompatActivity() {
         messageViewModel.messages.observe(this) {
             var chatRoomUsers = listOf<ChatMessage>()
             var users = listOf<String>()
+            Log.e("CHAT USER LIST => ", ""+it)
             if (it.count() > 0 ) {
                 for (item in it) {
-                    if (!users.contains(item.userUid)
-                        && AppPreference.userID!=item.userUid) {
-                        chatRoomUsers+=item
-                        users+=item.userUid!!
-                    }
+//                    if (!users.contains(item.userUid)
+//                        && AppPreference.userID!=item.userUid) {
+//                        chatRoomUsers+=item
+//                        users+=item.userUid!!
+//                    }
+                  chatRoomUsers+=item
+                  users+=item.userUid!!
                 }
             }
+            Log.e("CHAT USER => ", ""+chatRoomUsers)
             chatRoomUserAdapter.addChatRoomUserList(chatRoomUsers)
         }
 

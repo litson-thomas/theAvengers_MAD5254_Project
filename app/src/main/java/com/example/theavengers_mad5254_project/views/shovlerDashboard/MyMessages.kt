@@ -74,6 +74,7 @@ class MyMessages : AppCompatActivity() {
                     message = binding.chatMessage.text.toString(),
                     userUid = AppPreference.userID,
                     room = "" + userUid + shovelerId,
+                    shovlerId = shovelerId,
                     user = ChatUser(
                         uid = AppPreference.userID,
                         name = AppPreference.userName

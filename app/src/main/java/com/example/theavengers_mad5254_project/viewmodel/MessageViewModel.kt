@@ -45,6 +45,7 @@ class MessageViewModel(private val repository: MainRepository) : ViewModel(), Li
               }
             }
           }
+
           _messages.postValue(filteredMessages.toMutableList())
           loading.postValue(false)
         } else {
