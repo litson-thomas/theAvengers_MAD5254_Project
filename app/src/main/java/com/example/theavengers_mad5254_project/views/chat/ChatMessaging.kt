@@ -1,8 +1,11 @@
 package com.example.theavengers_mad5254_project.views.chat
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -79,14 +82,53 @@ class ChatMessaging : AppCompatActivity() {
         }
       }
 
+      // message text listener
+      val TIMEOUT = 2500
+      binding.chatMessage.addTextChangedListener {
+        val typingRequest = ChatMessage(
+          userUid = AppPreference.userID,
+          room = "" + AppPreference.userID + shovelerId,
+          user = ChatUser(
+            uid = AppPreference.userID,
+            name = AppPreference.userName
+          ),
+          typingStatus = true
+        )
+        if(it?.length!! > 0){
+          typingRequest.typingStatus = true
+          chatSocket.emit("typing", Gson().toJson(typingRequest))
+        }
+        else{
+          typingRequest.typingStatus = false
+          chatSocket.emit("typing", Gson().toJson(typingRequest))
+        }
+      }
+
       val gson = Gson()
       var chatResponse: ChatMessage
+      var typingResponse: ChatMessage
       chatSocket.on("message_response") { args ->
         chatResponse = gson.fromJson(args[0].toString(), ChatMessage::class.java)
         chatsList.add(chatResponse)
         chatsAdaptor?.updateChats(chatsList)
         runOnUiThread { chatsAdaptor?.notifyDataSetChanged() }
         binding.chatMessage.setText("")
+      }
+
+      chatSocket.on("typing_response") { args ->
+        typingResponse = gson.fromJson(args[0].toString(), ChatMessage::class.java)
+        showTypingStatus(typingResponse)
+      }
+    }
+
+    // method to update the typing indicator
+    private fun showTypingStatus(response: ChatMessage){
+      if(response.typingStatus == true && (AppPreference.userID != response.userUid)
+      ){
+        runOnUiThread { binding.chatMessageTypingIndicator.visibility = View.VISIBLE }
+      }
+      else{
+        runOnUiThread { binding.chatMessageTypingIndicator.visibility = View.GONE }
       }
     }
 }
