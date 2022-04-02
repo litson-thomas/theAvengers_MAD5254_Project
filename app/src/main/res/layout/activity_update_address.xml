@@ -38,7 +38,7 @@
             android:textSize="16dp" />
 
         <EditText
-            android:id="@+id/txt_update_searchplace"
+            android:id="@+id/txt_update_address1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
@@ -49,7 +49,7 @@
             android:textSize="12dp" />
 
         <EditText
-            android:id="@+id/txt_update_addressLine2"
+            android:id="@+id/txt_update_address2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
@@ -70,16 +70,22 @@
             android:paddingLeft="20dp"
             android:textSize="12dp" />
 
-        <EditText
-            android:id="@+id/txt_update_city"
+        <Spinner
+            android:id="@+id/spinner_update_province"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/input_style"
-            android:fontFamily="@font/poppins"
-            android:hint="City"
             android:paddingLeft="20dp"
-            android:textSize="12dp" />
+            tools:ignore="SpeakableTextPresentCheck" />
+        <Spinner
+            android:id="@+id/spinner_update_city"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_style"
+            android:paddingLeft="20dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
         <Button

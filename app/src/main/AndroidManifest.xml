@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools">
 
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -57,6 +57,22 @@
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
+
+
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.MyAddresses"
+            android:exported="false" />
+        <activity
+
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
@@ -145,5 +161,93 @@
       android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.EditListing"
       android:exported="false" />
   </application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.home.Home"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.Login"
+            android:exported="false" />
+        <activity
+            android:name=".views.home.Details"
+            android:exported="false" />
+        <activity
+            android:name=".views.home.Filters"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.Reset"
+            android:exported="false" />
+        <activity
+            android:name=".views.Reviews"
+            android:exported="false" />
+        <activity
+            android:name=".views.auth.Register"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.giveFeedback"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.bookingDetails"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Bookings.MyBookings"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.MyAccountHome"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.MyProfile"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Update_Address"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.my_account.Add_New_Address"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewDirections"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MyEarnings"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewFeedBack"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewOrder"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MyJobs"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard"
+            android:exported="false"/>
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.ConfirmDetails"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddPayment"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddPricing"
+            android:exported="false" />
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.becomeShovler.AddImage"
+            android:exported="false" />
+
+        <activity
+            android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.EditListing"
+            android:exported="false" />
+
+    </application>
 
 </manifest>
+
