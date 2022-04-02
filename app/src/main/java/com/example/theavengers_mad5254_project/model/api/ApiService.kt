@@ -132,5 +132,8 @@ interface ApiService {
     @GET("api/messages?order=createdAt&order_type=asc")
     suspend fun getChats(@Query("room") room: String): Response<ChatResponse>
 
+    @GET("api/shovler?order=id&order_type=ASC")
+    suspend fun getShovlerBySearch( @Header("token") token: String,@Query("q") q: String): Response<ShovlersResponse>
+
 }
 
