@@ -73,7 +73,7 @@ class MyMessages : AppCompatActivity() {
                 val chatRequest = ChatMessage(
                     message = binding.chatMessage.text.toString(),
                     userUid = AppPreference.userID,
-                    room = "" + AppPreference.userID + shovelerId,
+                    room = "" + userUid + shovelerId,
                     user = ChatUser(
                         uid = AppPreference.userID,
                         name = AppPreference.userName
