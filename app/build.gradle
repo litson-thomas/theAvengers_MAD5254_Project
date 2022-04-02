@@ -109,4 +109,9 @@ dependencies {
 
     // Stripe Android SDK
     implementation 'com.stripe:stripe-android:19.3.0'
+
+    // Socket IO
+    implementation ('io.socket:socket.io-client:2.0.0') {
+      exclude group: 'org.json', module: 'json'
+    }
 }

@@ -2,6 +2,7 @@ package com.example.theavengers_mad5254_project
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -17,16 +18,24 @@ import com.example.theavengers_mad5254_project.views.shovlerDashboard.MapsActivi
 import com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard
 import com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewDirections
 import com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewOrder
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var viewModel: SplashViewModel
     private lateinit var binding: ActivitySplashBinding
+    private var auth: FirebaseAuth? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_splash)
         viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
+        auth = FirebaseAuth.getInstance()
 
         AppPreference.init(this)
+        if(auth?.currentUser != null){
+          AppPreference.userName = auth?.currentUser!!.displayName.toString()
+        }
+
         viewModel.liveData.observe(this, Observer {
             when(it){
                 is SplashState.Home ->{

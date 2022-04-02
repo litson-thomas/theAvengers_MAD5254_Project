@@ -128,5 +128,9 @@ interface ApiService {
     @POST("api/user/prepare-booking")
     suspend fun prepareBooking(@Body requestBody: PrepareBookingRequest): Response<PrepareBookingResponse>
 
+    // chat messages
+    @GET("api/messages?order=createdAt&order_type=asc")
+    suspend fun getChats(@Query("room") room: String): Response<ChatResponse>
+
 }
 

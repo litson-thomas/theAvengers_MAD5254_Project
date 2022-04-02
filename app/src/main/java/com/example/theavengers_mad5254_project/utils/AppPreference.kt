@@ -12,6 +12,7 @@ object AppPreference {
     val MONTHS = arrayOf("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 
     private val IS_LOGIN = Pair("isLogin",false)
+    private val USER_NAME = Pair("userName", "");
     private val USER_TOKEN = Pair("userToken","")
     private val USER_UID = Pair("userID","")
 
@@ -47,4 +48,11 @@ object AppPreference {
         set(value) = preferences.edit {
             it.putString(USER_UID.first, value)
         }
+
+    var userName: String
+      get() = preferences.getString(USER_NAME.first, USER_NAME.second).toString()
+
+      set(value) = preferences.edit {
+        it.putString(USER_NAME.first, value)
+      }
 }

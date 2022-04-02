@@ -19,6 +19,7 @@ import com.example.theavengers_mad5254_project.model.data.ShovlerImages
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
+import com.example.theavengers_mad5254_project.views.chat.ChatMessaging
 import com.example.theavengers_mad5254_project.views.slot_booking.SlotBooking
 
 class Details : AppCompatActivity() {
@@ -49,6 +50,12 @@ class Details : AppCompatActivity() {
         // booking btn
         binding.detailsBookBtn.setOnClickListener {
           val intent = Intent(this, SlotBooking::class.java)
+          intent.putExtra("id", shovelerId)
+          startActivity(intent)
+        }
+        // chat now
+        binding.detailsMessageBtn.setOnClickListener {
+          val intent = Intent(this, ChatMessaging::class.java)
           intent.putExtra("id", shovelerId)
           startActivity(intent)
         }
