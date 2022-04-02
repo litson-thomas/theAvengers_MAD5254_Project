@@ -18,7 +18,7 @@
     <LinearLayout
         android:id="@+id/heading_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="536dp"
 
         android:orientation="vertical"
         android:padding="30dp"
@@ -71,16 +71,25 @@
             android:paddingLeft="20dp"
             android:textSize="12dp" />
 
-        <EditText
-            android:id="@+id/txt_add_city"
+        <Spinner
+            android:id="@+id/spinner_add_province"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/input_style"
-            android:fontFamily="@font/poppins"
-            android:hint="City"
             android:paddingLeft="20dp"
-            android:textSize="12dp" />
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Spinner
+            android:id="@+id/spinner_add_city"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_style"
+            android:paddingLeft="20dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
 
 
         <Button

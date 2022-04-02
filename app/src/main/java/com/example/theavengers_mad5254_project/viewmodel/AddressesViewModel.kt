@@ -21,20 +21,21 @@ class AddressesViewModel(private val repository: MainRepository)
         loading.postValue(false)
     }
 
-    fun getAddress(userUid: String){
+    fun getAddress(userUid: String) {
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getAddress(userUid)
             withContext((Dispatchers.Main)) {
                 if (response.isSuccessful) {
-//                    val Add: List<Address> = response.body()?.rows!!
-//                    var userAddresses = listOf<Address>()
-//                    for(a in Add) {
-//                        if (a.userUid == userUid) {
-//                            userAddresses += a
-//                        }
-//                    }
-                    addressList.postValue(response.body()?.rows!!)
+
+                    val Add: List<Address> = response.body()?.rows!!
+                    var userAddresses = listOf<Address>()
+                    for (a in Add) {
+                        if (a.userUid == userUid) {
+                            userAddresses += a
+                        }
+                    }
+                    addressList.postValue(response.body()?.rows)
                     loading.postValue(false)
                 } else {
                     onError("Error : ${response.message()}")
@@ -46,41 +47,57 @@ class AddressesViewModel(private val repository: MainRepository)
     }
 
 
-  /*  fun updateAddress(
+    fun updateAddress(
         id: Int?,
         address_one: String?,
         address_two: String?,
+        CityId: String?,
+        StateId: String?,
+        postalCode: String?,
         latitude: Number?,
         longitude: Number?,
         createdAt: String?,
         updatedAt: String?,
         userUid: String?
-    ){
+    ) {
         loading.postValue(true)
-        address = CoroutineScope(Dispatchers.IO).launch {
-            val newAddress = Address(id,address_one,address_two,latitude, longitude, createdAt, updatedAt, userUid)
-            val response = repository.updateBooking(newAddress)
-            withContext((Dispatchers.Main)) {
-                if (response.isSuccessful)
-                    loading.postValue(false)
-                } else {
-                    onError("Error : ${response.message()}")
-                    Log.d(ContentValues.TAG, "updateAddress:  ${response.message()}")
-                }
-            }
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val newAddress = Address(
+                id,
+                address_one,
+                address_two,
+                CityId,
+                StateId,
+                postalCode,
+                latitude,
+                longitude,
+                createdAt,
+                updatedAt,
+                userUid
+            )
+//            val response = repository.updateAddress(newAddress)
+//            withContext((Dispatchers.Main)) {
+//                if (response.isSuccessful) {
+//                    loading.postValue(false)
+//                } else {
+//                    onError("Error : ${response.message()}")
+//                    Log.d(ContentValues.TAG, "updateAddress:  ${response.message()}")
+//                }
+//            }
+
         }
 
-   */
-  private fun onError(message: String) {
-      errorMessage.value = message
-      loading.postValue(false)
-  }
-    fun fetchLoading():LiveData<Boolean> = loading
+    }
+    private fun onError(message: String) {
+        errorMessage.value = message
+        loading.postValue(false)
+    }
+
+    fun fetchLoading(): LiveData<Boolean> = loading
 
     override fun onCleared() {
         super.onCleared()
         job?.cancel()
     }
-
-    }
+}
 
