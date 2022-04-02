@@ -65,6 +65,13 @@ class ChatMessaging : AppCompatActivity() {
       SocketHandler.establishConnection()
       val chatSocket = SocketHandler.getSocket()
 
+      // join room on connection
+      val joinRoomRequest = ChatMessage(
+        room = AppPreference.userID + shovelerId
+      )
+      chatSocket.emit("join_room", Gson().toJson(joinRoomRequest))
+
+
       binding.chatMessagingSendBtn.setOnClickListener {
         if(binding.chatMessage.text != null && !binding.chatMessage.text.equals("")){
 
@@ -123,12 +130,19 @@ class ChatMessaging : AppCompatActivity() {
 
     // method to update the typing indicator
     private fun showTypingStatus(response: ChatMessage){
-      if(response.typingStatus == true && (AppPreference.userID != response.userUid)
+      Log.e("TYPING STATUS => ", ""+response.typingStatus+"==="+response.user?.uid+"==="+AppPreference.userID)
+      if(response.typingStatus == true && (AppPreference.userID != response.user?.uid)
       ){
-        runOnUiThread { binding.chatMessageTypingIndicator.visibility = View.VISIBLE }
+        runOnUiThread {
+          binding.chatMessageTypingIndicator.text = response.user?.name + " typing.."
+          binding.chatMessageTypingIndicator.visibility = View.VISIBLE
+        }
       }
       else{
-        runOnUiThread { binding.chatMessageTypingIndicator.visibility = View.GONE }
+        runOnUiThread {
+          binding.chatMessageTypingIndicator.text = response.user?.name + " typing.."
+          binding.chatMessageTypingIndicator.visibility = View.GONE
+        }
       }
     }
 }

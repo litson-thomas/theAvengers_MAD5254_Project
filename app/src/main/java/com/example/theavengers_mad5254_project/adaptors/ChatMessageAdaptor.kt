@@ -37,15 +37,14 @@ class ChatMessageAdaptor(context: Context, chatMessages: MutableList<ChatMessage
     holder.name.text = chat.user?.name
     holder.message.text = chat.message
     holder.date.setTextColor(Color.DKGRAY)
-    if(AppPreference.userID == chat.userUid){
+    if(AppPreference.userID == chat.user?.uid){
       holder.wrapper.gravity = Gravity.END
-      holder.details_wrapper.gravity = Gravity.START
-      holder.wrapper.background = context.resources.getDrawable(R.drawable.chat_item_user_layout)
+      holder.details_wrapper.background = context.resources.getDrawable(R.drawable.chat_item_user_layout)
       holder.message.setTextColor(Color.WHITE)
     }
     else{
       holder.wrapper.gravity = Gravity.START
-      holder.wrapper.background = context.resources.getDrawable(R.drawable.chat_item_layout)
+      holder.details_wrapper.background = context.resources.getDrawable(R.drawable.chat_item_layout)
       holder.message.setTextColor(Color.BLACK)
     }
   }
@@ -74,7 +73,7 @@ class ChatMessageAdaptor(context: Context, chatMessages: MutableList<ChatMessage
       name = itemView.findViewById(R.id.chat_item_name)
       message = itemView.findViewById(R.id.chat_item_message)
       date = itemView.findViewById(R.id.chat_item_date)
-      wrapper = itemView.findViewById(R.id.chat_item_msg_wrapper)
+      wrapper = itemView.findViewById(R.id.chat_wrapper)
       details_wrapper = itemView.findViewById(R.id.chat_item_msg_wrapper)
     }
   }
