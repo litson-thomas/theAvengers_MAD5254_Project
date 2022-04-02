@@ -34,8 +34,8 @@ class MyMessages : AppCompatActivity() {
     private var shovelerId: Int? = null
     private var userUid: String? = null
 
-    private lateinit var messageViewModel: MessageViewModel
-    private lateinit var messageViewModelFactory: MessageViewModelFactory
+    private lateinit var chatViewModel: ChatViewModel
+    private lateinit var chatViewModelFactory: ChatViewModelFactory
     private var chatsAdaptor: ChatMessageAdaptor? = null
     private lateinit var messageList: MutableList<ChatMessage>
 
@@ -47,8 +47,8 @@ class MyMessages : AppCompatActivity() {
 
         val retrofitService = ApiClient().getApiService(this)
         val mainRepository = MainRepository(retrofitService)
-        messageViewModelFactory = MessageViewModelFactory(mainRepository)
-        messageViewModel = ViewModelProvider(this, messageViewModelFactory)[MessageViewModel::class.java]
+        chatViewModelFactory = ChatViewModelFactory(mainRepository)
+        chatViewModel = ViewModelProvider(this, chatViewModelFactory)[ChatViewModel::class.java]
         val bundle :Bundle ?=intent.extras
         if (bundle!=null){
             shovelerId = bundle.getInt("shovlerId")
@@ -58,9 +58,9 @@ class MyMessages : AppCompatActivity() {
         }
     }
     private fun getMessages(){
-        messageViewModel.getMessages(shovelerId!!, userUid!!, AppPreference.userID)
-        messageViewModel.messages.observe(this, Observer { messages ->
-            messageList = messages
+        chatViewModel.getChats("" + userUid+shovelerId)
+        chatViewModel.chats.observe(this, Observer { chats ->
+            messageList = chats
             chatsAdaptor = ChatMessageAdaptor(this, messageList)
             binding.chatMessages?.adapter = chatsAdaptor
         })
