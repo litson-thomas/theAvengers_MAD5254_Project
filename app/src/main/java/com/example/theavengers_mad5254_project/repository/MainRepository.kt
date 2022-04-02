@@ -39,6 +39,7 @@ class MainRepository constructor(private val apiService: ApiService) {
     suspend fun prepareBooking( prepareBookingRequest: PrepareBookingRequest) = apiService.prepareBooking(prepareBookingRequest)
 
     suspend fun getChats( room: String) = apiService.getChats(room)
+    suspend fun getMessages( shovlerId: Int) = apiService.getMessages(shovlerId)
 
 }
 

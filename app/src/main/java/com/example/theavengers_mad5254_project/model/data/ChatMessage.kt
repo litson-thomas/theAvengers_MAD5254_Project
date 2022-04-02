@@ -10,6 +10,8 @@ data class ChatMessage (
   @SerializedName("createdAt" ) var createdAt : String? = null,
   @SerializedName("updatedAt" ) var updatedAt : String? = null,
   @SerializedName("userUid"   ) var userUid   : String? = null,
+  @SerializedName("shovlerId"   ) var shovlerId   : Int? = null,
+
   @SerializedName("user"      ) var user      : ChatUser?   = ChatUser()
 
 )

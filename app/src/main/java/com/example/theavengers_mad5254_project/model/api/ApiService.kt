@@ -131,6 +131,9 @@ interface ApiService {
     // chat messages
     @GET("api/messages?order=createdAt&order_type=asc")
     suspend fun getChats(@Query("room") room: String): Response<ChatResponse>
+    // chat messages
+    @GET("api/messages?order=createdAt&order_type=asc")
+    suspend fun getMessages(@Query("shovlerId") shovlerId: Int): Response<ChatResponse>
 
 }
 

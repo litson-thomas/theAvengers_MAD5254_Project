@@ -35,5 +35,9 @@ class ShovlerDashboard : AppCompatActivity() {
             val intent = Intent(this, MyEarnings::class.java)
             startActivity(intent)
         }
+        binding.myMessagesBtn.setOnClickListener {
+            val intent = Intent(this, MyChatRoom::class.java)
+            startActivity(intent)
+        }
     }
 }

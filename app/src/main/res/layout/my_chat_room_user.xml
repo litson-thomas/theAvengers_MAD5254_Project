@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/shovler_item_wrapper"
+  android:background="@drawable/shovler_style"
+  android:clipToOutline="true"
+  android:layout_margin="10dp"
+  android:layout_width="match_parent"
+  android:layout_height="90dp">
+
+  <LinearLayout
+    android:id="@+id/shovler_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:orientation="vertical"
+    android:background="@drawable/shovler_style"
+    android:clipToOutline="true"
+    app:layout_constraintBottom_toBottomOf="@id/shovler_item_wrapper"
+    tools:ignore="MissingConstraints">
+
+    <LinearLayout
+      android:id="@+id/shovler_title_details"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:paddingTop="15dp"
+      android:paddingLeft="15dp"
+      android:paddingRight="15dp"
+      android:gravity="top"
+      android:weightSum="3"
+      android:background="@drawable/shovler_style"
+      tools:ignore="MissingConstraints">
+
+      <LinearLayout
+        android:id="@+id/shovler_title_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:background="@drawable/shovler_style"
+        android:layout_marginRight="5dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+          android:id="@+id/user_name"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/poppins_semibold"
+          android:textSize="16dp"
+          android:textColor="@color/text_black"
+          android:maxLines="2"
+          android:text="James Bond" />
+
+
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:id="@+id/shovler_rating_wrapper"
+          android:layout_width="150dp"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:layout_weight="2"
+          android:gravity="right"
+          android:background="@drawable/shovler_style"
+          tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textSize="10dp"
+            android:textAlignment="textEnd"
+            android:textColor="@color/text_black"
+            android:text="Jul 4, 2021 10:00 am" />
+
+      </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:paddingTop="0dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_height="wrap_content">
+      <TextView
+          android:id="@+id/last_message"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/poppins"
+          android:textSize="12dp"
+          android:textColor="@color/text_grey"
+          android:text="Last Message" />
+    </LinearLayout>
+    <Space
+      android:layout_width="match_parent"
+      android:layout_height="40dp"/>
+
+
+  </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
