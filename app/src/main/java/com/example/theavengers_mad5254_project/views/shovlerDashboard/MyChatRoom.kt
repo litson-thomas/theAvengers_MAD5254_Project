@@ -10,26 +10,27 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityEditListingBinding
+import com.example.theavengers_mad5254_project.databinding.ActivityMyChatRoomBinding
+import com.example.theavengers_mad5254_project.databinding.ActivityMyJobsBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.data.Address
+import com.example.theavengers_mad5254_project.model.data.Booking
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.viewmodel.*
-import com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler
 import java.io.Serializable
 
-class EditListing : AppCompatActivity() {
-    private lateinit var binding: ActivityEditListingBinding
+class MyChatRoom : AppCompatActivity() {
+    private lateinit var binding: ActivityMyChatRoomBinding
     private lateinit var shovlerViewModel: ShovlerViewModel
     private lateinit var shovlerViewModelFactory: ShovlerViewModelFactory
     private lateinit var shovlerAdapter: ShovlerAdapter
     private lateinit var addressList :List<Address>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_edit_listing)
-        FragmentUtil.setHeader("Edit My Listing","All my listings",false, supportFragmentManager)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_my_chat_room)
+        FragmentUtil.setHeader("My Listing","Select a listing", false,supportFragmentManager)
 
         val retrofitService = ApiClient().getApiService(this)
         val mainRepository = MainRepository(retrofitService)
@@ -73,10 +74,10 @@ class EditListing : AppCompatActivity() {
     }
 
     private fun onListItemClick(position: Int) {
-        var becomeShovlerIntent =  Intent(this, BecomeShovler::class.java)
+        var intent =  Intent(this, MyChatRoomUsers::class.java)
         var item = shovlerAdapter.shoverListings[position]
-        becomeShovlerIntent.putExtra("shovlerListItem", item as Serializable)
-        startActivity(becomeShovlerIntent)
+        intent.putExtra("shovlerId", item.id)
+        startActivity(intent)
     }
 
 }

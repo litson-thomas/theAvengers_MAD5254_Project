@@ -122,6 +122,15 @@
       android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MyJobs"
       android:exported="false" />
     <activity
+        android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MyChatRoom"
+        android:exported="false" />
+    <activity
+        android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MyChatRoomUsers"
+        android:exported="false" />
+    <activity
+        android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MyMessages"
+        android:exported="false" />
+    <activity
       android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDashboard"
       android:exported="false" />
     <activity
