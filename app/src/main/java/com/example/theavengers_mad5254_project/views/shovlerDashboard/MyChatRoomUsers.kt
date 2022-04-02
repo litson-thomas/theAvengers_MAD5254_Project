@@ -50,22 +50,8 @@ class MyChatRoomUsers : AppCompatActivity() {
         binding.myChatRoomUsersRv.adapter = chatRoomUserAdapter
 
         messageViewModel.messages.observe(this) {
-            var chatRoomUsers = listOf<ChatMessage>()
-            var users = listOf<String>()
-            Log.e("CHAT USER LIST => ", ""+it)
-            if (it.count() > 0 ) {
-                for (item in it) {
-//                    if (!users.contains(item.userUid)
-//                        && AppPreference.userID!=item.userUid) {
-//                        chatRoomUsers+=item
-//                        users+=item.userUid!!
-//                    }
-                  chatRoomUsers+=item
-                  users+=item.userUid!!
-                }
-            }
-            Log.e("CHAT USER => ", ""+chatRoomUsers)
-            chatRoomUserAdapter.addChatRoomUserList(chatRoomUsers)
+             Log.e("CHAT USER => ", ""+it)
+            chatRoomUserAdapter.addChatRoomUserList(it)
         }
 
         messageViewModel.errorMessage.observe(this) {
