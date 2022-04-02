@@ -44,6 +44,7 @@ class ChatMessageAdaptor(context: Context, chatMessages: MutableList<ChatMessage
       holder.message.setTextColor(Color.WHITE)
     }
     else{
+      holder.wrapper.gravity = Gravity.START
       holder.wrapper.background = context.resources.getDrawable(R.drawable.chat_item_layout)
       holder.message.setTextColor(Color.BLACK)
     }
