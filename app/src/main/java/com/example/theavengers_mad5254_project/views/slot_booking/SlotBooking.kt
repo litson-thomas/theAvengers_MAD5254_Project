@@ -13,7 +13,6 @@ import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.adaptors.SlotBookingAddressAdaptor
 import com.example.theavengers_mad5254_project.databinding.ActivitySlotBookingBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
-import com.example.theavengers_mad5254_project.model.api.ApiService
 
 import com.example.theavengers_mad5254_project.model.data.Shoveler
 import com.example.theavengers_mad5254_project.model.data.ShovelerAddress
@@ -26,7 +25,6 @@ import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
 import com.example.theavengers_mad5254_project.viewmodel.slot_booking.SlotBookingViewModel
 import com.example.theavengers_mad5254_project.viewmodel.slot_booking.SlotBookingViewModelFactory
-import okhttp3.internal.format
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -80,7 +78,6 @@ class SlotBooking : AppCompatActivity() {
     private fun getUser(){
       viewModel.getUser()
       viewModel.user.observe(this) { user ->
-        // Log.e("USER IS => ", ""+user.rows.get(0));
         shovelerUser = user.rows.get(0)
         prepareValues()
       }
@@ -185,9 +182,9 @@ class SlotBooking : AppCompatActivity() {
     private fun getHourPriceFromUser(position: Int): Double {
       var price = 0.0
       hoursPosition = position + 1
-      if(position == 0) price = shovelerDetails?.oneFourPrice!!
-      if(position == 1) price = shovelerDetails?.fiveEightPrice!!
-      if(position == 2) price = shovelerDetails?.nineTwelvePrice!!
+      if(position == 0 && shovelerDetails?.oneFourPrice != null) price = shovelerDetails?.oneFourPrice!!
+      if(position == 1 && shovelerDetails?.fiveEightPrice != null) price = shovelerDetails?.fiveEightPrice!!
+      if(position == 2 && shovelerDetails?.nineTwelvePrice != null) price = shovelerDetails?.nineTwelvePrice!!
       return price
     }
 

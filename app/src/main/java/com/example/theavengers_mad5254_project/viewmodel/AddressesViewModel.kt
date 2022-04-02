@@ -27,6 +27,7 @@ class AddressesViewModel(private val repository: MainRepository)
             val response = repository.getAddress(userUid)
             withContext((Dispatchers.Main)) {
                 if (response.isSuccessful) {
+
                     val Add: List<Address> = response.body()?.rows!!
                     var userAddresses = listOf<Address>()
                     for (a in Add) {

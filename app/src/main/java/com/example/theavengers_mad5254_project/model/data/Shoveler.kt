@@ -55,8 +55,8 @@ data class ShovelerAddress (
   @SerializedName("id"          ) var id         : Int?    = null,
   @SerializedName("address_one" ) var addressOne : String? = null,
   @SerializedName("address_two" ) var addressTwo : String? = null,
-  @SerializedName("latitude"    ) var latitude   : Int?    = null,
-  @SerializedName("longitude"   ) var longitude  : Int?    = null,
+  @SerializedName("latitude"    ) var latitude   : Double?    = null,
+  @SerializedName("longitude"   ) var longitude  : Double?    = null,
   @SerializedName("createdAt"   ) var createdAt  : String? = null,
   @SerializedName("updatedAt"   ) var updatedAt  : String? = null,
   @SerializedName("userUid"     ) var userUid    : String? = null
