@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.utils.CommonMethods
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.views.auth.Login
 import com.example.theavengers_mad5254_project.views.becomeShovler.BecomeShovler
 import com.example.theavengers_mad5254_project.views.my_account.Bookings.MyBookings
@@ -13,8 +14,11 @@ import com.example.theavengers_mad5254_project.views.shovlerDashboard.ShovlerDas
 
 class MyAccountHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_myaccount_home)
+
     }
 
     fun myProfile(view:View)

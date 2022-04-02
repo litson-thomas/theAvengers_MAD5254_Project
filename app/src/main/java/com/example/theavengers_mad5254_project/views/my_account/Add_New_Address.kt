@@ -19,6 +19,8 @@ class Add_New_Address : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_add_new_address)
+
+
         binding.btnAddAddress.setOnClickListener{
             if(TextUtils.isEmpty(binding.txtAddAddressLine1.text.toString())) {
                 binding.txtAddAddressLine1.setError("Address Field is empty")
@@ -26,12 +28,9 @@ class Add_New_Address : AppCompatActivity() {
             } else if(TextUtils.isEmpty(binding.txtAddPostalCode.text.toString())) {
                 binding.txtAddPostalCode.setError("Postal code Field is empty")
                 binding.txtAddPostalCode.requestFocus()
-            } else if(TextUtils.isEmpty(binding.txtAddCity.text.toString())) {
-                binding.txtAddCity.setError("City Field is empty")
-                binding.txtAddCity.requestFocus()
             } else {
                 val newIntent = Intent(this, MyAddresses::class.java)
-                Toast.makeText(this, "New Address Added", Toast.LENGTH_SHORT).show()
+
                 startActivity(newIntent)
             }
         }

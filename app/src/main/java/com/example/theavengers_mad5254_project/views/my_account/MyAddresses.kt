@@ -54,8 +54,8 @@ class MyAddresses : AppCompatActivity() {
 
     }
     private fun onListItemClick(position: Int) {
-        var intent =  Intent(this, ViewOrder::class.java)
-        intent.putExtra("booking", addressAdapter.addresses[position] as Serializable)
+        var intent =  Intent(this, Update_Address::class.java)
+        intent.putExtra("address", addressAdapter.addresses[position] as Serializable)
         startActivity(intent)
     }
 

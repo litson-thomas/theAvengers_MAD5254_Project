@@ -9,25 +9,7 @@
     android:onClick="myProfile"
     tools:context=".views.my_account.MyAccountHome">
 
-    <Button
-        android:id="@+id/btnShovlerDash"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="15dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="12dp"
 
-        android:background="@drawable/primary_button"
-        android:backgroundTint="@color/white"
-        android:elevation="50dp"
-        android:onClick="btn_dashboard"
-
-        android:text="Shovler Dashboard"
-        android:textColor="@color/text_black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBecomeShoveler"
-        tools:ignore="MissingConstraints" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/myAccount_header"
@@ -37,66 +19,80 @@
         tools:ignore="MissingConstraints"
         tools:layout="@layout/fragment_header" />
 
+
     <Button
         android:id="@+id/btnMyProfile"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
         android:elevation="50dp"
         android:onClick="myProfile"
-        android:text="My profile"
-        android:textAlignment="center"
+        android:text="My Profile"
+        android:textAllCaps="false"
         android:textColor="@color/text_black"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:drawableLeft="@drawable/ic_account"
+        android:drawableRight="@drawable/ic_right_arrow"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center|right"
         app:layout_constraintTop_toBottomOf="@+id/manageAccount_title"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
         tools:ignore="MissingConstraints" />
+
 
     <Button
         android:id="@+id/btnMyAddresses"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
-
         android:elevation="50dp"
         android:onClick="btn_myaddresses"
         android:text="My Addresses"
+        android:textAllCaps="false"
         android:textColor="@color/text_black"
-
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent"
+        android:drawableLeft="@drawable/ic_home_grey"
+        android:drawableRight="@drawable/ic_right_arrow"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center|right"
         app:layout_constraintTop_toBottomOf="@+id/btnMyProfile"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
         tools:ignore="MissingConstraints" />
+
+
 
     <Button
         android:id="@+id/btnMyBookings"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
-
         android:elevation="50dp"
         android:onClick="mybookings"
         android:text="My Bookings"
+        android:textAllCaps="false"
         android:textColor="@color/text_black"
-
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent"
+        android:drawableLeft="@drawable/ic_bookings"
+        android:drawableRight="@drawable/ic_right_arrow"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center|right"
         app:layout_constraintTop_toBottomOf="@+id/btnMyAddresses"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -104,39 +100,73 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="12dp"
-
+        android:layout_marginTop="10dp"
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
         android:elevation="50dp"
-
         android:onClick="becomeShov"
         android:text="Become a shoveler"
+        android:textAllCaps="false"
         android:textColor="@color/text_black"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:drawableLeft="@drawable/ic_edit_my_listing"
+        android:drawableRight="@drawable/ic_right_arrow"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center|right"
         app:layout_constraintTop_toBottomOf="@+id/btnMyBookings"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
         tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/btnShovlerDash"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+        android:onClick="btn_dashboard"
+        android:text="Shovler Dashboard"
+        android:textAllCaps="false"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        android:drawableLeft="@drawable/ic_dashboard"
+        android:drawableRight="@drawable/ic_right_arrow"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center|right"
+        app:layout_constraintTop_toBottomOf="@+id/btnBecomeShoveler"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
+        tools:ignore="MissingConstraints" />
+
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="12dp"
-
+        android:layout_marginTop="10dp"
         android:background="@drawable/primary_button"
         android:backgroundTint="@color/white"
         android:elevation="50dp"
         android:onClick="logoutBtn"
-
         android:text="Logout"
+        android:textAllCaps="false"
         android:textColor="@color/text_black"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:drawableLeft="@drawable/ic_logout"
+        android:drawableRight="@drawable/ic_right_arrow"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center|right"
         app:layout_constraintTop_toBottomOf="@+id/btnShovlerDash"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
         tools:ignore="MissingConstraints" />
 
     <TextView

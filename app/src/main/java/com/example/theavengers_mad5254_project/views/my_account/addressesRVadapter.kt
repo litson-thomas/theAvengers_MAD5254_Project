@@ -12,12 +12,9 @@ class addressesRVadapter(private val onItemClicked: (position: Int) -> Unit): Re
 
     var addresses = listOf<Address>()
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): addressesRVadapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): addressesRVadapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.addresses_row,parent,false)
-        return ViewHolder(v)
+        return ViewHolder(v,onItemClicked)
     }
 
     override fun onBindViewHolder(holder: addressesRVadapter.ViewHolder, position: Int) {
@@ -35,7 +32,7 @@ class addressesRVadapter(private val onItemClicked: (position: Int) -> Unit): Re
         this.addresses = address
         notifyDataSetChanged()
     }
-    class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView), View.OnClickListener{
+    class ViewHolder(itemView: View,private val onItemClicked: (position: Int) -> Unit):RecyclerView.ViewHolder(itemView), View.OnClickListener{
 
         var line1: TextView
         var line2: TextView
@@ -43,12 +40,11 @@ class addressesRVadapter(private val onItemClicked: (position: Int) -> Unit): Re
         init {
             line1=itemView.findViewById(R.id.TV_address1)
             line2=itemView.findViewById(R.id.TV_address2)
-
             itemView.setOnClickListener(this)
         }
         override fun onClick(v: View) {
             val position = adapterPosition
-            //onItemClicked(position)
+            onItemClicked(position)
         }
     }
 
