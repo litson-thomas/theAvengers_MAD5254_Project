@@ -19,6 +19,11 @@ class HomeViewModel(private val repository: MainRepository) : ViewModel(), Lifec
   var loadShovlerStatus: LiveData<ApiResponse> = _loadShovlerStatus
   val shovlers: LiveData<ShovlersResponse> = _shovlers
   val selectedShovler = MutableLiveData<Shoveler>()
+
+
+  private val _shovlerSearchStatus = MutableLiveData<ShovlersResponse>()
+  var shovlerSearchStatus: LiveData<ShovlersResponse> = _shovlerSearchStatus
+
   var job: Job? = null
 
   fun loadShovlers(){
@@ -49,6 +54,21 @@ class HomeViewModel(private val repository: MainRepository) : ViewModel(), Lifec
         } else {
           onError("Error : ${response.message()}")
           Log.e(TAG, "load Shovlers by id:  ${response.message()}")
+        }
+      }
+    }
+  }
+  fun loadShovlerBySearching(searchKey: String){
+    loading.postValue(true)
+    job = CoroutineScope(Dispatchers.IO).launch {
+      val response = repository.searchShovlers(searchKey)
+      withContext((Dispatchers.Main)) {
+        if (response.isSuccessful) {
+          _shovlerSearchStatus.postValue(response.body())
+          loading.postValue(false)
+        } else {
+          onError("Error : ${response.message()}")
+          Log.e(TAG, "load Shovlers by Search:  ${response.message()}")
         }
       }
     }

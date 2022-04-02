@@ -24,13 +24,29 @@
       android:layout_height="0dp"
       android:orientation="vertical"
       app:reverseLayout="true"
-      android:padding="20dp"
+      android:paddingLeft="10dp"
+      android:paddingRight="10dp"
+      android:paddingBottom="10dp"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       app:layout_constraintTop_toBottomOf="@id/chat_messaging_header"
-      app:layout_constraintBottom_toTopOf="@id/chat_message_form_wrapper"
+      app:layout_constraintBottom_toTopOf="@id/chat_message_typing_indicator"
       app:layout_constraintLeft_toLeftOf="@id/chat_messaging_wrapper"
       app:layout_constraintRight_toRightOf="@id/chat_messaging_wrapper"
       tools:listitem="@layout/chat_message_item" />
+
+    <TextView
+      android:id="@+id/chat_message_typing_indicator"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:paddingLeft="10dp"
+      android:paddingRight="10dp"
+      android:paddingBottom="5dp"
+      android:visibility="gone"
+      android:textStyle="italic"
+      app:layout_constraintLeft_toLeftOf="@id/chat_messaging_wrapper"
+      app:layout_constraintRight_toRightOf="@id/chat_messaging_wrapper"
+      app:layout_constraintBottom_toTopOf="@id/chat_message_form_wrapper"
+      android:text="Litson Typing..."/>
 
     <LinearLayout
       app:layout_constraintBottom_toBottomOf="@id/chat_messaging_wrapper"

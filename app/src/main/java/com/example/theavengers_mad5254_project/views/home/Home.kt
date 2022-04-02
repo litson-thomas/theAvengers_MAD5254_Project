@@ -1,7 +1,9 @@
 package com.example.theavengers_mad5254_project.views.home
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 
 import android.view.View
 import android.widget.Button
@@ -19,12 +21,13 @@ import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.repository.MainRepository
+import com.example.theavengers_mad5254_project.utils.NotifySearchData
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
 import com.example.theavengers_mad5254_project.views.weather.WeatherForecastActivity
 
 
-class Home : AppCompatActivity() {
+class Home : AppCompatActivity(),NotifySearchData {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var viewModelFactory: HomeViewModelFactory
@@ -63,10 +66,31 @@ class Home : AppCompatActivity() {
         shovlerRatingRecyvlerView?.adapter = shovlerAdaptor
       })
     }
+    private fun loadSearchDetails(s: String){
+        viewModel.loadShovlerBySearching(s)
+        viewModel.shovlerSearchStatus.observe(this, Observer {
+            if (it.rows.isNotEmpty()){
+                shovlerAdaptor = HomeShovlersAdaptor(this, it.rows)
+                shovlerRecyclerView?.adapter = shovlerAdaptor
+                shovlerRatingRecyvlerView?.adapter = shovlerAdaptor
+                shovlerAdaptor?.notifyDataSetChanged()
+                Log.i(ContentValues.TAG, "loadSearchDetails: ${it.rows.size}")
+            }else{
+                Log.i(ContentValues.TAG, "loadSearchDetailsEmpty: ${it.rows.size}")
+            }
 
+        })
+
+    }
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
+    }
+
+    override fun computeSomething(myString: String?): String? {
+        loadSearchDetails(myString.toString())
+
+        return myString.toString()
     }
 }
 
