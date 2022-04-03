@@ -44,13 +44,14 @@ class RegisterViewModel(private val repository: MainRepository)
             val createUserRequest = CreateUserRequest(email,isShovler,name,password,phone,uid)
             val response = repository.createUser(createUserRequest)
            withContext((Dispatchers.Main)) {
-            if (response.isSuccessful) {
-                _createUserStatus.postValue(response.body())
-                loading.postValue(false)
-            } else {
-                onError("Error : ${response.message()}")
-                Log.d(TAG, "createUser:  ${response.raw().message}")
-            }
+               if (!response.isSuccessful){
+                   onError("Error : ${response.body()?.err?.message}")
+                   Log.d(TAG, "createUser:  ${response.body()?.err?.message}")
+               }else{
+                       _createUserStatus.postValue(response.body())
+                       loading.postValue(false)
+               }
+
               }
         }
     }

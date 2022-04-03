@@ -47,5 +47,9 @@ class MainRepository constructor(private val apiService: ApiService) {
 
     suspend fun searchShovlers(shovlers: String) = apiService.getShovlerBySearch(token = AppPreference.userToken, shovlers)
 
+    suspend fun searchGooglePlaces(place: String,apikey:String) = apiService.getGooglePlaces(input = place, key = apikey)
+
+    suspend fun searchCity() = apiService.getCity()
+
 }
 

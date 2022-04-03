@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".views.my_account.Add_New_Address">
+    tools:context=".views.my_account.AddNewAddress">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/addAddress_header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
@@ -39,7 +39,7 @@
             android:textColor="@color/text_black"
             android:textSize="16dp" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/txt_add_addressLine1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -80,17 +80,6 @@
             android:background="@drawable/input_style"
             android:paddingLeft="20dp"
             tools:ignore="SpeakableTextPresentCheck" />
-
-        <Spinner
-            android:id="@+id/spinner_add_city"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/input_style"
-            android:paddingLeft="20dp"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-
 
 
         <Button
