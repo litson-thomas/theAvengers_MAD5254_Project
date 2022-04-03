@@ -1,6 +1,7 @@
 package com.example.theavengers_mad5254_project.model.api
 
 import com.example.theavengers_mad5254_project.model.data.*
+import com.example.theavengers_mad5254_project.model.data.requestModel.AddNewAddressRequest
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
 import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
 import com.example.theavengers_mad5254_project.model.data.responseModel.*
@@ -14,6 +15,7 @@ import com.example.theavengers_mad5254_project.model.data.responseModel.Shovlers
 import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.GeocodeResponseItem
 import com.example.theavengers_mad5254_project.utils.AppPreference
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
@@ -151,11 +153,18 @@ interface ApiService {
     suspend fun getMessages(): Response<ChatResponse>
 
     //Google place API
-    @GET("maps/api/place/autocomplete/json?types=geocode&sensor=true")
-    suspend fun getGooglePlaces(@Query("input") input: String,@Query("key") key: String): Response<GooglePlaceResponse>
+    @GET
+    suspend fun getGooglePlacesNew(@Url url: String?): Response<GooglePlaceResponse>
+
+    //Google Geocode API
+    @GET
+    suspend fun getGoogleGeocode(@Url url: String?): Response<GoogleGeocodeResponse>
 
     @GET("api/location/city")
     suspend fun getCity(): Response<LocationResponse>
+
+    @POST("api/address")
+    suspend fun addNewAddress(@Header("token") token: String,@Body addNewAddressRequest: AddNewAddressRequest): Response<AddNewAddressResponse>
 
 }
 

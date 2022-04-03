@@ -2,7 +2,7 @@ package com.example.theavengers_mad5254_project.model.data.responseModel
 
 data class LocationResponse(
     val count: Int,
-    val rows: List<Row>
+    val rows: ArrayList<Row>
 )
 
 data class Row(

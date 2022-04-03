@@ -10,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiClient {
     private lateinit var apiService: ApiService
     private lateinit var weatherApiService: ApiService
-    private lateinit var googlePlaceApiService: ApiService
 
     val BASE_URL: String = AppConstants.BASE_URL
 
@@ -30,6 +29,8 @@ class ApiClient {
         return apiService
     }
 
+
+
     fun getWeatherApiService(context: Context): ApiService {
 
         // Initialize ApiService if not initialized yet
@@ -44,22 +45,6 @@ class ApiClient {
 
         return weatherApiService
     }
-
-    fun getGooglePlaceApiService(context: Context): ApiService {
-
-        // Initialize ApiService if not initialized yet
-        if (!::googlePlaceApiService.isInitialized) {
-            val retrofit = Retrofit.Builder()
-                .baseUrl(AppConstants.GOOGLE_PLACE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(okhttpClient(context))
-                .build()
-            googlePlaceApiService = retrofit.create(ApiService::class.java)
-        }
-
-        return googlePlaceApiService
-    }
-
     /**
      * Initialize OkhttpClient with our interceptor
      */
