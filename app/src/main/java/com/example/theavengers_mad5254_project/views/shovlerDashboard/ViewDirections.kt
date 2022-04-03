@@ -45,8 +45,8 @@ class ViewDirections : AppCompatActivity(), OnMapReadyCallback,
     private var destinationLongitude: Double = -79.33595
     private lateinit var apiKey: String
     private lateinit var mapFragment: SupportMapFragment
-    private lateinit var distance: String
-    private lateinit var duration: String
+    private var distance: String = ""
+    private var duration: String = ""
     private lateinit var address: String
     private lateinit var booking: Booking
 
@@ -181,8 +181,14 @@ class ViewDirections : AppCompatActivity(), OnMapReadyCallback,
                 lineoption.geodesic(true)
             }
             mMap.addPolyline(lineoption)
-            binding.distance.text = "${distance} (${duration})"
-            binding.description.text = "The distance between your location to ${address}} is ${distance}."
+            if (distance != "") {
+                binding.distance.text = "${distance} (${duration})"
+                binding.description.text =
+                    "The distance between your location to ${address}} is ${distance}."
+            } else {
+                binding.description.text =
+                    "No route available between between your location to ${address}}."
+            }
         }
     }
 
