@@ -10,6 +10,7 @@
         android:id="@+id/imgSelected"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:scaleType="centerCrop"
         tools:background="@tools:sample/backgrounds/scenic"
         android:layout_margin="10dp"/>
 

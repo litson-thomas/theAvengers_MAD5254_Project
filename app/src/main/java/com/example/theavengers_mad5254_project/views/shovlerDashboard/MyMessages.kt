@@ -78,7 +78,7 @@ class MyMessages : AppCompatActivity() {
         chatSocket.emit("join_room", Gson().toJson(joinRoomRequest))
 
         binding.chatMessagingSendBtn.setOnClickListener {
-            if(binding.chatMessage.text != null && !binding.chatMessage.text.equals("")){
+            if(binding.chatMessage.text != null || !binding.chatMessage.text.equals("")){
 
                 val chatRequest = ChatMessage(
                     message = binding.chatMessage.text.toString(),

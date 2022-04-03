@@ -6,7 +6,7 @@
     android:id="@+id/Rvbookings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E5E5E5"
+    android:background="@color/bg"
     tools:context=".views.my_account.Bookings.MyBookings">
 
     <androidx.fragment.app.FragmentContainerView
