@@ -52,4 +52,9 @@ class MyAccountHome : AppCompatActivity() {
         CommonMethods.showAlertDialogLogout(this,"Do you want to Log out?","Yes","No")
 
     }
+    fun myMessages(view:View)
+    {
+        val intent = Intent(this, UserChatRoom::class.java)
+        startActivity(intent)
+    }
 }
