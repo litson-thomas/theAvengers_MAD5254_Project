@@ -42,9 +42,9 @@
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
-     <meta-data
-     android:name="com.google.android.geo.API_KEY"
-     android:value="${MAPS_API_KEY}" />
+<!--     <meta-data-->
+<!--     android:name="com.google.android.geo.API_KEY"-->
+<!--     android:value="${MAPS_API_KEY}" />-->
     <activity
       android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.MapsActivity"
       android:exported="false"
@@ -104,7 +104,7 @@
       android:name="com.example.theavengers_mad5254_project.views.my_account.Update_Address"
       android:exported="false" />
     <activity
-      android:name="com.example.theavengers_mad5254_project.views.my_account.Add_New_Address"
+      android:name="com.example.theavengers_mad5254_project.views.my_account.AddNewAddress"
       android:exported="false" />
     <activity
       android:name="com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewDirections"

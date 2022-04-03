@@ -3,13 +3,10 @@ package com.example.theavengers_mad5254_project.views.my_account
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.databinding.ActivityMyAddressesBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
@@ -17,12 +14,6 @@ import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.viewmodel.AddressesViewModel
 import com.example.theavengers_mad5254_project.viewmodel.AddressesViewModelFactory
-import com.example.theavengers_mad5254_project.viewmodel.BookingViewModel
-import com.example.theavengers_mad5254_project.viewmodel.BookingViewModelFactory
-import com.example.theavengers_mad5254_project.views.my_account.Bookings.bookingDetails
-import com.example.theavengers_mad5254_project.views.my_account.Bookings.bookingsRvAdapter
-import com.example.theavengers_mad5254_project.views.shovlerDashboard.BookingAdapter
-import com.example.theavengers_mad5254_project.views.shovlerDashboard.ViewOrder
 import java.io.Serializable
 
 class MyAddresses : AppCompatActivity() {
@@ -61,7 +52,7 @@ class MyAddresses : AppCompatActivity() {
     }
 
     fun btn_AddNewAddress(view: View){
-        var intent = Intent(this, Add_New_Address::class.java)
+        var intent = Intent(this, AddNewAddress::class.java)
         startActivity(intent)
     }
 }

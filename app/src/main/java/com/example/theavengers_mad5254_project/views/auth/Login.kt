@@ -93,7 +93,7 @@ class Login : AppCompatActivity() {
                         when {
                             it.value.equals("Login Successful",ignoreCase = true) -> {
                                 AppPreference.isLogin = true
-                                Log.d(ContentValues.TAG, "signIn: ${AppPreference.userToken}")
+                                Log.d("TOKENNN", "signIn: ${AppPreference.userToken}")
                                 CommonMethods.toastMessage(applicationContext,"Login Successful")
                                 val intent = Intent(this, Home::class.java)
                                 startActivity(intent)

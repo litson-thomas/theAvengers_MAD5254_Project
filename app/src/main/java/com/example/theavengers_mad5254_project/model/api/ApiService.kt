@@ -90,6 +90,9 @@ interface ApiService {
     @POST("api/user")
     suspend fun registerUser(@Body requestBody: CreateUserRequest): Response<CreateUserResponse>
 
+    @PUT("api/user")
+    suspend fun updateUser(@Body requestBody: CreateUserRequest): Response<CreateUserResponse>
+
     @GET("api/bookings")
     suspend fun getBookings(@Query("shovlerId") shovlerId: Int): Response<BookingResponse>
 
@@ -146,6 +149,13 @@ interface ApiService {
     // chat messages
     @GET("api/messages?order=createdAt&order_type=asc")
     suspend fun getMessages(): Response<ChatResponse>
+
+    //Google place API
+    @GET("maps/api/place/autocomplete/json?types=geocode&sensor=true")
+    suspend fun getGooglePlaces(@Query("input") input: String,@Query("key") key: String): Response<GooglePlaceResponse>
+
+    @GET("api/location/city")
+    suspend fun getCity(): Response<LocationResponse>
 
 }
 

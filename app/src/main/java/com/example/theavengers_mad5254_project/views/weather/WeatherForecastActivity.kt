@@ -36,8 +36,6 @@ import com.example.theavengers_mad5254_project.model.data.responseModel.weatherR
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppConstants
 import com.example.theavengers_mad5254_project.utils.CommonMethods
-import com.example.theavengers_mad5254_project.utils.dialogs.CustomAlertDialog
-import com.example.theavengers_mad5254_project.utils.dialogs.DialogModel
 import com.example.theavengers_mad5254_project.viewmodel.WeatherForecastViewModel
 import com.example.theavengers_mad5254_project.viewmodel.WeatherForecastViewModelFactory
 import com.example.theavengers_mad5254_project.views.auth.Login

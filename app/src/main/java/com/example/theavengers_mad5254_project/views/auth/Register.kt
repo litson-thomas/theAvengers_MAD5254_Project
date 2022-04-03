@@ -9,6 +9,7 @@ import android.provider.Settings
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -24,6 +25,7 @@ import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
 import com.example.theavengers_mad5254_project.viewmodel.RegisterViewModel
 import com.example.theavengers_mad5254_project.viewmodel.RegisterViewModelFactory
 import com.example.theavengers_mad5254_project.views.home.Home
+import com.google.gson.Gson
 
 class Register : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -58,7 +60,6 @@ class Register : AppCompatActivity() {
 
             } else{
                 doRegisterUser()
-
             }
         }
 
@@ -90,9 +91,9 @@ class Register : AppCompatActivity() {
     private fun createUser(){
        registerViewModel.createUserStatus.observe(this, Observer {
            if (it.status) {
-               signIn(binding.registerEmail.text.toString(),binding.registerPassword.text.toString())
+              signIn(binding.registerEmail.text.toString(),binding.registerPassword.text.toString())
            } else {
-               CommonMethods.toastMessage(applicationContext, "FAILURE ${it.err.message}")
+               CommonMethods.toastMessage(this, "${it.err.message}")
            }
        })
     }
@@ -114,7 +115,8 @@ class Register : AppCompatActivity() {
                                 startActivity(intent)
                                 finish()
                                 Log.d(TAG, "signIn: ${AppPreference.userToken}")
-                                CommonMethods.toastMessage(applicationContext,"Registration Successful User created")
+
+
                             }
 
                             else -> {
