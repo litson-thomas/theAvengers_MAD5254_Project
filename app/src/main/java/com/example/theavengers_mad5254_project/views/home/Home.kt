@@ -24,6 +24,7 @@ import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.NotifySearchData
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
+import com.example.theavengers_mad5254_project.views.my_account.UserChatRoom
 import com.example.theavengers_mad5254_project.views.weather.WeatherForecastActivity
 
 
@@ -55,6 +56,11 @@ class Home : AppCompatActivity(),NotifySearchData {
 
     fun nav_weatherForecast(view: View){
         val intent = Intent(this, WeatherForecastActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun nav_myMessages(view: View){
+        val intent = Intent(this, UserChatRoom::class.java)
         startActivity(intent)
     }
 

@@ -105,12 +105,18 @@ interface ApiService {
     @GET("api/shovler")
     suspend fun getShovlerListings(@Query("userUid") userUid: String): Response<ShovlerResponse>
 
+    @GET("api/shovler")
+    suspend fun getShovlerListing(@Query("id") id: Int): Response<ShovlerResponse>
+
     @Multipart
     @POST("api/shovler/images")
     suspend fun uploadShowlerImage(@Part file: MultipartBody.Part?): Response<APIResponse>
 
     @GET("api/address")
     suspend fun getAddress(@Query("userUid") userUid: String): Response<AddressResponse>
+
+    @GET("api/address")
+    suspend fun getAddress(): Response<AddressResponse>
 
     @DELETE("api/shovler/images/{id}")
     suspend fun deleteShovlerImage(@Path(value = "id") id: Int?): Response<APIResponse>
@@ -137,6 +143,9 @@ interface ApiService {
 
     @GET("api/shovler?order=id&order_type=ASC")
     suspend fun getShovlerBySearch( @Header("token") token: String,@Query("q") q: String): Response<ShovlersResponse>
+    // chat messages
+    @GET("api/messages?order=createdAt&order_type=asc")
+    suspend fun getMessages(): Response<ChatResponse>
 
 }
 

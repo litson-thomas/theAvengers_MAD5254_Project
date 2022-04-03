@@ -33,6 +33,7 @@
       android:layout_weight="1"
       android:background="@color/secondary"
       android:src="@drawable/ic_chat"
+      android:onClick="nav_myMessages"
       tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <ImageButton

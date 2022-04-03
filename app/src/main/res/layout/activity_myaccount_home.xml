@@ -96,6 +96,29 @@
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:id="@+id/my_messages_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/primary_button"
+        android:backgroundTint="@color/white"
+        android:elevation="50dp"
+        android:onClick="myMessages"
+        android:text="My Messages"
+        android:textAllCaps="false"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        android:drawableLeft="@drawable/ic_my_messages"
+        android:drawableRight="@drawable/ic_right_arrow"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center|right"
+        app:layout_constraintTop_toBottomOf="@+id/btnMyBookings"
+        android:paddingRight="10dp"
+        android:paddingLeft="20dp"
+        tools:ignore="MissingConstraints" />
+    <Button
         android:id="@+id/btnBecomeShoveler"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -114,7 +137,7 @@
         android:drawablePadding="12dp"
         android:gravity="center_vertical"
         android:layout_gravity="center|right"
-        app:layout_constraintTop_toBottomOf="@+id/btnMyBookings"
+        app:layout_constraintTop_toBottomOf="@+id/my_messages_btn"
         android:paddingRight="10dp"
         android:paddingLeft="20dp"
         tools:ignore="MissingConstraints" />

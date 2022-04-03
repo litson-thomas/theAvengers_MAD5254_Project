@@ -25,6 +25,10 @@ class MessageViewModel(private val repository: MainRepository) : ViewModel(), Li
 
   private val _messages = MutableLiveData<MutableList<ChatMessage>>()
   val messages: LiveData<MutableList<ChatMessage>> = _messages
+
+  private val _shovlerUserIds = MutableLiveData<MutableList<Int>>()
+  val shovlerUserIds: LiveData<MutableList<Int>> = _shovlerUserIds
+
   var job: Job? = null
 
   fun getMessages(shovlerId: Int){
@@ -56,22 +60,25 @@ class MessageViewModel(private val repository: MainRepository) : ViewModel(), Li
     }
   }
 
-  fun getMessages(shovlerId: Int, userUid:String, userUid2 :String){
+  fun getShovlerIds(userUid: String){
     loading.postValue(true)
     job = CoroutineScope(Dispatchers.IO).launch {
-      val response = repository.getMessages(shovlerId)
+      val response = repository.getMessages()
       withContext((Dispatchers.Main)) {
         if (response.isSuccessful) {
           var messages = response.body()?.rows!!
-          var filteredMessages = listOf<ChatMessage>()
+          var shovlerIds = listOf<Int>()
           if (messages.count() > 0 ) {
             for (item in messages) {
-              if (item.userUid == userUid || item.userUid == userUid2) {
-                filteredMessages+=item
+              if (item.userUid !=null &&
+                item.userUid == userUid &&
+                item.shovlerId !=null &&
+                !shovlerIds.contains(item.shovlerId)) {
+                shovlerIds+=item.shovlerId!!
               }
             }
           }
-          _messages.postValue(filteredMessages.toMutableList())
+          _shovlerUserIds.postValue(shovlerIds.toMutableList())
           loading.postValue(false)
         } else {
           onError("Error : ${response.message()}")
@@ -80,6 +87,7 @@ class MessageViewModel(private val repository: MainRepository) : ViewModel(), Li
       }
     }
   }
+
 
 
   private fun onError(message: String) {
