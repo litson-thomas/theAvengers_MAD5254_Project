@@ -49,7 +49,7 @@ class EditListing : AppCompatActivity() {
                     }
                 }
             }
-            shovlerAdapter.addShovlerList(it)
+            shovlerAdapter.addShovlerList(false,it)
         }
         shovlerViewModel.addressList.observe(this) {
             addressList = it

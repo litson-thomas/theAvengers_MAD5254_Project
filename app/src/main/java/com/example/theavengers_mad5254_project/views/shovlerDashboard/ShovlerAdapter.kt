@@ -36,8 +36,10 @@ class ShovlerAdapter(private val onItemClicked: (position: Int) -> Unit) : Recyc
         return shoverListings.size
     }
 
-    fun addShovlerList(shoverListings: List<Shovler>) {
-        this.shoverListings = shoverListings
+    fun addShovlerList(append: Boolean,shoverListings: List<Shovler>) {
+        if (append) this.shoverListings += shoverListings
+        else
+            this.shoverListings = shoverListings
         notifyDataSetChanged()
     }
 }

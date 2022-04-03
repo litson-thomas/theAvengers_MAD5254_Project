@@ -152,10 +152,40 @@ class ShovlerViewModel(private val repository: MainRepository)
             }
         }
     }
+    fun getShovlerListing(id: Int){
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getShovlerListing(id)
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                    shovlerList.postValue(response.body()?.rows)
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(ContentValues.TAG, "getShovlerListing:  ${response.message()}")
+                }
+            }
+        }
+    }
     fun getAddress(userUid: String){
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getAddress(userUid)
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                    addressList.postValue(response.body()?.rows)
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(ContentValues.TAG, "getAddress:  ${response.message()}")
+                }
+            }
+        }
+    }
+    fun getAddress(){
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getAddress()
             withContext((Dispatchers.Main)) {
                 if (response.isSuccessful) {
                     addressList.postValue(response.body()?.rows)
