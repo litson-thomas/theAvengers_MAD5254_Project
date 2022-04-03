@@ -3,6 +3,7 @@ package com.example.theavengers_mad5254_project.repository
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.model.data.Booking
 import com.example.theavengers_mad5254_project.model.data.Shovler
+import com.example.theavengers_mad5254_project.model.data.requestModel.AddNewAddressRequest
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
 import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
 import okhttp3.MultipartBody
@@ -47,9 +48,12 @@ class MainRepository constructor(private val apiService: ApiService) {
 
     suspend fun searchShovlers(shovlers: String) = apiService.getShovlerBySearch(token = AppPreference.userToken, shovlers)
 
-    suspend fun searchGooglePlaces(place: String,apikey:String) = apiService.getGooglePlaces(input = place, key = apikey)
+    suspend fun searchGooglePlaces(url: String) = apiService.getGooglePlacesNew(url = url)
+    suspend fun getGoogleGeocode(url: String) = apiService.getGoogleGeocode(url = url)
 
     suspend fun searchCity() = apiService.getCity()
+
+    suspend fun addNewAddress( addNewAddressRequest: AddNewAddressRequest) = apiService.addNewAddress(token = AppPreference.userToken,addNewAddressRequest)
 
 }
 
