@@ -1,5 +1,6 @@
 package com.example.theavengers_mad5254_project.views.slot_booking
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,7 @@ import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.slot_booking.SlotBookingViewModel
 import com.example.theavengers_mad5254_project.viewmodel.slot_booking.SlotBookingViewModelFactory
+import com.example.theavengers_mad5254_project.views.my_account.Bookings.MyBookings
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
@@ -136,6 +138,9 @@ class ConfirmSlotBooking : AppCompatActivity() {
         }
         is PaymentSheetResult.Completed -> {
           CommonMethods.toastMessage(this, "Payment Successful!")
+          val intent = Intent(applicationContext, BookingSuccess::class.java)
+          finishAffinity();
+          startActivity(intent)
         }
       }
     }

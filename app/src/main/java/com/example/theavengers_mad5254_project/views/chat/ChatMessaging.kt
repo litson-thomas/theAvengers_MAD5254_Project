@@ -19,6 +19,7 @@ import com.example.theavengers_mad5254_project.model.data.ChatUser
 import com.example.theavengers_mad5254_project.model.data.requestModel.ChatMessageRequest
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.utils.SocketHandler
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
@@ -45,6 +46,8 @@ class ChatMessaging : AppCompatActivity() {
         val bundle :Bundle ?=intent.extras
         if (bundle!=null){
           shovelerId = bundle.getInt("id")
+          FragmentUtil.setHeader(bundle.getString("name").toString(),"Chat with shoveler",
+            false,supportFragmentManager)
           getChats()
           prepareSocket()
         }
@@ -130,7 +133,7 @@ class ChatMessaging : AppCompatActivity() {
 
     // method to update the typing indicator
     private fun showTypingStatus(response: ChatMessage){
-      Log.e("TYPING STATUS => ", ""+response.typingStatus+"==="+response.user?.uid+"==="+AppPreference.userID)
+      // Log.e("TYPING STATUS => ", ""+response.typingStatus+"==="+response.user?.uid+"==="+AppPreference.userID)
       if(response.typingStatus == true && (AppPreference.userID != response.user?.uid)
       ){
         runOnUiThread {

@@ -18,6 +18,8 @@ class MyAccountHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_myaccount_home)
+        FragmentUtil.setHeader("My Account","Manage your profile",
+        false,supportFragmentManager)
 
     }
 

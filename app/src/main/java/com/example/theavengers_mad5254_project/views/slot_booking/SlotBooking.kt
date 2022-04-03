@@ -21,6 +21,7 @@ import com.example.theavengers_mad5254_project.model.data.ShovlerUser
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
+import com.example.theavengers_mad5254_project.utils.FragmentUtil
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
 import com.example.theavengers_mad5254_project.viewmodel.slot_booking.SlotBookingViewModel
@@ -66,6 +67,8 @@ class SlotBooking : AppCompatActivity() {
       val bundle :Bundle ?=intent.extras
       if (bundle!=null){
         shovelerId = bundle.getInt("id")
+        FragmentUtil.setHeader(bundle.getString("name").toString(),"Book a slot",
+          false,supportFragmentManager)
       }
       if(shovelerId != null){
         shovlerViewModel.loadShovlerById(shovelerId!!)
@@ -195,7 +198,7 @@ class SlotBooking : AppCompatActivity() {
       binding.slotBookingTotalCost.text = "$" + total
     }
 
-    private fun changeSideWalkBtn(tag: Int){
+    private fun changeSideWalkBtn(tag: Any){
       if(tag == 0) binding.slotBookingSidewalkIcon.setImageResource(R.drawable.ic_round_check_circle_24)
       else binding.slotBookingSidewalkIcon.setImageResource(R.drawable.ic_checkmark_selected)
       calculateTotal()
