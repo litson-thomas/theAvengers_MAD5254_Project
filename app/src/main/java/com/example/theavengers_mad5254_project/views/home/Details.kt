@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -47,16 +48,12 @@ class Details : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
         // back click
         binding.detailsBackBtn.setOnClickListener { finish() }
-        // booking btn
-        binding.detailsBookBtn.setOnClickListener {
-          val intent = Intent(this, SlotBooking::class.java)
-          intent.putExtra("id", shovelerId)
-          startActivity(intent)
-        }
+
         // chat now
         binding.detailsMessageBtn.setOnClickListener {
           val intent = Intent(this, ChatMessaging::class.java)
           intent.putExtra("id", shovelerId)
+          intent.putExtra("name", shovelerDetails?.title)
           startActivity(intent)
         }
         // load the values from api
@@ -70,7 +67,18 @@ class Details : AppCompatActivity() {
         viewModel.selectedShovler.observe(this, Observer { shoveler ->
           shovelerDetails = shoveler
           setValues()
+          setChatBtn()
         })
+      }
+    }
+
+    private fun setChatBtn(){
+      // booking btn
+      binding.detailsBookBtn.setOnClickListener {
+        val intent = Intent(this, SlotBooking::class.java)
+        intent.putExtra("id", shovelerId)
+        intent.putExtra("name", shovelerDetails?.title)
+        startActivity(intent)
       }
     }
 

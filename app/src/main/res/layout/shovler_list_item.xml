@@ -98,60 +98,62 @@
       android:layout_width="match_parent"
       android:layout_height="40dp"/>
 
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/shovler_footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:gravity="bottom"
+    android:weightSum="3"
+    app:layout_constraintBottom_toBottomOf="@+id/shovler_item_wrapper"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/shovler_style">
+
     <LinearLayout
-      android:id="@+id/shovler_footer"
-      android:layout_width="match_parent"
+      android:id="@+id/shovler_location_wrapper"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
-      android:paddingLeft="15dp"
-      android:paddingRight="15dp"
-      android:gravity="bottom"
-      android:weightSum="3"
-      android:background="@drawable/shovler_style">
+      android:layout_weight="0.5"
+      android:gravity="center"
+      android:background="@drawable/shovler_style"
+      android:layout_marginRight="10dp"
+      tools:ignore="MissingConstraints">
 
-      <LinearLayout
-        android:id="@+id/shovler_location_wrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="0.5"
-        android:gravity="center"
-        android:background="@drawable/shovler_style"
-        android:layout_marginRight="10dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-          android:id="@+id/shovler_location_icon"
-          android:layout_width="17dp"
-          android:layout_height="17dp"
-          android:layout_marginRight="5dp"
-          android:src="@drawable/ic_location"/>
-
-        <TextView
-          android:id="@+id/shovler_location"
-          android:layout_width="match_parent"
-          android:layout_height="15dp"
-          android:fontFamily="@font/poppins"
-          android:textSize="11dp"
-          android:textColor="@color/text_grey"
-          android:text="51 Tillbrook Ct" />
-
-      </LinearLayout>
+      <ImageView
+        android:id="@+id/shovler_location_icon"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/ic_location"/>
 
       <TextView
-        android:id="@+id/shovler_price"
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:fontFamily="@font/poppins_extrabold"
-        android:textSize="20dp"
-        android:layout_weight="2.5"
-        android:textAlignment="textEnd"
-        android:layout_gravity="top"
-        android:textColor="@color/black"
-        android:text="$14" />
+        android:id="@+id/shovler_location"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:fontFamily="@font/poppins"
+        android:textSize="11dp"
+        android:textColor="@color/text_grey"
+        android:text="51 Tillbrook Ct" />
 
     </LinearLayout>
+
+    <TextView
+      android:id="@+id/shovler_price"
+      android:layout_marginTop="2dp"
+      android:layout_width="wrap_content"
+      android:layout_height="25dp"
+      android:fontFamily="@font/poppins_extrabold"
+      android:textSize="20dp"
+      android:layout_weight="2.5"
+      android:textAlignment="textEnd"
+      android:layout_gravity="top"
+      android:textColor="@color/black"
+      android:text="$14" />
 
   </LinearLayout>
 
