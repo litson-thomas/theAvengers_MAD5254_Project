@@ -16,6 +16,7 @@ import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.databinding.FragmentHomeHeaderBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.repository.MainRepository
+import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.NotifySearchData
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
@@ -35,6 +36,8 @@ class HomeHeader : Fragment(R.layout.fragment_home_header){
         binding = FragmentHomeHeaderBinding.inflate(inflater, container, false)
 
         searchText = binding.homeSearchText
+        binding.homeTitle.text = "Hey \n" + AppPreference.userName
+
         binding.homeFilterBtn.setOnClickListener {
             requireActivity().run {
                 val targetIntent = Intent(this, Filters::class.java)

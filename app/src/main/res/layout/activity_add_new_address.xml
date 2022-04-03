@@ -5,6 +5,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".views.my_account.Add_New_Address">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/addAddress_header"

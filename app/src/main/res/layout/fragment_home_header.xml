@@ -47,7 +47,7 @@
           android:fontFamily="@font/poppins"
           android:textSize="12dp"
           android:textColor="@color/text_grey"
-          android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit venenatis non urna, suspendisse." />
+          android:text="GoSnow app helps to clear the snow with ease and  as soon as the customer wants." />
 
       </LinearLayout>
 
