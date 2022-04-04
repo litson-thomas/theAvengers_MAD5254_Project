@@ -111,25 +111,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/myprofile_phone_wrapper">
 
-        <TextView
-            android:id="@+id/myprofile_place_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Place"
-            android:textColor="@color/text_grey"
-            android:textSize="12dp" />
-
-        <EditText
-            android:id="@+id/myprofile_Editplace"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/input_style"
-            android:fontFamily="@font/poppins"
-            android:hint="Select Place"
-            android:paddingLeft="20dp"
-            android:textSize="12dp" />
 
     </LinearLayout>
 
@@ -149,6 +130,16 @@
         app:layout_constraintTop_toBottomOf="@+id/myprofile_place_wrapper"
         tools:ignore="MissingConstraints" />
 
-
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

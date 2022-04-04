@@ -83,10 +83,12 @@ class AddNewAddressViewModel(private val repository: MainRepository)
             }
         }
     }
-    fun getNewAddress(userUid: String,address_one:String,address_two:String,latitude:String,longitude:String,cityId:Int){
+    fun getNewAddress(address_one:String,address_two:String,city:String,city_id:Int,
+                      latitude:String,longitude:String,postal_code:String,state:String,userUid:String){
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
-            val addNewAddressRequest = AddNewAddressRequest(userUid,address_one,address_two,latitude,longitude,cityId)
+            val addNewAddressRequest = AddNewAddressRequest(address_one,address_two,city,
+                city_id,latitude,longitude,postal_code,state,userUid)
             val response = repository.addNewAddress(addNewAddressRequest)
             withContext((Dispatchers.Main)) {
                 if (response.isSuccessful) {

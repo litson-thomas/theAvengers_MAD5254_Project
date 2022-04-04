@@ -88,7 +88,7 @@ interface ApiService {
     suspend fun registerUser(@Body requestBody: CreateUserRequest): Response<CreateUserResponse>
 
     @PUT("api/user/{userUid}")
-    suspend fun updateUser(@Path(value = "userUid") userUid: String?,@Body requestBody: UpdateUserRequest): Response<CreateUserResponse>
+    suspend fun updateUser(@Header("token") token: String,@Path(value = "userUid") userUid: String?,@Body requestBody: UpdateUserRequest): Response<CreateUserResponse>
 
     @GET("api/bookings")
     suspend fun getBookings(@Query("shovlerId") shovlerId: Int): Response<BookingResponse>

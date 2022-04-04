@@ -10,16 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
-import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.databinding.FragmentHomeHeaderBinding
-import com.example.theavengers_mad5254_project.model.api.ApiClient
-import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.NotifySearchData
-import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
-import com.example.theavengers_mad5254_project.viewmodel.HomeViewModelFactory
 import com.example.theavengers_mad5254_project.views.home.Filters
 
 class HomeHeader : Fragment(R.layout.fragment_home_header){
@@ -62,7 +56,7 @@ class HomeHeader : Fragment(R.layout.fragment_home_header){
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-                notifySearchData.computeSomething(s.toString())
+                notifySearchData.searchPlace(s.toString())
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -75,5 +69,7 @@ class HomeHeader : Fragment(R.layout.fragment_home_header){
     private fun instantiateSearchInterface(context: FragmentActivity) {
         notifySearchData = context as NotifySearchData
     }
+
+
 
 }

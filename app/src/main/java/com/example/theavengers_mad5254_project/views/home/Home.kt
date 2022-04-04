@@ -6,20 +6,14 @@ import android.os.Bundle
 import android.util.Log
 
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.theavengers_mad5254_project.R
-import com.example.theavengers_mad5254_project.views.auth.Login
-import com.example.theavengers_mad5254_project.views.auth.Register
 import com.example.theavengers_mad5254_project.views.my_account.MyAccountHome
-import com.example.theavengers_mad5254_project.views.my_account.MyProfile
 import com.example.theavengers_mad5254_project.adaptors.HomeShovlersAdaptor
 import com.example.theavengers_mad5254_project.model.api.ApiClient
-import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.NotifySearchData
 import com.example.theavengers_mad5254_project.viewmodel.HomeViewModel
@@ -93,10 +87,9 @@ class Home : AppCompatActivity(),NotifySearchData {
         finish()
     }
 
-    override fun computeSomething(myString: String?): String? {
-        loadSearchDetails(myString.toString())
-
-        return myString.toString()
+    override fun searchPlace(place: String?): String? {
+        loadSearchDetails(place.toString())
+        return place.toString()
     }
 }
 

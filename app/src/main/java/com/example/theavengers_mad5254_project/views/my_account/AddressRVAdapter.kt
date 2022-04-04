@@ -20,7 +20,7 @@ class AddressRVAdapter(private val onItemClicked: (position: Int) -> Unit): Recy
     override fun onBindViewHolder(holder: AddressRVAdapter.ViewHolder, position: Int) {
         val address= addresses[position]
         holder.line1.text=address.address_one
-        holder.line2.text=address.address_two
+        holder.line2.text=address.postalCode
     }
 
     override fun getItemCount(): Int {
