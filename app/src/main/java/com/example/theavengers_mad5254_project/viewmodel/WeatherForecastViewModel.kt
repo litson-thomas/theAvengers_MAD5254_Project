@@ -1,24 +1,12 @@
 package com.example.theavengers_mad5254_project.viewmodel
 
-import android.app.Application
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.util.Log
-import androidx.databinding.ObservableField
 import androidx.lifecycle.*
-import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
-import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ForecastResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.GeocodeResponseItem
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.WeatherForecastResponse
 import com.example.theavengers_mad5254_project.repository.MainRepository
-import com.example.theavengers_mad5254_project.utils.AppPreference
-import com.example.theavengers_mad5254_project.utils.CommonMethods
-import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.*
 
 class WeatherForecastViewModel(private val repository: MainRepository)

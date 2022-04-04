@@ -36,7 +36,7 @@ class Header : Fragment(R.layout.fragment_header) {
         backButton = view.findViewById(R.id.fragment_header_back_btn)
         backButton.setOnClickListener {
             requireActivity().run {
-                finish()
+              finish()
             }
         }
         super.onViewCreated(view, savedInstanceState)

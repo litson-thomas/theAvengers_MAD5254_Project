@@ -20,7 +20,7 @@ class MyAddresses : AppCompatActivity() {
     private lateinit var binding: ActivityMyAddressesBinding
     private lateinit var addressViewModel: AddressesViewModel
     private lateinit var addressViewModelFactory: AddressesViewModelFactory
-    private lateinit var addressAdapter: addressesRVadapter
+    private lateinit var addressAdapter: AddressRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,12 @@ class MyAddresses : AppCompatActivity() {
         addressViewModelFactory = AddressesViewModelFactory(mainRepository)
         addressViewModel = ViewModelProvider(this,addressViewModelFactory)[AddressesViewModel::class.java]
 
-        addressAdapter= addressesRVadapter { position -> onListItemClick(position) }
+        getAddress()
+
+
+    }
+    private fun getAddress(){
+        addressAdapter= AddressRVAdapter { position -> onListItemClick(position) }
         binding.RVaddresses.adapter=addressAdapter
 
         addressViewModel.addressList.observe(this) {
@@ -43,7 +48,6 @@ class MyAddresses : AppCompatActivity() {
         }
 
         addressViewModel.getAddress(AppPreference.userID)
-
     }
     private fun onListItemClick(position: Int) {
         var intent =  Intent(this, Update_Address::class.java)
@@ -54,5 +58,12 @@ class MyAddresses : AppCompatActivity() {
     fun btn_AddNewAddress(view: View){
         var intent = Intent(this, AddNewAddress::class.java)
         startActivity(intent)
+    }
+
+
+    override fun onRestart() {
+        super.onRestart()
+        getAddress()
+        addressAdapter.notifyDataSetChanged()
     }
 }

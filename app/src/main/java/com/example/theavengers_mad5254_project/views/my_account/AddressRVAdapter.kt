@@ -1,6 +1,5 @@
 package com.example.theavengers_mad5254_project.views.my_account
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.theavengers_mad5254_project.R
 import com.example.theavengers_mad5254_project.model.data.Address
 
-class addressesRVadapter(private val onItemClicked: (position: Int) -> Unit): RecyclerView.Adapter<addressesRVadapter.ViewHolder>()  {
+class AddressRVAdapter(private val onItemClicked: (position: Int) -> Unit): RecyclerView.Adapter<AddressRVAdapter.ViewHolder>()  {
 
     var addresses = listOf<Address>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): addressesRVadapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressRVAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.addresses_row,parent,false)
         return ViewHolder(v,onItemClicked)
     }
 
-    override fun onBindViewHolder(holder: addressesRVadapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AddressRVAdapter.ViewHolder, position: Int) {
         val address= addresses[position]
         holder.line1.text=address.address_one
         holder.line2.text=address.address_two
