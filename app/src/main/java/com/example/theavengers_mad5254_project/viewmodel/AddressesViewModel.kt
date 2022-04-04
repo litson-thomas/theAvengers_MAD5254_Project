@@ -5,7 +5,13 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.theavengers_mad5254_project.model.data.Address
 import com.example.theavengers_mad5254_project.model.data.Booking
+import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
+import com.example.theavengers_mad5254_project.model.data.requestModel.UpdateAddressRequest
+import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.DeleteAddressResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.GoogleGeocodeResponse
 import com.example.theavengers_mad5254_project.repository.MainRepository
+import com.example.theavengers_mad5254_project.utils.AppPreference
 import kotlinx.coroutines.*
 
 class AddressesViewModel(private val repository: MainRepository)
@@ -14,7 +20,14 @@ class AddressesViewModel(private val repository: MainRepository)
     var loading: MutableLiveData<Boolean> = MutableLiveData()
 
 
-    val addressList = MutableLiveData<List<Address>>()
+    val addressList = MutableLiveData<ArrayList<Address>>()
+
+    private val _deleteAddress = MutableLiveData<DeleteAddressResponse>()
+    var deleteAddress: LiveData<DeleteAddressResponse> = _deleteAddress
+
+    private val _updateAddress = MutableLiveData<ApiResponse>()
+    var updateAddress: LiveData<ApiResponse> = _updateAddress
+
     var job: Job? = null
 
     init {
@@ -45,49 +58,45 @@ class AddressesViewModel(private val repository: MainRepository)
         }
 
     }
+    fun deleteAddress(id: Int) {
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.deleteAddress(id)
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                   // _deleteAddress.postValue(response.body())
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(ContentValues.TAG, "getAddress:  ${response.message()}")
+                }
+            }
+        }
+
+    }
 
 
     fun updateAddress(
-        id: Int?,
-        address_one: String?,
-        address_two: String?,
-        CityId: String?,
-        StateId: String?,
-        postalCode: String?,
-        city: String?,
-        state: String?,
-        latitude: Number?,
-        longitude: Number?,
-        createdAt: String?,
-        updatedAt: String?,
-        userUid: String?
+        id: Int?, address_one: String?, address_two: String?, CityId: String?,
+        StateId: String?, postalCode: String?, city: String?, state: String?,
+        latitude: Number?, longitude: Number?, userUid: String?
     ) {
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
-            val newAddress = Address(
-                id,
-                address_one,
-                address_two,
-                CityId,
-                StateId,
-                postalCode,
-                city,
-                state,
-                latitude,
-                longitude,
-                createdAt,
-                updatedAt,
-                userUid
-            )
-//            val response = repository.updateAddress(newAddress)
-//            withContext((Dispatchers.Main)) {
-//                if (response.isSuccessful) {
-//                    loading.postValue(false)
-//                } else {
-//                    onError("Error : ${response.message()}")
-//                    Log.d(ContentValues.TAG, "updateAddress:  ${response.message()}")
-//                }
-//            }
+            val updateAddressRequest = UpdateAddressRequest( id,
+                address_one, address_two, CityId, StateId, postalCode, city,
+                state, latitude, longitude, userUid)
+            val response = id?.let { repository.updateAddress(it,updateAddressRequest) }
+
+            withContext((Dispatchers.Main)) {
+                if (response!!.isSuccessful) {
+                    _updateAddress.postValue(response.body())
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(ContentValues.TAG, "updateAddress:  ${response.message()}")
+                }
+            }
 
         }
 

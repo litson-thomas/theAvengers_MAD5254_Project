@@ -4,10 +4,7 @@ import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.model.data.Booking
 import com.example.theavengers_mad5254_project.model.data.Review
 import com.example.theavengers_mad5254_project.model.data.Shovler
-import com.example.theavengers_mad5254_project.model.data.requestModel.AddNewAddressRequest
-import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
-import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
-import com.example.theavengers_mad5254_project.model.data.requestModel.UpdateUserRequest
+import com.example.theavengers_mad5254_project.model.data.requestModel.*
 import okhttp3.MultipartBody
 import com.example.theavengers_mad5254_project.utils.AppPreference
 
@@ -62,5 +59,9 @@ class MainRepository constructor(private val apiService: ApiService) {
     suspend fun updateProfile( updateUserRequest: UpdateUserRequest) = apiService.updateUser(token = AppPreference.userToken,
         AppPreference.userID,updateUserRequest)
 
+
+    suspend fun deleteAddress(id: Int) = apiService.deleteAddress(id)
+
+    suspend fun updateAddress(id: Int,updateAddressRequest: UpdateAddressRequest) = apiService.updateAddress(id,updateAddressRequest)
 }
 

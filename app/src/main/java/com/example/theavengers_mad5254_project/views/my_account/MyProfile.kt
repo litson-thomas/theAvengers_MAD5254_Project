@@ -89,9 +89,9 @@ class MyProfile : AppCompatActivity() {
         viewModel.fetchLoading().observe(this, Observer {
             if (!it) {
                 println(it)
-                binding.loginProgress.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
             }else{
-                binding.loginProgress.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.VISIBLE
             }
 
         })

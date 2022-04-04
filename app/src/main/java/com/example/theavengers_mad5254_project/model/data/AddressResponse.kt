@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class AddressResponse  (
     val count: Int,
-    val rows: List<Address>
+    val rows: ArrayList<Address>
 ) : Serializable
 
 data class Address (
