@@ -18,11 +18,20 @@ class DirectionHeader : Fragment(R.layout.fragment_directions_header) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val locationBtn: ImageButton = view.findViewById(R.id.header_location_img_button)
+        val backBtn: ImageButton = view.findViewById(R.id.details_back_btn)
+
         val bundle = arguments
         if (bundle != null) {
             booking = bundle!!.getSerializable("booking") as Booking
             val commonHeaderTitle: TextView = view.findViewById(R.id.common_header_title)
             commonHeaderTitle.text = "Order #${booking.id}"
+
+
+            backBtn.setOnClickListener {
+                requireActivity().run{
+                    finish()
+                }
+            }
 
             locationBtn.setOnClickListener {
                 requireActivity().run{

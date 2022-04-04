@@ -107,6 +107,9 @@ interface ApiService {
     @GET("api/reviews")
     suspend fun getReviews(@Query("shovlerId") shovlerId: Int, @Query("bookingId") bookingId: Int): Response<ReviewResponse>
 
+    @POST("api/reviews")
+    suspend fun addReview(@Body requestBody: Review): Response<APIResponse>
+
     @GET("api/shovler")
     suspend fun getShovlerListings(@Query("userUid") userUid: String): Response<ShovlerResponse>
 
