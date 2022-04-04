@@ -38,6 +38,8 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
     private lateinit var cityList: ArrayList<String>
     private lateinit var cityListAdapter: ArrayAdapter<String>
     var text: String = ""
+    var cityName: String = ""
+    var city: String = ""
     var cityId: Int = 0
     var latitude: String = ""
     var longitude: String = ""
@@ -71,7 +73,7 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
                 }
                 else -> {
                     addNewAddress(binding.txtAddAddressLine1.text.toString(),binding.txtAddAddressLine2.text.toString(),
-                        "",binding.spinnerAddProvince.selectedItemPosition+1,latitude,
+                        city,binding.spinnerAddProvince.selectedItemPosition+1,latitude,
                         longitude,binding.txtAddPostalCode.text.toString(),text,AppPreference.userID)
 
                 }
@@ -81,7 +83,7 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
     }
     //Google Geocode API
     private fun getGeocode(place: String) {
-        viewModel.getGoogleGeocode(AppConstants.GOOGLE_GEOCODE_URL+"address="+place+"&key="+AppConstants.GOOGLE_API_KEY)
+        viewModel.getGoogleGeocode(AppConstants.GOOGLE_GEOCODE_URL+"address="+place+"&radius=50000&key="+AppConstants.GOOGLE_API_KEY)
         viewModel.geocode.observe(this, Observer {
             if (it.results.isNotEmpty()) {
                latitude = it.results.first().geometry.location.lat.toString()
@@ -93,10 +95,10 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
     }
     //Google Place API
     private fun searchPlace(place: String) {
-        viewModel.getGooglePlaces(AppConstants.GOOGLE_PLACE_URL+"input="+place+"&types=geocode&sensor=true&key="+AppConstants.GOOGLE_API_KEY)
+        viewModel.getGooglePlaces(AppConstants.GOOGLE_PLACE_URL+"input="+place+"&radius=50000&types=geocode&sensor=true&key="+AppConstants.GOOGLE_API_KEY)
         viewModel.searchPlace.observe(this, Observer {
             if (it.isNotEmpty()) {
-              updatePlaceList(it)
+                updatePlaceList(it)
                 searchCity()
             } else {
                 Log.i(TAG, "searchPlace: INVALID REQUEST")
@@ -131,10 +133,12 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
             placeList.add(i, placeNameList[i].structured_formatting.main_text)
 
         }
+
         placesListAdapter = ArrayAdapter(
             this, android.R.layout.simple_list_item_1,placeList
         )
-        binding.txtAddAddressLine1.setAdapter(placesListAdapter)
+
+       binding.txtAddAddressLine1.setAdapter(placesListAdapter)
         placesListAdapter.notifyDataSetChanged()
     }
 
@@ -156,7 +160,7 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
     private fun cityList(cityStateList: List<Row>) {
         cityList.clear()
         for (i in cityStateList.indices) {
-            cityList.add(i, cityStateList[i].city_name+", "+cityStateList[i].State.state_name)
+            cityList.add(i, cityStateList[i].city_name)
         }
         cityListAdapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_item, cityList

@@ -74,13 +74,15 @@
 
         <Spinner
             android:id="@+id/spinner_add_province"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
             android:background="@drawable/input_style"
             android:paddingLeft="20dp"
+            android:textSize="12sp"
+            android:hint="Select your place"
             tools:ignore="SpeakableTextPresentCheck" />
-
 
         <Button
             android:id="@+id/btn_addAddress"

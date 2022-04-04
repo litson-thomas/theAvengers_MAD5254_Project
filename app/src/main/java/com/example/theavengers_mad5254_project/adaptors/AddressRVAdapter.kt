@@ -1,4 +1,4 @@
-package com.example.theavengers_mad5254_project.views.my_account
+package com.example.theavengers_mad5254_project.adaptors
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,15 +14,15 @@ import com.example.theavengers_mad5254_project.utils.OnClickInterface
 class AddressRVAdapter(private val onClickInterface: OnClickInterface): RecyclerView.Adapter<AddressRVAdapter.ViewHolder>()  {
     var addresses = ArrayList<Address>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressRVAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.addresses_row,parent,false)
         return ViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: AddressRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val address= addresses[position]
         holder.line1.text=address.address_one
-        holder.line2.text=address.postalCode
+        holder.line2.text=address.address_two
 
         holder.deleteButton.setOnClickListener {
 

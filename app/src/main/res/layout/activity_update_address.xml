@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".views.my_account.Update_Address">
+    tools:context=".views.my_account.UpdateAddress">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/updateAddress_header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
@@ -38,14 +38,14 @@
             android:textColor="@color/text_black"
             android:textSize="16dp" />
 
-        <EditText
-            android:id="@+id/txt_update_address1"
+        <AutoCompleteTextView
+            android:id="@+id/txt_update_addressLine1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/input_style"
             android:fontFamily="@font/poppins"
-            android:hint="Place"
+            android:hint="Address line 1"
             android:paddingLeft="20dp"
             android:textSize="12dp" />
 
@@ -72,14 +72,6 @@
             android:textSize="12dp" />
 
         <Spinner
-            android:id="@+id/spinner_update_province"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/input_style"
-            android:paddingLeft="20dp"
-            tools:ignore="SpeakableTextPresentCheck" />
-        <Spinner
             android:id="@+id/spinner_update_city"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -87,6 +79,15 @@
             android:background="@drawable/input_style"
             android:paddingLeft="20dp"
             tools:ignore="SpeakableTextPresentCheck" />
+        <Spinner
+            android:id="@+id/spinner_update_province"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_style"
+            android:paddingLeft="20dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
 
 
         <Button
@@ -105,6 +106,16 @@
 
     </LinearLayout>
 
-
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

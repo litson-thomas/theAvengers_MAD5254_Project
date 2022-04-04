@@ -3,7 +3,6 @@ package com.example.theavengers_mad5254_project.views.my_account
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
@@ -11,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.theavengers_mad5254_project.R
+import com.example.theavengers_mad5254_project.adaptors.AddressRVAdapter
 import com.example.theavengers_mad5254_project.databinding.ActivityMyAddressesBinding
 import com.example.theavengers_mad5254_project.model.api.ApiClient
 import com.example.theavengers_mad5254_project.model.data.Address
@@ -102,7 +102,7 @@ class MyAddresses : AppCompatActivity() {
 
         override fun onClick(address: Address?) {
 
-            val intent =  Intent(applicationContext, Update_Address::class.java)
+            val intent =  Intent(applicationContext, UpdateAddress::class.java)
             intent.putExtra("address", address as Serializable)
             startActivity(intent)
 

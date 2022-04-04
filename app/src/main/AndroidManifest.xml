@@ -105,7 +105,7 @@
       android:name="com.example.theavengers_mad5254_project.views.my_account.MyProfile"
       android:exported="false" />
     <activity
-      android:name="com.example.theavengers_mad5254_project.views.my_account.Update_Address"
+      android:name="com.example.theavengers_mad5254_project.views.my_account.UpdateAddress"
       android:exported="false" />
     <activity
       android:name="com.example.theavengers_mad5254_project.views.my_account.AddNewAddress"
