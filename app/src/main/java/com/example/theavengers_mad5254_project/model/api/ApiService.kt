@@ -1,10 +1,7 @@
 package com.example.theavengers_mad5254_project.model.api
 
 import com.example.theavengers_mad5254_project.model.data.*
-import com.example.theavengers_mad5254_project.model.data.requestModel.AddNewAddressRequest
-import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
-import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
-import com.example.theavengers_mad5254_project.model.data.requestModel.UpdateUserRequest
+import com.example.theavengers_mad5254_project.model.data.requestModel.*
 import com.example.theavengers_mad5254_project.model.data.responseModel.*
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ForecastResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.WeatherForecastResponse
@@ -118,6 +115,9 @@ interface ApiService {
     @GET("api/address")
     suspend fun getAddress(@Query("userUid") userUid: String): Response<AddressResponse>
 
+    @DELETE("api/address/{id}")
+    suspend fun deleteAddress(@Path(value = "id") id: Int?): Response<DeleteAddressResponse>
+
     @GET("api/address")
     suspend fun getAddress(): Response<AddressResponse>
 
@@ -163,6 +163,9 @@ interface ApiService {
 
     @POST("api/address")
     suspend fun addNewAddress(@Header("token") token: String,@Body addNewAddressRequest: AddNewAddressRequest): Response<AddNewAddressResponse>
+
+    @PUT("api/address/{id}")
+    suspend fun updateAddress(@Path(value = "id") id: Int?,@Body updateAddressRequest: UpdateAddressRequest): Response<ApiResponse>
 
 }
 
