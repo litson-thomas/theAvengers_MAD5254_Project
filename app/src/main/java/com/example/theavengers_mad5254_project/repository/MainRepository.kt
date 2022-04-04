@@ -2,6 +2,7 @@ package com.example.theavengers_mad5254_project.repository
 
 import com.example.theavengers_mad5254_project.model.api.ApiService
 import com.example.theavengers_mad5254_project.model.data.Booking
+import com.example.theavengers_mad5254_project.model.data.Review
 import com.example.theavengers_mad5254_project.model.data.Shovler
 import com.example.theavengers_mad5254_project.model.data.requestModel.AddNewAddressRequest
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
@@ -55,6 +56,7 @@ class MainRepository constructor(private val apiService: ApiService) {
     suspend fun searchCity() = apiService.getCity()
 
     suspend fun addNewAddress( addNewAddressRequest: AddNewAddressRequest) = apiService.addNewAddress(token = AppPreference.userToken,addNewAddressRequest)
+    suspend fun addReview( review: Review) = apiService.addReview(review)
 
 
     suspend fun updateProfile( updateUserRequest: UpdateUserRequest) = apiService.updateUser(updateUserRequest.uid,updateUserRequest)
