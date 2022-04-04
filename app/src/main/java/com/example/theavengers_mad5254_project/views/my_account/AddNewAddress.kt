@@ -1,6 +1,7 @@
 package com.example.theavengers_mad5254_project.views.my_account
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -24,6 +25,7 @@ import com.example.theavengers_mad5254_project.utils.AppPreference
 import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.viewmodel.AddNewAddressViewModel
 import com.example.theavengers_mad5254_project.viewmodel.AddNewAddressViewModelFactory
+import com.example.theavengers_mad5254_project.views.auth.Login
 
 
 class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
@@ -183,12 +185,12 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
         viewModel.getNewAddress(userUid,address_one,address_two,latitude,longitude,cityId)
         viewModel.addNewAddress.observe(this, Observer {
             if (it.status) {
-
-                Log.i(TAG, "searchPlace: Success")
+              onBackPressed()
             } else {
                 Log.i(TAG, "searchPlace: INVALID REQUEST")
             }
         })
     }
+
 }
 

@@ -4,20 +4,15 @@ import com.example.theavengers_mad5254_project.model.data.*
 import com.example.theavengers_mad5254_project.model.data.requestModel.AddNewAddressRequest
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
 import com.example.theavengers_mad5254_project.model.data.requestModel.PrepareBookingRequest
+import com.example.theavengers_mad5254_project.model.data.requestModel.UpdateUserRequest
 import com.example.theavengers_mad5254_project.model.data.responseModel.*
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.ForecastResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.WeatherForecastResponse
-import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
-import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUserResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.weatherResponseModel.GeocodeResponseItem
-import com.example.theavengers_mad5254_project.utils.AppPreference
-import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 
@@ -92,8 +87,8 @@ interface ApiService {
     @POST("api/user")
     suspend fun registerUser(@Body requestBody: CreateUserRequest): Response<CreateUserResponse>
 
-    @PUT("api/user")
-    suspend fun updateUser(@Body requestBody: CreateUserRequest): Response<CreateUserResponse>
+    @PUT("api/user/{userUid}")
+    suspend fun updateUser(@Path(value = "userUid") userUid: String?,@Body requestBody: UpdateUserRequest): Response<CreateUserResponse>
 
     @GET("api/bookings")
     suspend fun getBookings(@Query("shovlerId") shovlerId: Int): Response<BookingResponse>

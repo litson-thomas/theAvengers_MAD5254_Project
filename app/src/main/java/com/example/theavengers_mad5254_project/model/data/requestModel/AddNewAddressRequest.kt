@@ -1,5 +1,7 @@
 package com.example.theavengers_mad5254_project.model.data.requestModel
 
+import java.io.Serializable
+
 data class AddNewAddressRequest(
     val userUid: String,
     val address_one: String,
@@ -7,4 +9,4 @@ data class AddNewAddressRequest(
     val latitude: String,
     val longitude: String,
     val cityId: Int
-)
+): Serializable

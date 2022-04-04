@@ -1,8 +1,6 @@
 package com.example.theavengers_mad5254_project.viewmodel
 
-import android.app.Application
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
@@ -10,7 +8,6 @@ import com.example.theavengers_mad5254_project.model.data.responseModel.CreateUs
 import com.example.theavengers_mad5254_project.repository.MainRepository
 
 import com.example.theavengers_mad5254_project.utils.AppPreference
-import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
