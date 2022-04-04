@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.theavengers_mad5254_project.model.data.APIResponse
+import com.example.theavengers_mad5254_project.model.data.Address
 import com.example.theavengers_mad5254_project.model.data.Booking
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import kotlinx.coroutines.*
@@ -28,16 +29,20 @@ class MyBookingsViewModel(private val repository: MainRepository)
         loading.postValue(false)
     }
 
-    fun getBookings(userUid: String){
+    fun getBookings(userUid: String, addressList: List<Address>){
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getBookings()
             withContext((Dispatchers.Main)) {
                 if (response.isSuccessful) {
+                    var userAddress= listOf<String>()
+                    for(address in addressList) {
+                        userAddress+=address.id!!.toString()
+                    }
                     val bookings: List<Booking> = response.body()?.rows!!
                     var userBookings = listOf<Booking>()
                     for(booking in bookings) {
-                        if (booking.shovler != null && booking.shovler!!.userUid == userUid) {
+                        if (booking.shovler != null && userAddress.contains(booking.addressId)) {
                             userBookings += booking
                         }
                     }

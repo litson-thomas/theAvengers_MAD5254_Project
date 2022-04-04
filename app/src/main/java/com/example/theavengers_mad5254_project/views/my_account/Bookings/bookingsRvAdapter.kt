@@ -45,7 +45,7 @@ class bookingsRvAdapter(private val onItemClicked: (position: Int) -> Unit)
 
     class ViewHolder(itemView: View,private val onItemClicked: (position: Int) -> Unit):RecyclerView.ViewHolder(itemView),View.OnClickListener{
 
-        val head: TextView = itemView.findViewById(R.id.rowHeading)
+        val head: TextView = itemView.findViewById(R.id.job_description)
         val orderNo: TextView = itemView.findViewById(R.id.job_number)
         val status: TextView = itemView.findViewById(R.id.job_status)
         init {

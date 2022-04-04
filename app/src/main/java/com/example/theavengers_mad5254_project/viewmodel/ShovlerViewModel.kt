@@ -31,8 +31,6 @@ class ShovlerViewModel(private val repository: MainRepository)
     private val _deleteShovlerImageStatus = MutableLiveData<Boolean>()
     var deleteShovlerImageStatus: LiveData<Boolean> = _deleteShovlerImageStatus
 
-
-
     val shovlerList = MutableLiveData<List<Shovler>>()
     val addressList = MutableLiveData<List<Address>>()
 

@@ -8,7 +8,7 @@
     android:background="@color/bg"
     tools:context=".views.my_account.Bookings.giveFeedback">
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/givefeedback_header"
+        android:id="@+id/header"
         android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
         tools:layout="@layout/fragment_header"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:paddingTop="30dp"
         android:paddingRight="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/givefeedback_header">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <TextView
 
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:max="5"
             android:padding="10dp"
-            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="529dp" />
 
     </LinearLayout>
@@ -136,6 +136,7 @@
         android:backgroundTint="@color/primary"
         android:elevation="50dp"
         android:onClick="submitFeedback"
+        android:textAllCaps="false"
         android:text="Submit"
         android:textColor="@color/white"
         android:textSize="12dp"

@@ -231,7 +231,6 @@
         <LinearLayout
             android:id="@+id/filters_buttons"
             android:orientation="horizontal"
-            android:background="@drawable/filters_footer_style"
             android:paddingTop="20dp"
             android:weightSum="4"
             android:layout_width="match_parent"

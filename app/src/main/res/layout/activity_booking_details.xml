@@ -1,260 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg"
-    tools:context=".views.my_account.Bookings.bookingDetails">
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/bookingDetail_header"
-        android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
-        tools:layout="@layout/fragment_header"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        tools:context=".views.my_account.Bookings.bookingDetails">
 
-
-    <LinearLayout
-        android:id="@+id/BDheading_wrapper"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:orientation="vertical"
-        android:padding="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookingDetail_header"
-        tools:ignore="MissingConstraints">
-
-
-        <TextView
-            android:id="@+id/txt_bookingDate"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/header"
+            android:name="com.example.theavengers_mad5254_project.fragments.common.Header"
+            tools:layout="@layout/fragment_directions_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins_semibold"
+            tools:ignore="MissingConstraints" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/login_wrapper"
             android:paddingLeft="20dp"
-            android:text="24 March 2022"
-            android:textColor="@color/text_black"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/txt_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins"
-            android:paddingLeft="20dp"
-            android:text="51 Tillbrook Ct, Scarborough
-M1BN15, Ontario, CA"
-            android:textColor="@color/text_grey"
-            android:textSize="16dp" />
+            android:paddingRight="20dp"
+            android:paddingTop="100dp">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <TextView
-
+            <LinearLayout
+                android:id="@+id/heading_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins"
-                android:paddingLeft="20dp"
-                android:text="Hours Required"
-                android:textColor="@color/text_grey"
-                android:textSize="14dp" />
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_extrabold"
+                    android:textSize="16dp"
+                    android:lineHeight="35dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/primary"
+                    android:text="Booking Scheduled On" />
+                <TextView
+                    android:id="@+id/order_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_extrabold"
+                    android:textSize="18dp"
+                    android:lineHeight="35dp"
+                    android:textColor="@color/text_black"
+                    android:text="25 February, 2002" />
 
-                android:id="@+id/hours"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins_semibold"
-                android:paddingLeft="20dp"
-                android:text="1-4 hrs"
-                android:textAlignment="textEnd"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/order_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18dp"
+                    android:lineHeight="25dp"
+                    android:textColor="@color/text_grey"
+                    android:text="52 Tillbrook Ct, Scarborough M1BN15, Ontario, CA" />
 
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        tools:ignore="MissingConstraints">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/text_grey"
+                            android:text="Hours Required" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/text_grey"
+                            android:text="City Sidewalk" />
+                        <View
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/text_grey"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins"
-                android:paddingLeft="20dp"
-                android:text="City Sidewalk"
-                android:textColor="@color/text_grey"
-                android:textSize="14dp" />
-
-            <TextView
-
-                android:id="@+id/sidewalk"
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins_semibold"
-                android:paddingLeft="20dp"
-                android:text="Yes"
-                android:textAlignment="textEnd"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_breakline"
-            tools:layout_editor_absoluteY="491dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins"
-                android:paddingLeft="20dp"
-                android:text="Total amount"
-                android:textColor="@color/text_grey"
-                android:textSize="14dp" />
-
-            <TextView
-
-                android:id="@+id/totalamount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins_semibold"
-                android:paddingLeft="20dp"
-                android:text="$51"
-                android:textAlignment="textEnd"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                    </LinearLayout>
 
 
-        </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="2"
+                        tools:ignore="MissingConstraints">
+                        <TextView
+                            android:id="@+id/order_hours"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="right"
+                            android:text="1-4 hrs" />
+                        <TextView
+                            android:id="@+id/order_city_sidewalk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="right"
+                            android:text="Yes" />
+                        <View
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/text_grey"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
+                    </LinearLayout>
+                </LinearLayout>
 
-            <TextView
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        tools:ignore="MissingConstraints">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/text_grey"
+                            android:text="Total amount" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/text_grey"
+                            android:text="Tax and service fees" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/text_black"
+                            android:text="Grand Total" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="2"
+                        tools:ignore="MissingConstraints">
+                        <TextView
+                            android:id="@+id/order_total_amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="right"
+                            android:text="$45" />
+                        <TextView
+                            android:id="@+id/order_tax"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="right"
+                            android:text="$6" />
+                        <TextView
+                            android:id="@+id/order_grand_total"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:lineHeight="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="right"
+                            android:text="$51" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                        <ProgressBar
+                            android:id="@+id/mark_completed_progress"
+                            style="?android:attr/progressBarStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:visibility="gone"/>
 
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins"
-                android:paddingLeft="20dp"
-                android:text="Tax and service fees"
-                android:textColor="@color/text_grey"
-                android:textSize="14dp" />
-
-            <TextView
-
-                android:id="@+id/taxes"
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins_semibold"
-                android:paddingLeft="20dp"
-                android:text="$51"
-                android:textAlignment="textEnd"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins_semibold"
-                android:paddingLeft="20dp"
-                android:text="Grand Total"
-                android:textColor="@color/text_grey"
-                android:textSize="14dp" />
-
-            <TextView
-
-                android:id="@+id/grandtotal"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:fontFamily="@font/poppins_semibold"
-                android:paddingLeft="20dp"
-                android:text="$51"
-                android:textAlignment="textEnd"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-
-
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/btn_giveRating"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/primary_button"
-            android:backgroundTint="@color/primary"
-            android:elevation="50dp"
-            android:onClick="btnGiveRating"
-            android:text="Give a rating"
-            android:textColor="@color/white"
-            android:textSize="12dp" />
-
-    </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/filters_buttons"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="20dp"
+                    android:weightSum="4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
 
+                    <Button
+                        android:id="@+id/btn_giveRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/primary_button"
+                        android:elevation="50dp"
+                        android:text="Give a rating"
+                        android:textSize="14dp"
+                        android:textAllCaps="false"
+                        android:layout_weight="2"
+                        android:onClick="btnGiveRating"
+                        android:layout_marginLeft="5dp"
+                        android:backgroundTint="@color/primary"
+                        android:textColor="@color/white" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
