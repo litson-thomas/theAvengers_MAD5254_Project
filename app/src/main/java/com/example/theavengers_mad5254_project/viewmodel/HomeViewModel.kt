@@ -1,5 +1,6 @@
 package com.example.theavengers_mad5254_project.viewmodel
 
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.*
@@ -7,7 +8,9 @@ import com.example.theavengers_mad5254_project.model.data.Shoveler
 import com.example.theavengers_mad5254_project.model.data.ShovlerImages
 import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
 import com.example.theavengers_mad5254_project.model.data.responseModel.ShovlersResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.UserResponse
 import com.example.theavengers_mad5254_project.repository.MainRepository
+import com.example.theavengers_mad5254_project.utils.AppPreference
 import kotlinx.coroutines.*
 
 class HomeViewModel(private val repository: MainRepository) : ViewModel(), LifecycleObserver {
@@ -20,6 +23,8 @@ class HomeViewModel(private val repository: MainRepository) : ViewModel(), Lifec
   val shovlers: LiveData<ShovlersResponse> = _shovlers
   val selectedShovler = MutableLiveData<Shoveler>()
 
+  private val _user = MutableLiveData<UserResponse>()
+  val user: LiveData<UserResponse> = _user
 
   private val _shovlerSearchStatus = MutableLiveData<ShovlersResponse>()
   var shovlerSearchStatus: LiveData<ShovlersResponse> = _shovlerSearchStatus
@@ -73,7 +78,21 @@ class HomeViewModel(private val repository: MainRepository) : ViewModel(), Lifec
       }
     }
   }
-
+  fun getUser(){
+    loading.postValue(true)
+    job = CoroutineScope(Dispatchers.IO).launch {
+      val response = repository.getUser(AppPreference.userID)
+      withContext((Dispatchers.Main)) {
+        if (response.isSuccessful) {
+          _user.postValue(response.body())
+          loading.postValue(false)
+        } else {
+          onError("Error : ${response.message()}")
+          Log.e(ContentValues.TAG, "load user:  ${response.message()}")
+        }
+      }
+    }
+  }
   fun getSelectedShoveler(): Shoveler? {
     return selectedShovler.value
   }

@@ -30,7 +30,7 @@ class Update_Address : AppCompatActivity() {
         var address = intent.getSerializableExtra("address") as Address
         binding.txtUpdateAddress1.setText(address.address_one)
         binding.txtUpdateAddress2.setText(address.address_two)
-        binding.txtUpdatePostalCode.setText(address.postlCode)
+        binding.txtUpdatePostalCode.setText(address.postalCode)
       //  binding.spinnerUpdateCity.selectedItem
       //  binding.spinnerUpdateProvince.selectedItem
 

@@ -4,7 +4,6 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.theavengers_mad5254_project.utils.AppPreference
-import com.example.theavengers_mad5254_project.utils.CommonMethods
 import com.example.theavengers_mad5254_project.utils.responseHelper.ResultOf
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -37,7 +36,7 @@ class FirebaseViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel
                                 println("Registration Failed with ${task.exception}")
                                 _registrationStatus.postValue(ResultOf.Success("Registration Failed with ${task.exception}"))
                             }else{
-                                getUserToken(task)
+                                getUserToken()
                                 _registrationStatus.postValue(ResultOf.Success("UserCreated"))
 
                             }
@@ -73,7 +72,7 @@ class FirebaseViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel
                                 println("Login Failed with ${task.exception}")
                                 _signInStatus.postValue(ResultOf.Success("Login Failed with ${task.exception}"))
                             }else{
-                                getUserToken(task)
+                                getUserToken()
                                 _signInStatus.postValue(ResultOf.Success("Login Successful"))
 
                             }
@@ -154,13 +153,20 @@ class FirebaseViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel
     fun fetchLoading():LiveData<Boolean> = loading
 
     //getUserToken Method
-    private fun getUserToken(task: Task<AuthResult>){
-        val firebaseUser: FirebaseUser? = task.result.user
-        firebaseUser?.getIdToken(true)?.addOnSuccessListener{result ->
+    private fun getUserToken(){
+        val mUser = auth?.currentUser
+        mUser?.getIdToken(true)?.addOnSuccessListener { result ->
             AppPreference.userToken = result.token.toString()
 
             Log.d(TAG, "signIn: ${AppPreference.userToken}")
         }
-        AppPreference.userID = firebaseUser?.uid.toString()
+        AppPreference.userID = mUser?.uid.toString()
+//        val firebaseUser: FirebaseUser? = task.result.user
+//        firebaseUser?.getIdToken(true)?.addOnSuccessListener{result ->
+//            AppPreference.userToken = result.token.toString()
+//
+//            Log.d(TAG, "signIn: ${AppPreference.userToken}")
+//        }
+//        AppPreference.userID = firebaseUser?.uid.toString()
     }
 }

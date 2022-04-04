@@ -55,6 +55,7 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
         val mainRepository = MainRepository(retrofitService)
         viewModelFactory = AddNewAddressViewModelFactory(mainRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[AddNewAddressViewModel::class.java]
+
         binding.spinnerAddProvince.onItemSelectedListener = this
         cityList = arrayListOf()
         rowList = arrayListOf()
@@ -69,8 +70,9 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
                     binding.txtAddPostalCode.requestFocus()
                 }
                 else -> {
-                    addNewAddress(AppPreference.userID,binding.txtAddAddressLine1.text.toString(),binding.txtAddAddressLine2.text.toString(),latitude,
-                        longitude,binding.spinnerAddProvince.selectedItemPosition+1)
+                    addNewAddress(binding.txtAddAddressLine1.text.toString(),binding.txtAddAddressLine2.text.toString(),
+                        "",binding.spinnerAddProvince.selectedItemPosition+1,latitude,
+                        longitude,binding.txtAddPostalCode.text.toString(),text,AppPreference.userID)
 
                 }
             }
@@ -181,8 +183,10 @@ class AddNewAddress : AppCompatActivity(),AdapterView.OnItemSelectedListener{
 
 
     //Add new address API call
-    private fun addNewAddress(userUid: String,address_one:String,address_two:String,latitude:String,longitude:String,cityId:Int) {
-        viewModel.getNewAddress(userUid,address_one,address_two,latitude,longitude,cityId)
+    private fun addNewAddress(address_one:String,address_two:String,city:String,city_id:Int,
+                              latitude:String,longitude:String,postal_code:String,state:String,userUid:String) {
+        viewModel.getNewAddress(address_one,address_two,city,
+            city_id,latitude,longitude,postal_code,state,userUid)
         viewModel.addNewAddress.observe(this, Observer {
             if (it.status) {
               onBackPressed()

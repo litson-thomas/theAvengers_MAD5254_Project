@@ -59,7 +59,8 @@ class MainRepository constructor(private val apiService: ApiService) {
     suspend fun addReview( review: Review) = apiService.addReview(review)
 
 
-    suspend fun updateProfile( updateUserRequest: UpdateUserRequest) = apiService.updateUser(updateUserRequest.uid,updateUserRequest)
+    suspend fun updateProfile( updateUserRequest: UpdateUserRequest) = apiService.updateUser(token = AppPreference.userToken,
+        AppPreference.userID,updateUserRequest)
 
 }
 

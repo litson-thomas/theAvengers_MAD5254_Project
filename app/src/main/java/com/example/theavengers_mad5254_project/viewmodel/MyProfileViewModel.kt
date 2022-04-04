@@ -11,6 +11,7 @@ import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUse
 import com.example.theavengers_mad5254_project.model.data.requestModel.UpdateUserRequest
 import com.example.theavengers_mad5254_project.model.data.responseModel.*
 import com.example.theavengers_mad5254_project.repository.MainRepository
+import com.example.theavengers_mad5254_project.utils.AppPreference
 import kotlinx.coroutines.*
 
 class MyProfileViewModel(private val repository: MainRepository)
@@ -21,16 +22,22 @@ class MyProfileViewModel(private val repository: MainRepository)
     private val _updateProfile = MutableLiveData<CreateUserResponse>()
     var updateProfile: LiveData<CreateUserResponse> = _updateProfile
 
+    private val _user = MutableLiveData<UserResponse>()
+    val user: LiveData<UserResponse> = _user
+
+    private val _searchPlace = MutableLiveData<List<Prediction>>()
+    var searchPlace: LiveData< List<Prediction>> = _searchPlace
+
     var job: Job? = null
 
     init {
         loading.postValue(false)
     }
 
-    fun getGooglePlaces(place: String,name:String,phone:String,uid:String){
+    fun updateProfile(name:String,phone:String,uid:String){
         loading.postValue(true)
         job = CoroutineScope(Dispatchers.IO).launch {
-            val updateUserRequest = UpdateUserRequest(place,name,phone,uid)
+            val updateUserRequest = UpdateUserRequest(name,phone,uid)
             val response = repository.updateProfile(updateUserRequest)
             withContext((Dispatchers.Main)) {
                 if (response.isSuccessful) {
@@ -43,7 +50,37 @@ class MyProfileViewModel(private val repository: MainRepository)
             }
         }
     }
+    fun getUser(){
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getUser(AppPreference.userID)
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                    _user.postValue(response.body())
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.e(ContentValues.TAG, "load user:  ${response.message()}")
+                }
+            }
+        }
+    }
 
+    fun getGooglePlaces(url: String){
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.searchGooglePlaces(url)
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                    _searchPlace.postValue(response.body()?.predictions)
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(ContentValues.TAG, "getPlaces:  ${response.message()}")
+                }
+            }
+        }
+    }
     private fun onError(message: String) {
         errorMessage.value = message
         loading.postValue(false)
