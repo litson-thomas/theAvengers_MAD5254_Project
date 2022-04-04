@@ -7,9 +7,7 @@ import com.example.theavengers_mad5254_project.model.data.Address
 import com.example.theavengers_mad5254_project.model.data.Booking
 import com.example.theavengers_mad5254_project.model.data.requestModel.CreateUserRequest
 import com.example.theavengers_mad5254_project.model.data.requestModel.UpdateAddressRequest
-import com.example.theavengers_mad5254_project.model.data.responseModel.ApiResponse
-import com.example.theavengers_mad5254_project.model.data.responseModel.DeleteAddressResponse
-import com.example.theavengers_mad5254_project.model.data.responseModel.GoogleGeocodeResponse
+import com.example.theavengers_mad5254_project.model.data.responseModel.*
 import com.example.theavengers_mad5254_project.repository.MainRepository
 import com.example.theavengers_mad5254_project.utils.AppPreference
 import kotlinx.coroutines.*
@@ -27,6 +25,16 @@ class AddressesViewModel(private val repository: MainRepository)
 
     private val _updateAddress = MutableLiveData<ApiResponse>()
     var updateAddress: LiveData<ApiResponse> = _updateAddress
+
+    private val _searchLocation = MutableLiveData<List<Row>>()
+    var searchLocation: LiveData<List<Row>> = _searchLocation
+
+    private val _geocode = MutableLiveData<GoogleGeocodeResponse>()
+    var geocode: LiveData<GoogleGeocodeResponse> = _geocode
+
+    private val _searchPlace = MutableLiveData<List<Prediction>>()
+    var searchPlace: LiveData< List<Prediction>> = _searchPlace
+
 
     var job: Job? = null
 
@@ -101,6 +109,55 @@ class AddressesViewModel(private val repository: MainRepository)
         }
 
     }
+
+    fun getCity(){
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.searchCity()
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                    _searchLocation.postValue(response.body()?.rows)
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(ContentValues.TAG, "getCity:  ${response.message()}")
+                }
+            }
+        }
+    }
+
+    fun getGooglePlaces(url: String){
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.searchGooglePlaces(url)
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                    _searchPlace.postValue(response.body()?.predictions)
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(ContentValues.TAG, "getPlaces:  ${response.message()}")
+                }
+            }
+        }
+    }
+
+    fun getGoogleGeocode(url: String){
+        loading.postValue(true)
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getGoogleGeocode(url)
+            withContext((Dispatchers.Main)) {
+                if (response.isSuccessful) {
+                    _geocode.postValue(response.body())
+                    loading.postValue(false)
+                } else {
+                    onError("Error : ${response.message()}")
+                    Log.d(ContentValues.TAG, "getPlaces:  ${response.message()}")
+                }
+            }
+        }
+    }
+
     private fun onError(message: String) {
         errorMessage.value = message
         loading.postValue(false)
